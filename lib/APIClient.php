@@ -147,7 +147,7 @@ class APIClient {
     } else {
       throw new APIClientException("Can't connect to the api: " . $url .
         " response code: " .
-        $response_info['http_code'], 0, $response_info, $response);
+        $response_info['http_code'] . ", response: ". serialize($response), 0, $response_info, $response);
     }
     return $data;
   }

@@ -63,15 +63,15 @@ class DefaultApi {
       
 
       // for HTTP post (form)
-      $body = $body ?: $formParams;
+      $preparedBody = $preparedBody ?: $formParams;
 
       if (strpos($headerParams['Content-Type'], "application/x-www-form-urlencoded") > -1) {
-        $body = http_build_query($body);
+        $preparedBody = http_build_query($preparedBody);
       }
 
       // make the API Call
       $response = $this->apiClient->callAPI($resourcePath, $method,
-                                            $queryParams, $body,
+                                            $queryParams, $preparedBody,
                                             $headerParams);
 
       if(! $response) {
@@ -117,15 +117,15 @@ class DefaultApi {
       
 
       // for HTTP post (form)
-      $body = $body ?: $formParams;
+      $preparedBody = $preparedBody ?: $formParams;
 
       if (strpos($headerParams['Content-Type'], "application/x-www-form-urlencoded") > -1) {
-        $body = http_build_query($body);
+        $preparedBody = http_build_query($preparedBody);
       }
 
       // make the API Call
       $response = $this->apiClient->callAPI($resourcePath, $method,
-                                            $queryParams, $body,
+                                            $queryParams, $preparedBody,
                                             $headerParams);
 
       if(! $response) {
@@ -183,15 +183,15 @@ class DefaultApi {
       
 
       // for HTTP post (form)
-      $body = $body ?: $formParams;
+      $preparedBody = $preparedBody ?: $formParams;
 
       if (strpos($headerParams['Content-Type'], "application/x-www-form-urlencoded") > -1) {
-        $body = http_build_query($body);
+        $preparedBody = http_build_query($preparedBody);
       }
 
       // make the API Call
       $response = $this->apiClient->callAPI($resourcePath, $method,
-                                            $queryParams, $body,
+                                            $queryParams, $preparedBody,
                                             $headerParams);
 
       
@@ -331,15 +331,15 @@ class DefaultApi {
       
 
       // for HTTP post (form)
-      $body = $body ?: $formParams;
+      $preparedBody = $preparedBody ?: $formParams;
 
       if (strpos($headerParams['Content-Type'], "application/x-www-form-urlencoded") > -1) {
-        $body = http_build_query($body);
+        $preparedBody = http_build_query($preparedBody);
       }
 
       // make the API Call
       $response = $this->apiClient->callAPI($resourcePath, $method,
-                                            $queryParams, $body,
+                                            $queryParams, $preparedBody,
                                             $headerParams);
 
       if(! $response) {
@@ -380,21 +380,21 @@ class DefaultApi {
       
       
       // body params
-      $body = null;
+      $preparedBody = null;
       if (isset($body)) {
-        $body = $body;
+        $preparedBody = $body;
       }
 
       // for HTTP post (form)
-      $body = $body ?: $formParams;
+      $preparedBody = $preparedBody ?: $formParams;
 
       if (strpos($headerParams['Content-Type'], "application/x-www-form-urlencoded") > -1) {
-        $body = http_build_query($body);
+        $preparedBody = http_build_query($preparedBody);
       }
 
       // make the API Call
       $response = $this->apiClient->callAPI($resourcePath, $method,
-                                            $queryParams, $body,
+                                            $queryParams, $preparedBody,
                                             $headerParams);
 
       if(! $response) {
@@ -445,15 +445,15 @@ class DefaultApi {
       
 
       // for HTTP post (form)
-      $body = $body ?: $formParams;
+      $preparedBody = $preparedBody ?: $formParams;
 
       if (strpos($headerParams['Content-Type'], "application/x-www-form-urlencoded") > -1) {
-        $body = http_build_query($body);
+        $preparedBody = http_build_query($preparedBody);
       }
 
       // make the API Call
       $response = $this->apiClient->callAPI($resourcePath, $method,
-                                            $queryParams, $body,
+                                            $queryParams, $preparedBody,
                                             $headerParams);
 
       if(! $response) {
@@ -494,21 +494,21 @@ class DefaultApi {
       
       
       // body params
-      $body = null;
+      $preparedBody = null;
       if (isset($body)) {
-        $body = $body;
+        $preparedBody = $body;
       }
 
       // for HTTP post (form)
-      $body = $body ?: $formParams;
+      $preparedBody = $preparedBody ?: $formParams;
 
       if (strpos($headerParams['Content-Type'], "application/x-www-form-urlencoded") > -1) {
-        $body = http_build_query($body);
+        $preparedBody = http_build_query($preparedBody);
       }
 
       // make the API Call
       $response = $this->apiClient->callAPI($resourcePath, $method,
-                                            $queryParams, $body,
+                                            $queryParams, $preparedBody,
                                             $headerParams);
 
       if(! $response) {
