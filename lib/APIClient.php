@@ -275,6 +275,9 @@ class APIClient {
       $deserialized = $values;
     } elseif ($class == 'DateTime' || $class == 'date') {
       $deserialized = new \DateTime($data);
+    } elseif ($class == 'boolean') {
+      settype($data, 'bool');
+      $deserialized = $data;
     } elseif (in_array($class, array('string', 'int', 'float', 'bool'))) {
       settype($data, $class);
       $deserialized = $data;
