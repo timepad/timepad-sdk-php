@@ -32,7 +32,7 @@ class Organization implements ArrayAccess {
       'name' => 'string',
       'description_html' => 'string',
       'url' => 'string',
-      'logo_image' => 'string',
+      'logo_image' => 'Image',
       'subdomain' => 'string'
   );
 
@@ -65,7 +65,7 @@ class Organization implements ArrayAccess {
   /**
   * Логотип
   */
-  public $logo_image; /* string */
+  public $logo_image; /* Image */
   /**
   * Уникальное название организации - часть URL
   */
