@@ -84,7 +84,7 @@ class APIClient {
       $headers[] = $this->headerName . ": " . $this->headerValue;
     }
 
-    if (strpos($headers['Content-Type'], "multipart/form-data") < 0 and (is_object($postData) or is_array($postData))) {
+    if (is_object($postData) or is_array($postData)) {
       $postData = json_encode($this->sanitizeForSerialization($postData));
     }
 
