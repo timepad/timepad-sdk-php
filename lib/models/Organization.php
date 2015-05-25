@@ -72,12 +72,36 @@ class Organization implements ArrayAccess {
   public $subdomain; /* string */
 
   public function __construct(array $data = null) {
-    $this->id = $data["id"];
-    $this->name = $data["name"];
-    $this->description_html = $data["description_html"];
-    $this->url = $data["url"];
-    $this->logo_image = $data["logo_image"];
-    $this->subdomain = $data["subdomain"];
+    
+    if(isset($data["id"])) {
+      $this->id = $data["id"];
+    }
+    
+    
+    if(isset($data["name"])) {
+      $this->name = $data["name"];
+    }
+    
+    
+    if(isset($data["description_html"])) {
+      $this->description_html = $data["description_html"];
+    }
+    
+    
+    if(isset($data["url"])) {
+      $this->url = $data["url"];
+    }
+    
+    
+    if(isset($data["logo_image"])) {
+      $this->logo_image = $data["logo_image"];
+    }
+    
+    
+    if(isset($data["subdomain"])) {
+      $this->subdomain = $data["subdomain"];
+    }
+    
   }
 
   public function offsetExists($offset) {

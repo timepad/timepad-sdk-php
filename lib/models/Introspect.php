@@ -66,11 +66,31 @@ class Introspect implements ArrayAccess {
   public $organizations; /* array[Organization] */
 
   public function __construct(array $data = null) {
-    $this->active = $data["active"];
-    $this->client_id = $data["client_id"];
-    $this->user_id = $data["user_id"];
-    $this->user_email = $data["user_email"];
-    $this->organizations = $data["organizations"];
+    
+    if(isset($data["active"])) {
+      $this->active = $data["active"];
+    }
+    
+    
+    if(isset($data["client_id"])) {
+      $this->client_id = $data["client_id"];
+    }
+    
+    
+    if(isset($data["user_id"])) {
+      $this->user_id = $data["user_id"];
+    }
+    
+    
+    if(isset($data["user_email"])) {
+      $this->user_email = $data["user_email"];
+    }
+    
+    
+    if(isset($data["organizations"])) {
+      $this->organizations = $data["organizations"];
+    }
+    
   }
 
   public function offsetExists($offset) {

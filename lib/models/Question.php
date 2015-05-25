@@ -78,13 +78,41 @@ class Question implements ArrayAccess {
   public $meta; /* object */
 
   public function __construct(array $data = null) {
-    $this->field_id = $data["field_id"];
-    $this->name = $data["name"];
-    $this->type = $data["type"];
-    $this->possible_answers = $data["possible_answers"];
-    $this->is_mandatory = $data["is_mandatory"];
-    $this->is_for_every_visitor = $data["is_for_every_visitor"];
-    $this->meta = $data["meta"];
+    
+    if(isset($data["field_id"])) {
+      $this->field_id = $data["field_id"];
+    }
+    
+    
+    if(isset($data["name"])) {
+      $this->name = $data["name"];
+    }
+    
+    
+    if(isset($data["type"])) {
+      $this->type = $data["type"];
+    }
+    
+    
+    if(isset($data["possible_answers"])) {
+      $this->possible_answers = $data["possible_answers"];
+    }
+    
+    
+    if(isset($data["is_mandatory"])) {
+      $this->is_mandatory = $data["is_mandatory"];
+    }
+    
+    
+    if(isset($data["is_for_every_visitor"])) {
+      $this->is_for_every_visitor = $data["is_for_every_visitor"];
+    }
+    
+    
+    if(isset($data["meta"])) {
+      $this->meta = $data["meta"];
+    }
+    
   }
 
   public function offsetExists($offset) {

@@ -42,7 +42,11 @@ class Widget implements ArrayAccess {
   public $code_html; /* string */
 
   public function __construct(array $data = null) {
-    $this->code_html = $data["code_html"];
+    
+    if(isset($data["code_html"])) {
+      $this->code_html = $data["code_html"];
+    }
+    
   }
 
   public function offsetExists($offset) {

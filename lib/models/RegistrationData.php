@@ -72,12 +72,36 @@ class RegistrationData implements ArrayAccess {
   public $is_registration_open; /* boolean */
 
   public function __construct(array $data = null) {
-    $this->price_max = $data["price_max"];
-    $this->price_min = $data["price_min"];
-    $this->sale_ends_at = $data["sale_ends_at"];
-    $this->tickets_total = $data["tickets_total"];
-    $this->tickets_limit = $data["tickets_limit"];
-    $this->is_registration_open = $data["is_registration_open"];
+    
+    if(isset($data["price_max"])) {
+      $this->price_max = $data["price_max"];
+    }
+    
+    
+    if(isset($data["price_min"])) {
+      $this->price_min = $data["price_min"];
+    }
+    
+    
+    if(isset($data["sale_ends_at"])) {
+      $this->sale_ends_at = $data["sale_ends_at"];
+    }
+    
+    
+    if(isset($data["tickets_total"])) {
+      $this->tickets_total = $data["tickets_total"];
+    }
+    
+    
+    if(isset($data["tickets_limit"])) {
+      $this->tickets_limit = $data["tickets_limit"];
+    }
+    
+    
+    if(isset($data["is_registration_open"])) {
+      $this->is_registration_open = $data["is_registration_open"];
+    }
+    
   }
 
   public function offsetExists($offset) {

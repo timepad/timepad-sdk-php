@@ -48,8 +48,16 @@ class Image implements ArrayAccess {
   public $uploadcare_url; /* string */
 
   public function __construct(array $data = null) {
-    $this->default_url = $data["default_url"];
-    $this->uploadcare_url = $data["uploadcare_url"];
+    
+    if(isset($data["default_url"])) {
+      $this->default_url = $data["default_url"];
+    }
+    
+    
+    if(isset($data["uploadcare_url"])) {
+      $this->uploadcare_url = $data["uploadcare_url"];
+    }
+    
   }
 
   public function offsetExists($offset) {

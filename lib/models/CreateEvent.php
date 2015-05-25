@@ -114,19 +114,71 @@ class CreateEvent implements ArrayAccess {
   public $custom; /* object */
 
   public function __construct(array $data = null) {
-    $this->name = $data["name"];
-    $this->description_short = $data["description_short"];
-    $this->description_html = $data["description_html"];
-    $this->starts_at = $data["starts_at"];
-    $this->ends_at = $data["ends_at"];
-    $this->categories = $data["categories"];
-    $this->location = $data["location"];
-    $this->organization = $data["organization"];
-    $this->poster_image_url = $data["poster_image_url"];
-    $this->questions = $data["questions"];
-    $this->ticket_types = $data["ticket_types"];
-    $this->properties = $data["properties"];
-    $this->custom = $data["custom"];
+    
+    if(isset($data["name"])) {
+      $this->name = $data["name"];
+    }
+    
+    
+    if(isset($data["description_short"])) {
+      $this->description_short = $data["description_short"];
+    }
+    
+    
+    if(isset($data["description_html"])) {
+      $this->description_html = $data["description_html"];
+    }
+    
+    
+    if(isset($data["starts_at"])) {
+      $this->starts_at = $data["starts_at"];
+    }
+    
+    
+    if(isset($data["ends_at"])) {
+      $this->ends_at = $data["ends_at"];
+    }
+    
+    
+    if(isset($data["categories"])) {
+      $this->categories = $data["categories"];
+    }
+    
+    
+    if(isset($data["location"])) {
+      $this->location = $data["location"];
+    }
+    
+    
+    if(isset($data["organization"])) {
+      $this->organization = $data["organization"];
+    }
+    
+    
+    if(isset($data["poster_image_url"])) {
+      $this->poster_image_url = $data["poster_image_url"];
+    }
+    
+    
+    if(isset($data["questions"])) {
+      $this->questions = $data["questions"];
+    }
+    
+    
+    if(isset($data["ticket_types"])) {
+      $this->ticket_types = $data["ticket_types"];
+    }
+    
+    
+    if(isset($data["properties"])) {
+      $this->properties = $data["properties"];
+    }
+    
+    
+    if(isset($data["custom"])) {
+      $this->custom = $data["custom"];
+    }
+    
   }
 
   public function offsetExists($offset) {

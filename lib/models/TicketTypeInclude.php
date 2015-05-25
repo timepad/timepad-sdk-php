@@ -54,9 +54,21 @@ class TicketTypeInclude implements ArrayAccess {
   public $description; /* string */
 
   public function __construct(array $data = null) {
-    $this->price = $data["price"];
-    $this->name = $data["name"];
-    $this->description = $data["description"];
+    
+    if(isset($data["price"])) {
+      $this->price = $data["price"];
+    }
+    
+    
+    if(isset($data["name"])) {
+      $this->name = $data["name"];
+    }
+    
+    
+    if(isset($data["description"])) {
+      $this->description = $data["description"];
+    }
+    
   }
 
   public function offsetExists($offset) {

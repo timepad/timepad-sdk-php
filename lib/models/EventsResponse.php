@@ -42,8 +42,16 @@ class EventsResponse implements ArrayAccess {
   public $values; /* array[Event] */
 
   public function __construct(array $data = null) {
-    $this->total = $data["total"];
-    $this->values = $data["values"];
+    
+    if(isset($data["total"])) {
+      $this->total = $data["total"];
+    }
+    
+    
+    if(isset($data["values"])) {
+      $this->values = $data["values"];
+    }
+    
   }
 
   public function offsetExists($offset) {

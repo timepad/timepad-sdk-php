@@ -48,8 +48,16 @@ class OrganizationInclude implements ArrayAccess {
   public $subdomain; /* string */
 
   public function __construct(array $data = null) {
-    $this->id = $data["id"];
-    $this->subdomain = $data["subdomain"];
+    
+    if(isset($data["id"])) {
+      $this->id = $data["id"];
+    }
+    
+    
+    if(isset($data["subdomain"])) {
+      $this->subdomain = $data["subdomain"];
+    }
+    
   }
 
   public function offsetExists($offset) {

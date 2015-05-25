@@ -54,9 +54,21 @@ class CreateOrganization implements ArrayAccess {
   public $phone; /* string */
 
   public function __construct(array $data = null) {
-    $this->name = $data["name"];
-    $this->subdomain = $data["subdomain"];
-    $this->phone = $data["phone"];
+    
+    if(isset($data["name"])) {
+      $this->name = $data["name"];
+    }
+    
+    
+    if(isset($data["subdomain"])) {
+      $this->subdomain = $data["subdomain"];
+    }
+    
+    
+    if(isset($data["phone"])) {
+      $this->phone = $data["phone"];
+    }
+    
   }
 
   public function offsetExists($offset) {

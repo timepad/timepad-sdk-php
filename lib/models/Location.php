@@ -60,10 +60,26 @@ class Location implements ArrayAccess {
   public $coordinates; /* array[number] */
 
   public function __construct(array $data = null) {
-    $this->country = $data["country"];
-    $this->city = $data["city"];
-    $this->address = $data["address"];
-    $this->coordinates = $data["coordinates"];
+    
+    if(isset($data["country"])) {
+      $this->country = $data["country"];
+    }
+    
+    
+    if(isset($data["city"])) {
+      $this->city = $data["city"];
+    }
+    
+    
+    if(isset($data["address"])) {
+      $this->address = $data["address"];
+    }
+    
+    
+    if(isset($data["coordinates"])) {
+      $this->coordinates = $data["coordinates"];
+    }
+    
   }
 
   public function offsetExists($offset) {

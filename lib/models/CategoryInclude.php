@@ -48,8 +48,16 @@ class CategoryInclude implements ArrayAccess {
   public $name; /* string */
 
   public function __construct(array $data = null) {
-    $this->id = $data["id"];
-    $this->name = $data["name"];
+    
+    if(isset($data["id"])) {
+      $this->id = $data["id"];
+    }
+    
+    
+    if(isset($data["name"])) {
+      $this->name = $data["name"];
+    }
+    
   }
 
   public function offsetExists($offset) {

@@ -102,17 +102,61 @@ class TicketType implements ArrayAccess {
   public $ad_partner_profit; /* number */
 
   public function __construct(array $data = null) {
-    $this->id = $data["id"];
-    $this->name = $data["name"];
-    $this->buy_amount_min = $data["buy_amount_min"];
-    $this->buy_amount_max = $data["buy_amount_max"];
-    $this->price = $data["price"];
-    $this->is_promocode_locked = $data["is_promocode_locked"];
-    $this->remaining = $data["remaining"];
-    $this->sale_ends_at = $data["sale_ends_at"];
-    $this->public_key = $data["public_key"];
-    $this->is_active = $data["is_active"];
-    $this->ad_partner_profit = $data["ad_partner_profit"];
+    
+    if(isset($data["id"])) {
+      $this->id = $data["id"];
+    }
+    
+    
+    if(isset($data["name"])) {
+      $this->name = $data["name"];
+    }
+    
+    
+    if(isset($data["buy_amount_min"])) {
+      $this->buy_amount_min = $data["buy_amount_min"];
+    }
+    
+    
+    if(isset($data["buy_amount_max"])) {
+      $this->buy_amount_max = $data["buy_amount_max"];
+    }
+    
+    
+    if(isset($data["price"])) {
+      $this->price = $data["price"];
+    }
+    
+    
+    if(isset($data["is_promocode_locked"])) {
+      $this->is_promocode_locked = $data["is_promocode_locked"];
+    }
+    
+    
+    if(isset($data["remaining"])) {
+      $this->remaining = $data["remaining"];
+    }
+    
+    
+    if(isset($data["sale_ends_at"])) {
+      $this->sale_ends_at = $data["sale_ends_at"];
+    }
+    
+    
+    if(isset($data["public_key"])) {
+      $this->public_key = $data["public_key"];
+    }
+    
+    
+    if(isset($data["is_active"])) {
+      $this->is_active = $data["is_active"];
+    }
+    
+    
+    if(isset($data["ad_partner_profit"])) {
+      $this->ad_partner_profit = $data["ad_partner_profit"];
+    }
+    
   }
 
   public function offsetExists($offset) {

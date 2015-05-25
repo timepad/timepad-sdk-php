@@ -48,8 +48,16 @@ class WidgetContainterInclude implements ArrayAccess {
   public $button; /* string */
 
   public function __construct(array $data = null) {
-    $this->custom = $data["custom"];
-    $this->button = $data["button"];
+    
+    if(isset($data["custom"])) {
+      $this->custom = $data["custom"];
+    }
+    
+    
+    if(isset($data["button"])) {
+      $this->button = $data["button"];
+    }
+    
   }
 
   public function offsetExists($offset) {

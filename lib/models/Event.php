@@ -162,27 +162,111 @@ class Event implements ArrayAccess {
   public $registration_data; /* RegistrationData */
 
   public function __construct(array $data = null) {
-    $this->id = $data["id"];
-    $this->created_at = $data["created_at"];
-    $this->starts_at = $data["starts_at"];
-    $this->ends_at = $data["ends_at"];
-    $this->name = $data["name"];
-    $this->description_short = $data["description_short"];
-    $this->description_html = $data["description_html"];
-    $this->url = $data["url"];
-    $this->poster_image = $data["poster_image"];
-    $this->ad_partner_percent = $data["ad_partner_percent"];
-    $this->locale = $data["locale"];
-    $this->location = $data["location"];
-    $this->organization = $data["organization"];
-    $this->categories = $data["categories"];
-    $this->ticket_types = $data["ticket_types"];
-    $this->questions = $data["questions"];
-    $this->widgets = $data["widgets"];
-    $this->properties = $data["properties"];
-    $this->moderation_status = $data["moderation_status"];
-    $this->access_status = $data["access_status"];
-    $this->registration_data = $data["registration_data"];
+    
+    if(isset($data["id"])) {
+      $this->id = $data["id"];
+    }
+    
+    
+    if(isset($data["created_at"])) {
+      $this->created_at = $data["created_at"];
+    }
+    
+    
+    if(isset($data["starts_at"])) {
+      $this->starts_at = $data["starts_at"];
+    }
+    
+    
+    if(isset($data["ends_at"])) {
+      $this->ends_at = $data["ends_at"];
+    }
+    
+    
+    if(isset($data["name"])) {
+      $this->name = $data["name"];
+    }
+    
+    
+    if(isset($data["description_short"])) {
+      $this->description_short = $data["description_short"];
+    }
+    
+    
+    if(isset($data["description_html"])) {
+      $this->description_html = $data["description_html"];
+    }
+    
+    
+    if(isset($data["url"])) {
+      $this->url = $data["url"];
+    }
+    
+    
+    if(isset($data["poster_image"])) {
+      $this->poster_image = $data["poster_image"];
+    }
+    
+    
+    if(isset($data["ad_partner_percent"])) {
+      $this->ad_partner_percent = $data["ad_partner_percent"];
+    }
+    
+    
+    if(isset($data["locale"])) {
+      $this->locale = $data["locale"];
+    }
+    
+    
+    if(isset($data["location"])) {
+      $this->location = $data["location"];
+    }
+    
+    
+    if(isset($data["organization"])) {
+      $this->organization = $data["organization"];
+    }
+    
+    
+    if(isset($data["categories"])) {
+      $this->categories = $data["categories"];
+    }
+    
+    
+    if(isset($data["ticket_types"])) {
+      $this->ticket_types = $data["ticket_types"];
+    }
+    
+    
+    if(isset($data["questions"])) {
+      $this->questions = $data["questions"];
+    }
+    
+    
+    if(isset($data["widgets"])) {
+      $this->widgets = $data["widgets"];
+    }
+    
+    
+    if(isset($data["properties"])) {
+      $this->properties = $data["properties"];
+    }
+    
+    
+    if(isset($data["moderation_status"])) {
+      $this->moderation_status = $data["moderation_status"];
+    }
+    
+    
+    if(isset($data["access_status"])) {
+      $this->access_status = $data["access_status"];
+    }
+    
+    
+    if(isset($data["registration_data"])) {
+      $this->registration_data = $data["registration_data"];
+    }
+    
   }
 
   public function offsetExists($offset) {

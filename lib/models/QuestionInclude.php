@@ -60,10 +60,26 @@ class QuestionInclude implements ArrayAccess {
   public $comment; /* string */
 
   public function __construct(array $data = null) {
-    $this->field_id = $data["field_id"];
-    $this->is_mandatory = $data["is_mandatory"];
-    $this->name = $data["name"];
-    $this->comment = $data["comment"];
+    
+    if(isset($data["field_id"])) {
+      $this->field_id = $data["field_id"];
+    }
+    
+    
+    if(isset($data["is_mandatory"])) {
+      $this->is_mandatory = $data["is_mandatory"];
+    }
+    
+    
+    if(isset($data["name"])) {
+      $this->name = $data["name"];
+    }
+    
+    
+    if(isset($data["comment"])) {
+      $this->comment = $data["comment"];
+    }
+    
   }
 
   public function offsetExists($offset) {
