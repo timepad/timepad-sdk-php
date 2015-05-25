@@ -278,6 +278,11 @@ class APIClient {
     } elseif ($class == 'boolean') {
       settype($data, 'bool');
       $deserialized = $data;
+    } elseif ($class == 'number') {
+      settype($data, 'float');
+      $deserialized = $data;
+    } elseif ($class == 'object') {
+      $deserialized = $data;
     } elseif (in_array($class, array('string', 'int', 'float', 'bool'))) {
       settype($data, $class);
       $deserialized = $data;
