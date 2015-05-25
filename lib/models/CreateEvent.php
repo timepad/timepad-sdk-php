@@ -39,7 +39,8 @@ class CreateEvent implements ArrayAccess {
       'poster_image_url' => 'string',
       'questions' => 'array[CategoryInclude]',
       'ticket_types' => 'array[TicketTypeInclude]',
-      'properties' => 'array[string]'
+      'properties' => 'array[string]',
+      'custom' => 'object'
   );
 
   static $attributeMap = array(
@@ -54,7 +55,8 @@ class CreateEvent implements ArrayAccess {
       'poster_image_url' => 'poster_image_url',
       'questions' => 'questions',
       'ticket_types' => 'ticket_types',
-      'properties' => 'properties'
+      'properties' => 'properties',
+      'custom' => 'custom'
   );
 
   
@@ -106,6 +108,10 @@ class CreateEvent implements ArrayAccess {
   * Список настроек события (например, мультианкета)
   */
   public $properties; /* array[string] */
+  /**
+  * Объект с дополнительными полями, специфичными для данной организации
+  */
+  public $custom; /* object */
 
   public function __construct(array $data = null) {
     $this->name = $data["name"];
@@ -120,6 +126,7 @@ class CreateEvent implements ArrayAccess {
     $this->questions = $data["questions"];
     $this->ticket_types = $data["ticket_types"];
     $this->properties = $data["properties"];
+    $this->custom = $data["custom"];
   }
 
   public function offsetExists($offset) {
