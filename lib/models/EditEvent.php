@@ -26,11 +26,8 @@ namespace TimepadApi\models;
 
 use \ArrayAccess;
 
-class CreateEvent implements ArrayAccess {
+class EditEvent implements ArrayAccess {
   static $swaggerTypes = array(
-      'organization' => 'OrganizationInclude',
-      'questions' => 'array[QuestionInclude]',
-      'properties' => 'array[string]',
       'name' => 'string',
       'description_short' => 'string',
       'description_html' => 'string',
@@ -44,9 +41,6 @@ class CreateEvent implements ArrayAccess {
   );
 
   static $attributeMap = array(
-      'organization' => 'organization',
-      'questions' => 'questions',
-      'properties' => 'properties',
       'name' => 'name',
       'description_short' => 'description_short',
       'description_html' => 'description_html',
@@ -60,18 +54,6 @@ class CreateEvent implements ArrayAccess {
   );
 
   
-  /**
-  * Организация, проводящая событие
-  */
-  public $organization; /* OrganizationInclude */
-  /**
-  * Список вопросов в анкете регистрации
-  */
-  public $questions; /* array[QuestionInclude] */
-  /**
-  * Список настроек события (например, мультианкета)
-  */
-  public $properties; /* array[string] */
   /**
   * Название события
   */
@@ -114,21 +96,6 @@ class CreateEvent implements ArrayAccess {
   public $custom; /* object */
 
   public function __construct(array $data = null) {
-    
-    if(isset($data["organization"])) {
-      $this->organization = $data["organization"];
-    }
-    
-    
-    if(isset($data["questions"])) {
-      $this->questions = $data["questions"];
-    }
-    
-    
-    if(isset($data["properties"])) {
-      $this->properties = $data["properties"];
-    }
-    
     
     if(isset($data["name"])) {
       $this->name = $data["name"];

@@ -466,6 +466,66 @@ class DefaultApi {
   }
   
   /**
+   * editEvent
+   *
+   * Редактировать событие
+   *
+   * @param int $event_id Id редактируемого события (required)
+   * @param EditEvent $body Список изменённых параметров события (required)
+   * @return Event
+   */
+   public function editEvent($event_id, $body) {
+
+      // parse inputs
+      $resourcePath = "/v1/events/{event_id}";
+      $resourcePath = str_replace("{format}", "json", $resourcePath);
+      $method = "POST";
+      $queryParams = array();
+      $headerParams = array();
+      $formParams = array();
+      $_header_accept = '';
+      if ($_header_accept !== '') {
+        $headerParams['Accept'] = $_header_accept;
+      }
+      $_header_content_type = array();
+      $headerParams['Content-Type'] = count($_header_content_type) > 0 ? $_header_content_type[0] : 'application/json';
+
+      
+      
+      // path params
+      if($event_id !== null) {
+        $resourcePath = str_replace("{" . "event_id" . "}",
+                                    $this->apiClient->toPathValue($event_id), $resourcePath);
+      }
+      
+      // body params
+      $preparedBody = null;
+      if (isset($body)) {
+        $preparedBody = $body;
+      }
+
+      // for HTTP post (form)
+      $preparedBody = $preparedBody ?: $formParams;
+
+      if (strpos($headerParams['Content-Type'], "application/x-www-form-urlencoded") > -1) {
+        $preparedBody = http_build_query($preparedBody);
+      }
+
+      // make the API Call
+      $response = $this->apiClient->callAPI($resourcePath, $method,
+                                            $queryParams, $preparedBody,
+                                            $headerParams);
+
+      if(! $response) {
+        return null;
+      }
+
+  		$responseObject = $this->apiClient->deserialize($response,
+  		                                                'Event');
+  		return $responseObject;
+  }
+  
+  /**
    * addOrganization
    *
    * Создать новую организацию
