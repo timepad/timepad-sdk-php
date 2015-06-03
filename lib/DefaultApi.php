@@ -61,9 +61,9 @@ class DefaultApi {
       
       
       
-
-      // for HTTP post (form)
-      $preparedBody = $preparedBody ?: $formParams;
+      
+      $preparedBody = $formParams;
+      
 
       if (strpos($headerParams['Content-Type'], "application/x-www-form-urlencoded") > -1) {
         $preparedBody = http_build_query($preparedBody);
@@ -115,9 +115,9 @@ class DefaultApi {
         $formParams['token'] = $this->apiClient->toFormValue($token);
       }
       
-
-      // for HTTP post (form)
-      $preparedBody = $preparedBody ?: $formParams;
+      
+      $preparedBody = $formParams;
+      
 
       if (strpos($headerParams['Content-Type'], "application/x-www-form-urlencoded") > -1) {
         $preparedBody = http_build_query($preparedBody);
@@ -181,9 +181,9 @@ class DefaultApi {
       
       
       
-
-      // for HTTP post (form)
-      $preparedBody = $preparedBody ?: $formParams;
+      
+      $preparedBody = $formParams;
+      
 
       if (strpos($headerParams['Content-Type'], "application/x-www-form-urlencoded") > -1) {
         $preparedBody = http_build_query($preparedBody);
@@ -329,9 +329,9 @@ class DefaultApi {
       
       
       
-
-      // for HTTP post (form)
-      $preparedBody = $preparedBody ?: $formParams;
+      
+      $preparedBody = $formParams;
+      
 
       if (strpos($headerParams['Content-Type'], "application/x-www-form-urlencoded") > -1) {
         $preparedBody = http_build_query($preparedBody);
@@ -384,9 +384,10 @@ class DefaultApi {
       if (isset($body)) {
         $preparedBody = $body;
       }
-
       // for HTTP post (form)
       $preparedBody = $preparedBody ?: $formParams;
+      
+      
 
       if (strpos($headerParams['Content-Type'], "application/x-www-form-urlencoded") > -1) {
         $preparedBody = http_build_query($preparedBody);
@@ -443,9 +444,9 @@ class DefaultApi {
       }
       
       
-
-      // for HTTP post (form)
-      $preparedBody = $preparedBody ?: $formParams;
+      
+      $preparedBody = $formParams;
+      
 
       if (strpos($headerParams['Content-Type'], "application/x-www-form-urlencoded") > -1) {
         $preparedBody = http_build_query($preparedBody);
@@ -503,9 +504,10 @@ class DefaultApi {
       if (isset($body)) {
         $preparedBody = $body;
       }
-
       // for HTTP post (form)
       $preparedBody = $preparedBody ?: $formParams;
+      
+      
 
       if (strpos($headerParams['Content-Type'], "application/x-www-form-urlencoded") > -1) {
         $preparedBody = http_build_query($preparedBody);
@@ -558,9 +560,10 @@ class DefaultApi {
       if (isset($body)) {
         $preparedBody = $body;
       }
-
       // for HTTP post (form)
       $preparedBody = $preparedBody ?: $formParams;
+      
+      
 
       if (strpos($headerParams['Content-Type'], "application/x-www-form-urlencoded") > -1) {
         $preparedBody = http_build_query($preparedBody);
