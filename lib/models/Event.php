@@ -42,7 +42,7 @@ class Event implements ArrayAccess {
       'location' => 'Location',
       'organization' => 'Organization',
       'categories' => 'array[Category]',
-      'ticket_types' => 'TicketType',
+      'ticket_types' => 'array[TicketType]',
       'questions' => 'array[Question]',
       'widgets' => 'array[Widget]',
       'properties' => 'array[string]',
@@ -135,7 +135,7 @@ class Event implements ArrayAccess {
   /**
   * Доступные типы билетов
   */
-  public $ticket_types; /* TicketType */
+  public $ticket_types; /* array[TicketType] */
   /**
   * Вопросы, задающиеся при регистрации
   */
