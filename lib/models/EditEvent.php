@@ -28,6 +28,7 @@ use \ArrayAccess;
 
 class EditEvent implements ArrayAccess {
   static $swaggerTypes = array(
+      'ticket_types' => 'array[EditTicketTypeInclude]',
       'name' => 'string',
       'description_short' => 'string',
       'description_html' => 'string',
@@ -36,11 +37,12 @@ class EditEvent implements ArrayAccess {
       'categories' => 'array[CategoryInclude]',
       'location' => 'LocationInclude',
       'poster_image_url' => 'string',
-      'ticket_types' => 'array[TicketTypeInclude]',
+      'properties' => 'array[string]',
       'custom' => 'object'
   );
 
   static $attributeMap = array(
+      'ticket_types' => 'ticket_types',
       'name' => 'name',
       'description_short' => 'description_short',
       'description_html' => 'description_html',
@@ -49,11 +51,15 @@ class EditEvent implements ArrayAccess {
       'categories' => 'categories',
       'location' => 'location',
       'poster_image_url' => 'poster_image_url',
-      'ticket_types' => 'ticket_types',
+      'properties' => 'properties',
       'custom' => 'custom'
   );
 
   
+  /**
+  * Список видов билетов
+  */
+  public $ticket_types; /* array[EditTicketTypeInclude] */
   /**
   * Название события
   */
@@ -87,15 +93,20 @@ class EditEvent implements ArrayAccess {
   */
   public $poster_image_url; /* string */
   /**
-  * Список видов билетов
+  * Список настроек события (например, мультианкета)
   */
-  public $ticket_types; /* array[TicketTypeInclude] */
+  public $properties; /* array[string] */
   /**
   * Объект с дополнительными полями, специфичными для данной организации
   */
   public $custom; /* object */
 
   public function __construct(array $data = null) {
+    
+    if(isset($data["ticket_types"])) {
+      $this->ticket_types = $data["ticket_types"];
+    }
+    
     
     if(isset($data["name"])) {
       $this->name = $data["name"];
@@ -137,8 +148,8 @@ class EditEvent implements ArrayAccess {
     }
     
     
-    if(isset($data["ticket_types"])) {
-      $this->ticket_types = $data["ticket_types"];
+    if(isset($data["properties"])) {
+      $this->properties = $data["properties"];
     }
     
     

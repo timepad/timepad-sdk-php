@@ -28,9 +28,9 @@ use \ArrayAccess;
 
 class CreateEvent implements ArrayAccess {
   static $swaggerTypes = array(
+      'ticket_types' => 'array[TicketTypeInclude]',
       'organization' => 'OrganizationInclude',
       'questions' => 'array[QuestionInclude]',
-      'properties' => 'array[string]',
       'name' => 'string',
       'description_short' => 'string',
       'description_html' => 'string',
@@ -39,14 +39,14 @@ class CreateEvent implements ArrayAccess {
       'categories' => 'array[CategoryInclude]',
       'location' => 'LocationInclude',
       'poster_image_url' => 'string',
-      'ticket_types' => 'array[TicketTypeInclude]',
+      'properties' => 'array[string]',
       'custom' => 'object'
   );
 
   static $attributeMap = array(
+      'ticket_types' => 'ticket_types',
       'organization' => 'organization',
       'questions' => 'questions',
-      'properties' => 'properties',
       'name' => 'name',
       'description_short' => 'description_short',
       'description_html' => 'description_html',
@@ -55,11 +55,15 @@ class CreateEvent implements ArrayAccess {
       'categories' => 'categories',
       'location' => 'location',
       'poster_image_url' => 'poster_image_url',
-      'ticket_types' => 'ticket_types',
+      'properties' => 'properties',
       'custom' => 'custom'
   );
 
   
+  /**
+  * Список видов билетов
+  */
+  public $ticket_types; /* array[TicketTypeInclude] */
   /**
   * Организация, проводящая событие
   */
@@ -68,10 +72,6 @@ class CreateEvent implements ArrayAccess {
   * Список вопросов в анкете регистрации
   */
   public $questions; /* array[QuestionInclude] */
-  /**
-  * Список настроек события (например, мультианкета)
-  */
-  public $properties; /* array[string] */
   /**
   * Название события
   */
@@ -105,15 +105,20 @@ class CreateEvent implements ArrayAccess {
   */
   public $poster_image_url; /* string */
   /**
-  * Список видов билетов
+  * Список настроек события (например, мультианкета)
   */
-  public $ticket_types; /* array[TicketTypeInclude] */
+  public $properties; /* array[string] */
   /**
   * Объект с дополнительными полями, специфичными для данной организации
   */
   public $custom; /* object */
 
   public function __construct(array $data = null) {
+    
+    if(isset($data["ticket_types"])) {
+      $this->ticket_types = $data["ticket_types"];
+    }
+    
     
     if(isset($data["organization"])) {
       $this->organization = $data["organization"];
@@ -122,11 +127,6 @@ class CreateEvent implements ArrayAccess {
     
     if(isset($data["questions"])) {
       $this->questions = $data["questions"];
-    }
-    
-    
-    if(isset($data["properties"])) {
-      $this->properties = $data["properties"];
     }
     
     
@@ -170,8 +170,8 @@ class CreateEvent implements ArrayAccess {
     }
     
     
-    if(isset($data["ticket_types"])) {
-      $this->ticket_types = $data["ticket_types"];
+    if(isset($data["properties"])) {
+      $this->properties = $data["properties"];
     }
     
     
