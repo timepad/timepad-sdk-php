@@ -32,8 +32,8 @@ class Question implements ArrayAccess {
       'name' => 'string',
       'type' => 'string',
       'possible_answers' => 'array[Answer]',
-      'is_mandatory' => 'boolean',
-      'is_for_every_visitor' => 'boolean',
+      'is_mandatory' => 'bool',
+      'is_for_every_visitor' => 'bool',
       'meta' => 'object'
   );
 
@@ -67,11 +67,11 @@ class Question implements ArrayAccess {
   /**
   * На вопрос обязательно отвечать
   */
-  public $is_mandatory; /* boolean */
+  public $is_mandatory; /* bool */
   /**
   * Выводить вопрос отдельно для каждого купленного билета
   */
-  public $is_for_every_visitor; /* boolean */
+  public $is_for_every_visitor; /* bool */
   /**
   * Дополнительные данные
   */

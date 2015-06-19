@@ -30,15 +30,15 @@ class TicketType implements ArrayAccess {
   static $swaggerTypes = array(
       'id' => 'int',
       'name' => 'string',
-      'buy_amount_min' => 'number',
-      'buy_amount_max' => 'number',
-      'price' => 'number',
-      'is_promocode_locked' => 'boolean',
+      'buy_amount_min' => 'float',
+      'buy_amount_max' => 'float',
+      'price' => 'float',
+      'is_promocode_locked' => 'bool',
       'remaining' => 'int',
-      'sale_ends_at' => 'date',
+      'sale_ends_at' => 'DateTime',
       'public_key' => 'string',
-      'is_active' => 'boolean',
-      'ad_partner_profit' => 'number'
+      'is_active' => 'bool',
+      'ad_partner_profit' => 'float'
   );
 
   static $attributeMap = array(
@@ -67,19 +67,19 @@ class TicketType implements ArrayAccess {
   /**
   * Минимальное количество билетов в одной покупке
   */
-  public $buy_amount_min; /* number */
+  public $buy_amount_min; /* float */
   /**
   * Максимальное количество билетов в одной покупке
   */
-  public $buy_amount_max; /* number */
+  public $buy_amount_max; /* float */
   /**
   * Цена билета
   */
-  public $price; /* number */
+  public $price; /* float */
   /**
   * Закрыт ли этот тип введённым промокодом
   */
-  public $is_promocode_locked; /* boolean */
+  public $is_promocode_locked; /* bool */
   /**
   * Сколько билетов осталось
   */
@@ -87,7 +87,7 @@ class TicketType implements ArrayAccess {
   /**
   * Дата окончания продажи этого типа билета
   */
-  public $sale_ends_at; /* date */
+  public $sale_ends_at; /* DateTime */
   /**
   * Публичный ключ для расшифровки QR-кода билета этого типа
   */
@@ -95,11 +95,11 @@ class TicketType implements ArrayAccess {
   /**
   * Активность типа билета
   */
-  public $is_active; /* boolean */
+  public $is_active; /* bool */
   /**
   * Партнёрская прибыль
   */
-  public $ad_partner_profit; /* number */
+  public $ad_partner_profit; /* float */
 
   public function __construct(array $data = null) {
     

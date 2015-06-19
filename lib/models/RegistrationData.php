@@ -28,12 +28,12 @@ use \ArrayAccess;
 
 class RegistrationData implements ArrayAccess {
   static $swaggerTypes = array(
-      'price_max' => 'number',
-      'price_min' => 'number',
-      'sale_ends_at' => 'date',
+      'price_max' => 'float',
+      'price_min' => 'float',
+      'sale_ends_at' => 'DateTime',
       'tickets_total' => 'int',
       'tickets_limit' => 'int',
-      'is_registration_open' => 'boolean'
+      'is_registration_open' => 'bool'
   );
 
   static $attributeMap = array(
@@ -49,15 +49,15 @@ class RegistrationData implements ArrayAccess {
   /**
   * Цена самого дорогого билета
   */
-  public $price_max; /* number */
+  public $price_max; /* float */
   /**
   * Цена самого дешёвого билета
   */
-  public $price_min; /* number */
+  public $price_min; /* float */
   /**
   * Дата окончания продажи последней категории билета
   */
-  public $sale_ends_at; /* date */
+  public $sale_ends_at; /* DateTime */
   /**
   * Количество забронированных, проданных и бесплатных билетов
   */
@@ -69,7 +69,7 @@ class RegistrationData implements ArrayAccess {
   /**
   * Открыта ли регистрация
   */
-  public $is_registration_open; /* boolean */
+  public $is_registration_open; /* bool */
 
   public function __construct(array $data = null) {
     

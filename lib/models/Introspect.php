@@ -28,7 +28,7 @@ use \ArrayAccess;
 
 class Introspect implements ArrayAccess {
   static $swaggerTypes = array(
-      'active' => 'boolean',
+      'active' => 'bool',
       'client_id' => 'string',
       'user_id' => 'string',
       'user_email' => 'string',
@@ -47,7 +47,7 @@ class Introspect implements ArrayAccess {
   /**
   * Действует ли этот токен
   */
-  public $active; /* boolean */
+  public $active; /* bool */
   /**
   * Идентификатор клиента API, которым получен токен
   */

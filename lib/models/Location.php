@@ -31,7 +31,7 @@ class Location implements ArrayAccess {
       'country' => 'string',
       'city' => 'string',
       'address' => 'string',
-      'coordinates' => 'array[number]'
+      'coordinates' => 'array[float]'
   );
 
   static $attributeMap = array(
@@ -57,7 +57,7 @@ class Location implements ArrayAccess {
   /**
   * Широта и долгота для карт
   */
-  public $coordinates; /* array[number] */
+  public $coordinates; /* array[float] */
 
   public function __construct(array $data = null) {
     

@@ -29,7 +29,7 @@ use \ArrayAccess;
 class QuestionInclude implements ArrayAccess {
   static $swaggerTypes = array(
       'field_id' => 'string',
-      'is_mandatory' => 'boolean',
+      'is_mandatory' => 'bool',
       'name' => 'string',
       'comment' => 'string'
   );
@@ -49,7 +49,7 @@ class QuestionInclude implements ArrayAccess {
   /**
   * Обязателен ли вопрос:
   */
-  public $is_mandatory; /* boolean */
+  public $is_mandatory; /* bool */
   /**
   * Текст вопроса
   */

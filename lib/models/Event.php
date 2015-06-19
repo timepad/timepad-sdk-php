@@ -29,9 +29,9 @@ use \ArrayAccess;
 class Event implements ArrayAccess {
   static $swaggerTypes = array(
       'id' => 'int',
-      'created_at' => 'date',
-      'starts_at' => 'date',
-      'ends_at' => 'date',
+      'created_at' => 'DateTime',
+      'starts_at' => 'DateTime',
+      'ends_at' => 'DateTime',
       'name' => 'string',
       'description_short' => 'string',
       'description_html' => 'string',
@@ -83,15 +83,15 @@ class Event implements ArrayAccess {
   /**
   * Дата создания события
   */
-  public $created_at; /* date */
+  public $created_at; /* DateTime */
   /**
   * Дата начала события
   */
-  public $starts_at; /* date */
+  public $starts_at; /* DateTime */
   /**
   * Дата конца события
   */
-  public $ends_at; /* date */
+  public $ends_at; /* DateTime */
   /**
   * Название события
   */
