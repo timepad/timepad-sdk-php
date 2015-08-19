@@ -35,7 +35,7 @@ class DefaultApi {
    * Получить информацию о пользователе API
    *
    * @param string $token Идентификатор токена (required)
-   * @return IntrospectResponse
+   * @return Introspect
    */
    public function introspectToken($token) {
 
@@ -79,7 +79,7 @@ class DefaultApi {
       }
 
   		$responseObject = $this->apiClient->deserialize($response,
-  		                                                'IntrospectResponse');
+  		                                                'Introspect');
   		return $responseObject;
   }
   
@@ -89,7 +89,7 @@ class DefaultApi {
    * Получить информацию о пользователе API
    *
    * @param string $token Идентификатор токена (required)
-   * @return IntrospectResponse
+   * @return Introspect
    */
    public function introspectTokenPost($token) {
 
@@ -133,7 +133,7 @@ class DefaultApi {
       }
 
   		$responseObject = $this->apiClient->deserialize($response,
-  		                                                'IntrospectResponse');
+  		                                                'Introspect');
   		return $responseObject;
   }
   
@@ -216,7 +216,7 @@ class DefaultApi {
    * @param array[int] $event_ids_exclude Номера событий, которые нужно пропустить (required)
    * @param array[string] $keywords Слова, которые должны быть в названии или описании события (required)
    * @param array[string] $keywords_exclude Слова, которых не должно быть в названии или описании события (required)
-   * @param array[string] $access_statuses Список режимов доступа, в которых находятся события. Возможные значения: draft, link_only, public. Доступно только организаторам (required)
+   * @param array[string] $access_statuses Список режимов доступа, в которых находятся события. Возможные значения: private, draft, link_only, public. Доступно только организаторам (required)
    * @param array[string] $moderation_statuses Список уровней качества, установленных для события модератором. Возможные значения: featured, shown, hidden, not_moderated. (required)
    * @param int $price_min Цена, выше которой должен стоить хотя бы один билет события (required)
    * @param int $price_max Цена, ниже которой должен стоить хотя бы один билет события (required)
@@ -357,7 +357,7 @@ class DefaultApi {
    * Создать событие
    *
    * @param CreateEvent $body Описание создаваемого события (required)
-   * @return Event
+   * @return EventResponse
    */
    public function addEvent($body) {
 
@@ -403,7 +403,7 @@ class DefaultApi {
       }
 
   		$responseObject = $this->apiClient->deserialize($response,
-  		                                                'Event');
+  		                                                'EventResponse');
   		return $responseObject;
   }
   
@@ -414,7 +414,7 @@ class DefaultApi {
    *
    * @param array[string] $fields Список полей, которые нужно вывести (required)
    * @param int $event_id Номер событий, которые нужно вывести (required)
-   * @return Event
+   * @return EventResponse
    */
    public function getSingleEvent($fields, $event_id) {
 
@@ -462,7 +462,7 @@ class DefaultApi {
       }
 
   		$responseObject = $this->apiClient->deserialize($response,
-  		                                                'Event');
+  		                                                'EventResponse');
   		return $responseObject;
   }
   
@@ -473,7 +473,7 @@ class DefaultApi {
    *
    * @param int $event_id Id редактируемого события (required)
    * @param EditEvent $body Список изменённых параметров события (required)
-   * @return Event
+   * @return EventResponse
    */
    public function editEvent($event_id, $body) {
 
@@ -523,7 +523,265 @@ class DefaultApi {
       }
 
   		$responseObject = $this->apiClient->deserialize($response,
-  		                                                'Event');
+  		                                                'EventResponse');
+  		return $responseObject;
+  }
+  
+  /**
+   * getEventOrders
+   *
+   * Получить заказы события с указанным номером
+   *
+   * @param int $limit Сколько элементов списка вывести (required)
+   * @param int $skip С какого элемента списка начать вывод (required)
+   * @param array[string] $fields Список полей, которые нужно вывести (required)
+   * @param int $event_id Номер события, к которому относятся заказы (required)
+   * @return RegistrationOrdersResponse
+   */
+   public function getEventOrders($limit, $skip, $fields, $event_id) {
+
+      // parse inputs
+      $resourcePath = "/v1/events/{event_id}/orders";
+      $resourcePath = str_replace("{format}", "json", $resourcePath);
+      $method = "GET";
+      $queryParams = array();
+      $headerParams = array();
+      $formParams = array();
+      $_header_accept = '';
+      if ($_header_accept !== '') {
+        $headerParams['Accept'] = $_header_accept;
+      }
+      $_header_content_type = array();
+      $headerParams['Content-Type'] = count($_header_content_type) > 0 ? $_header_content_type[0] : 'application/json';
+
+      // query params
+      if($limit !== null) {
+        $queryParams['limit'] = $this->apiClient->toQueryValue($limit);
+      }// query params
+      if($skip !== null) {
+        $queryParams['skip'] = $this->apiClient->toQueryValue($skip);
+      }// query params
+      if($fields !== null) {
+        $queryParams['fields'] = $this->apiClient->toQueryValue($fields);
+      }
+      
+      // path params
+      if($event_id !== null) {
+        $resourcePath = str_replace("{" . "event_id" . "}",
+                                    $this->apiClient->toPathValue($event_id), $resourcePath);
+      }
+      
+      
+      
+      $preparedBody = $formParams;
+      
+
+      if (strpos($headerParams['Content-Type'], "application/x-www-form-urlencoded") > -1) {
+        $preparedBody = http_build_query($preparedBody);
+      }
+
+      // make the API Call
+      $response = $this->apiClient->callAPI($resourcePath, $method,
+                                            $queryParams, $preparedBody,
+                                            $headerParams);
+
+      if(! $response) {
+        return null;
+      }
+
+  		$responseObject = $this->apiClient->deserialize($response,
+  		                                                'RegistrationOrdersResponse');
+  		return $responseObject;
+  }
+  
+  /**
+   * addOrder
+   *
+   * Создать заказ
+   *
+   * @param int $event_id Номер события (required)
+   * @param CreateOrder $body Описание создаваемого заказа (required)
+   * @return RegistrationOrderResponse
+   */
+   public function addOrder($event_id, $body) {
+
+      // parse inputs
+      $resourcePath = "/v1/events/{event_id}/orders";
+      $resourcePath = str_replace("{format}", "json", $resourcePath);
+      $method = "POST";
+      $queryParams = array();
+      $headerParams = array();
+      $formParams = array();
+      $_header_accept = '';
+      if ($_header_accept !== '') {
+        $headerParams['Accept'] = $_header_accept;
+      }
+      $_header_content_type = array();
+      $headerParams['Content-Type'] = count($_header_content_type) > 0 ? $_header_content_type[0] : 'application/json';
+
+      
+      
+      // path params
+      if($event_id !== null) {
+        $resourcePath = str_replace("{" . "event_id" . "}",
+                                    $this->apiClient->toPathValue($event_id), $resourcePath);
+      }
+      
+      // body params
+      $preparedBody = null;
+      if (isset($body)) {
+        $preparedBody = $body;
+      }
+      // for HTTP post (form)
+      $preparedBody = $preparedBody ?: $formParams;
+      
+      
+
+      if (strpos($headerParams['Content-Type'], "application/x-www-form-urlencoded") > -1) {
+        $preparedBody = http_build_query($preparedBody);
+      }
+
+      // make the API Call
+      $response = $this->apiClient->callAPI($resourcePath, $method,
+                                            $queryParams, $preparedBody,
+                                            $headerParams);
+
+      if(! $response) {
+        return null;
+      }
+
+  		$responseObject = $this->apiClient->deserialize($response,
+  		                                                'RegistrationOrderResponse');
+  		return $responseObject;
+  }
+  
+  /**
+   * getEventOrders
+   *
+   * Получить заказ с указанным id
+   *
+   * @param array[string] $fields Список полей, которые нужно вывести (required)
+   * @param int $event_id Номер события, к которому относится заказ (required)
+   * @param int $order_id Номер заказа (required)
+   * @return RegistrationOrderResponse
+   */
+   public function getEventOrders($fields, $event_id, $order_id) {
+
+      // parse inputs
+      $resourcePath = "/v1/events/{event_id}/orders/{order_id}";
+      $resourcePath = str_replace("{format}", "json", $resourcePath);
+      $method = "GET";
+      $queryParams = array();
+      $headerParams = array();
+      $formParams = array();
+      $_header_accept = '';
+      if ($_header_accept !== '') {
+        $headerParams['Accept'] = $_header_accept;
+      }
+      $_header_content_type = array();
+      $headerParams['Content-Type'] = count($_header_content_type) > 0 ? $_header_content_type[0] : 'application/json';
+
+      // query params
+      if($fields !== null) {
+        $queryParams['fields'] = $this->apiClient->toQueryValue($fields);
+      }
+      
+      // path params
+      if($event_id !== null) {
+        $resourcePath = str_replace("{" . "event_id" . "}",
+                                    $this->apiClient->toPathValue($event_id), $resourcePath);
+      }// path params
+      if($order_id !== null) {
+        $resourcePath = str_replace("{" . "order_id" . "}",
+                                    $this->apiClient->toPathValue($order_id), $resourcePath);
+      }
+      
+      
+      
+      $preparedBody = $formParams;
+      
+
+      if (strpos($headerParams['Content-Type'], "application/x-www-form-urlencoded") > -1) {
+        $preparedBody = http_build_query($preparedBody);
+      }
+
+      // make the API Call
+      $response = $this->apiClient->callAPI($resourcePath, $method,
+                                            $queryParams, $preparedBody,
+                                            $headerParams);
+
+      if(! $response) {
+        return null;
+      }
+
+  		$responseObject = $this->apiClient->deserialize($response,
+  		                                                'RegistrationOrderResponse');
+  		return $responseObject;
+  }
+  
+  /**
+   * getEventOrders
+   *
+   * Отредактировать заказ с указанным id
+   *
+   * @param int $event_id Номер события, к которому относится заказ (required)
+   * @param int $order_id Номер заказа (required)
+   * @param EditOrder $body Список изменённых параметров заказа (required)
+   * @return RegistrationOrderResponse
+   */
+   public function getEventOrders($event_id, $order_id, $body) {
+
+      // parse inputs
+      $resourcePath = "/v1/events/{event_id}/orders/{order_id}";
+      $resourcePath = str_replace("{format}", "json", $resourcePath);
+      $method = "PATCH";
+      $queryParams = array();
+      $headerParams = array();
+      $formParams = array();
+      $_header_accept = '';
+      if ($_header_accept !== '') {
+        $headerParams['Accept'] = $_header_accept;
+      }
+      $_header_content_type = array();
+      $headerParams['Content-Type'] = count($_header_content_type) > 0 ? $_header_content_type[0] : 'application/json';
+
+      
+      
+      // path params
+      if($event_id !== null) {
+        $resourcePath = str_replace("{" . "event_id" . "}",
+                                    $this->apiClient->toPathValue($event_id), $resourcePath);
+      }// path params
+      if($order_id !== null) {
+        $resourcePath = str_replace("{" . "order_id" . "}",
+                                    $this->apiClient->toPathValue($order_id), $resourcePath);
+      }
+      
+      // body params
+      $preparedBody = null;
+      if (isset($body)) {
+        $preparedBody = $body;
+      }
+      // for HTTP post (form)
+      $preparedBody = $preparedBody ?: $formParams;
+      
+      
+
+      if (strpos($headerParams['Content-Type'], "application/x-www-form-urlencoded") > -1) {
+        $preparedBody = http_build_query($preparedBody);
+      }
+
+      // make the API Call
+      $response = $this->apiClient->callAPI($resourcePath, $method,
+                                            $queryParams, $preparedBody,
+                                            $headerParams);
+
+      if(! $response) {
+        return null;
+      }
+
+  		$responseObject = $this->apiClient->deserialize($response,
+  		                                                'RegistrationOrderResponse');
   		return $responseObject;
   }
   
@@ -533,7 +791,7 @@ class DefaultApi {
    * Создать новую организацию
    *
    * @param CreateOrganization $body Список полей, которые нужно вывести (required)
-   * @return Organization
+   * @return OrganizationResponse
    */
    public function addOrganization($body) {
 
@@ -579,7 +837,7 @@ class DefaultApi {
       }
 
   		$responseObject = $this->apiClient->deserialize($response,
-  		                                                'Organization');
+  		                                                'OrganizationResponse');
   		return $responseObject;
   }
   

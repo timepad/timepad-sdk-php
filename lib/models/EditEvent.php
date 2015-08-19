@@ -28,7 +28,7 @@ use \ArrayAccess;
 
 class EditEvent implements ArrayAccess {
   static $swaggerTypes = array(
-      'ticket_types' => 'array[EditTicketTypeInclude]',
+      'ticket_types' => 'array[EditTicketTypeIncludeApiRequest]',
       'name' => 'string',
       'description_short' => 'string',
       'description_html' => 'string',
@@ -38,7 +38,8 @@ class EditEvent implements ArrayAccess {
       'location' => 'LocationInclude',
       'poster_image_url' => 'string',
       'properties' => 'array[string]',
-      'custom' => 'object'
+      'custom' => 'object',
+      'access_status' => 'string'
   );
 
   static $attributeMap = array(
@@ -52,14 +53,15 @@ class EditEvent implements ArrayAccess {
       'location' => 'location',
       'poster_image_url' => 'poster_image_url',
       'properties' => 'properties',
-      'custom' => 'custom'
+      'custom' => 'custom',
+      'access_status' => 'access_status'
   );
 
   
   /**
   * Список видов билетов
   */
-  public $ticket_types; /* array[EditTicketTypeInclude] */
+  public $ticket_types; /* array[EditTicketTypeIncludeApiRequest] */
   /**
   * Название события
   */
@@ -100,6 +102,10 @@ class EditEvent implements ArrayAccess {
   * Объект с дополнительными полями, специфичными для данной организации
   */
   public $custom; /* object */
+  /**
+  * Статус доступа к событию
+  */
+  public $access_status; /* string */
 
   public function __construct(array $data = null) {
     
@@ -155,6 +161,11 @@ class EditEvent implements ArrayAccess {
     
     if(isset($data["custom"])) {
       $this->custom = $data["custom"];
+    }
+    
+    
+    if(isset($data["access_status"])) {
+      $this->access_status = $data["access_status"];
     }
     
   }

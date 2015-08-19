@@ -26,30 +26,36 @@ namespace TimepadApi\models;
 
 use \ArrayAccess;
 
-class EventsResponse implements ArrayAccess {
+class CodesResponse implements ArrayAccess {
   static $swaggerTypes = array(
-      'total' => 'int',
-      'values' => 'array[EventResponse]'
+      'ean13' => 'string',
+      'ean8' => 'string'
   );
 
   static $attributeMap = array(
-      'total' => 'total',
-      'values' => 'values'
+      'ean13' => 'ean13',
+      'ean8' => 'ean8'
   );
 
   
-  public $total; /* int */
-  public $values; /* array[EventResponse] */
+  /**
+  * ean13 код билета
+  */
+  public $ean13; /* string */
+  /**
+  * ean13 код билета
+  */
+  public $ean8; /* string */
 
   public function __construct(array $data = null) {
     
-    if(isset($data["total"])) {
-      $this->total = $data["total"];
+    if(isset($data["ean13"])) {
+      $this->ean13 = $data["ean13"];
     }
     
     
-    if(isset($data["values"])) {
-      $this->values = $data["values"];
+    if(isset($data["ean8"])) {
+      $this->ean8 = $data["ean8"];
     }
     
   }

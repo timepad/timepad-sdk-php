@@ -26,30 +26,58 @@ namespace TimepadApi\models;
 
 use \ArrayAccess;
 
-class EventsResponse implements ArrayAccess {
+class LocationResponse implements ArrayAccess {
   static $swaggerTypes = array(
-      'total' => 'int',
-      'values' => 'array[EventResponse]'
+      'country' => 'string',
+      'city' => 'string',
+      'address' => 'string',
+      'coordinates' => 'array[float]'
   );
 
   static $attributeMap = array(
-      'total' => 'total',
-      'values' => 'values'
+      'country' => 'country',
+      'city' => 'city',
+      'address' => 'address',
+      'coordinates' => 'coordinates'
   );
 
   
-  public $total; /* int */
-  public $values; /* array[EventResponse] */
+  /**
+  * Название страны
+  */
+  public $country; /* string */
+  /**
+  * Название города
+  */
+  public $city; /* string */
+  /**
+  * Адрес проведения события
+  */
+  public $address; /* string */
+  /**
+  * Широта и долгота для карт
+  */
+  public $coordinates; /* array[float] */
 
   public function __construct(array $data = null) {
     
-    if(isset($data["total"])) {
-      $this->total = $data["total"];
+    if(isset($data["country"])) {
+      $this->country = $data["country"];
     }
     
     
-    if(isset($data["values"])) {
-      $this->values = $data["values"];
+    if(isset($data["city"])) {
+      $this->city = $data["city"];
+    }
+    
+    
+    if(isset($data["address"])) {
+      $this->address = $data["address"];
+    }
+    
+    
+    if(isset($data["coordinates"])) {
+      $this->coordinates = $data["coordinates"];
     }
     
   }

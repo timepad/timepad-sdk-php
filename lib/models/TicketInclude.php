@@ -26,30 +26,36 @@ namespace TimepadApi\models;
 
 use \ArrayAccess;
 
-class EventsResponse implements ArrayAccess {
+class TicketInclude implements ArrayAccess {
   static $swaggerTypes = array(
-      'total' => 'int',
-      'values' => 'array[EventResponse]'
+      'answers' => 'object',
+      'ticket_type_id' => 'string'
   );
 
   static $attributeMap = array(
-      'total' => 'total',
-      'values' => 'values'
+      'answers' => 'answers',
+      'ticket_type_id' => 'ticket_type_id'
   );
 
   
-  public $total; /* int */
-  public $values; /* array[EventResponse] */
+  /**
+  * Ответы на анкету регистрации
+  */
+  public $answers; /* object */
+  /**
+  * Идентификатор типа билета
+  */
+  public $ticket_type_id; /* string */
 
   public function __construct(array $data = null) {
     
-    if(isset($data["total"])) {
-      $this->total = $data["total"];
+    if(isset($data["answers"])) {
+      $this->answers = $data["answers"];
     }
     
     
-    if(isset($data["values"])) {
-      $this->values = $data["values"];
+    if(isset($data["ticket_type_id"])) {
+      $this->ticket_type_id = $data["ticket_type_id"];
     }
     
   }

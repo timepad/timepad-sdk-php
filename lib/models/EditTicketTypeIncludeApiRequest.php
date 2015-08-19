@@ -26,30 +26,58 @@ namespace TimepadApi\models;
 
 use \ArrayAccess;
 
-class EventsResponse implements ArrayAccess {
+class EditTicketTypeIncludeApiRequest implements ArrayAccess {
   static $swaggerTypes = array(
-      'total' => 'int',
-      'values' => 'array[EventResponse]'
+      'id' => 'int',
+      'price' => 'int',
+      'status' => 'string',
+      'name' => 'string'
   );
 
   static $attributeMap = array(
-      'total' => 'total',
-      'values' => 'values'
+      'id' => 'id',
+      'price' => 'price',
+      'status' => 'status',
+      'name' => 'name'
   );
 
   
-  public $total; /* int */
-  public $values; /* array[EventResponse] */
+  /**
+  * Id существующего билета
+  */
+  public $id; /* int */
+  /**
+  * Цена существующего билета
+  */
+  public $price; /* int */
+  /**
+  * Статус билета
+  */
+  public $status; /* string */
+  /**
+  * Название билета
+  */
+  public $name; /* string */
 
   public function __construct(array $data = null) {
     
-    if(isset($data["total"])) {
-      $this->total = $data["total"];
+    if(isset($data["id"])) {
+      $this->id = $data["id"];
     }
     
     
-    if(isset($data["values"])) {
-      $this->values = $data["values"];
+    if(isset($data["price"])) {
+      $this->price = $data["price"];
+    }
+    
+    
+    if(isset($data["status"])) {
+      $this->status = $data["status"];
+    }
+    
+    
+    if(isset($data["name"])) {
+      $this->name = $data["name"];
     }
     
   }

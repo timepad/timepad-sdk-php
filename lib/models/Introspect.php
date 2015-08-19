@@ -32,7 +32,7 @@ class Introspect implements ArrayAccess {
       'client_id' => 'string',
       'user_id' => 'string',
       'user_email' => 'string',
-      'organizations' => 'array[Organization]'
+      'organizations' => 'array[OrganizationResponse]'
   );
 
   static $attributeMap = array(
@@ -63,7 +63,7 @@ class Introspect implements ArrayAccess {
   /**
   * Организации, к которым есть доступ пользователя
   */
-  public $organizations; /* array[Organization] */
+  public $organizations; /* array[OrganizationResponse] */
 
   public function __construct(array $data = null) {
     

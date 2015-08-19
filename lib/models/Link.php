@@ -26,30 +26,58 @@ namespace TimepadApi\models;
 
 use \ArrayAccess;
 
-class EventsResponse implements ArrayAccess {
+class Link implements ArrayAccess {
   static $swaggerTypes = array(
-      'total' => 'int',
-      'values' => 'array[EventResponse]'
+      'name' => 'string',
+      'title' => 'string',
+      'href' => 'string',
+      'templated' => 'bool'
   );
 
   static $attributeMap = array(
-      'total' => 'total',
-      'values' => 'values'
+      'name' => 'name',
+      'title' => 'title',
+      'href' => 'href',
+      'templated' => 'templated'
   );
 
   
-  public $total; /* int */
-  public $values; /* array[EventResponse] */
+  /**
+  * Машиночитаемое описание ссылки (для оплат - строковый id платёжки)
+  */
+  public $name; /* string */
+  /**
+  * Человекочитаемое описание ссылки (для оплат - название платёжки)
+  */
+  public $title; /* string */
+  /**
+  * Ссылка
+  */
+  public $href; /* string */
+  /**
+  * Признак того, что ссылка - шаблон. У curies - true, в остальных случаях не присутствует
+  */
+  public $templated; /* bool */
 
   public function __construct(array $data = null) {
     
-    if(isset($data["total"])) {
-      $this->total = $data["total"];
+    if(isset($data["name"])) {
+      $this->name = $data["name"];
     }
     
     
-    if(isset($data["values"])) {
-      $this->values = $data["values"];
+    if(isset($data["title"])) {
+      $this->title = $data["title"];
+    }
+    
+    
+    if(isset($data["href"])) {
+      $this->href = $data["href"];
+    }
+    
+    
+    if(isset($data["templated"])) {
+      $this->templated = $data["templated"];
     }
     
   }

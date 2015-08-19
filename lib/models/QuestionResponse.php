@@ -26,12 +26,12 @@ namespace TimepadApi\models;
 
 use \ArrayAccess;
 
-class Question implements ArrayAccess {
+class QuestionResponse implements ArrayAccess {
   static $swaggerTypes = array(
       'field_id' => 'int',
       'name' => 'string',
       'type' => 'string',
-      'possible_answers' => 'array[Answer]',
+      'possible_answers' => 'array[AnswerResponse]',
       'is_mandatory' => 'bool',
       'is_for_every_visitor' => 'bool',
       'meta' => 'object'
@@ -63,7 +63,7 @@ class Question implements ArrayAccess {
   /**
   * Список предлагаемых ответов (если вопрос предполагает такой список)
   */
-  public $possible_answers; /* array[Answer] */
+  public $possible_answers; /* array[AnswerResponse] */
   /**
   * На вопрос обязательно отвечать
   */

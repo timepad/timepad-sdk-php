@@ -26,36 +26,36 @@ namespace TimepadApi\models;
 
 use \ArrayAccess;
 
-class Image implements ArrayAccess {
+class EditOrderAttendanceApiRequest implements ArrayAccess {
   static $swaggerTypes = array(
-      'default_url' => 'string',
-      'uploadcare_url' => 'string'
+      'starts_at' => 'DateTime',
+      'ends_at' => 'DateTime'
   );
 
   static $attributeMap = array(
-      'default_url' => 'default_url',
-      'uploadcare_url' => 'uploadcare_url'
+      'starts_at' => 'starts_at',
+      'ends_at' => 'ends_at'
   );
 
   
   /**
-  * Картинка стандартного размера
+  * Дата посещения события
   */
-  public $default_url; /* string */
+  public $starts_at; /* DateTime */
   /**
-  * Адрес картинки на uploadcare, к которому можно прибавлять запросы в формате uploadcare
+  * Дата ухода с события
   */
-  public $uploadcare_url; /* string */
+  public $ends_at; /* DateTime */
 
   public function __construct(array $data = null) {
     
-    if(isset($data["default_url"])) {
-      $this->default_url = $data["default_url"];
+    if(isset($data["starts_at"])) {
+      $this->starts_at = $data["starts_at"];
     }
     
     
-    if(isset($data["uploadcare_url"])) {
-      $this->uploadcare_url = $data["uploadcare_url"];
+    if(isset($data["ends_at"])) {
+      $this->ends_at = $data["ends_at"];
     }
     
   }

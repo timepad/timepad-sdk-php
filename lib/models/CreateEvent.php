@@ -31,32 +31,34 @@ class CreateEvent implements ArrayAccess {
       'ticket_types' => 'array[TicketTypeInclude]',
       'organization' => 'OrganizationInclude',
       'questions' => 'array[QuestionInclude]',
+      'starts_at' => 'DateTime',
+      'ends_at' => 'DateTime',
       'name' => 'string',
       'description_short' => 'string',
       'description_html' => 'string',
-      'starts_at' => 'string',
-      'ends_at' => 'string',
       'categories' => 'array[CategoryInclude]',
       'location' => 'LocationInclude',
       'poster_image_url' => 'string',
       'properties' => 'array[string]',
-      'custom' => 'object'
+      'custom' => 'object',
+      'access_status' => 'string'
   );
 
   static $attributeMap = array(
       'ticket_types' => 'ticket_types',
       'organization' => 'organization',
       'questions' => 'questions',
+      'starts_at' => 'starts_at',
+      'ends_at' => 'ends_at',
       'name' => 'name',
       'description_short' => 'description_short',
       'description_html' => 'description_html',
-      'starts_at' => 'starts_at',
-      'ends_at' => 'ends_at',
       'categories' => 'categories',
       'location' => 'location',
       'poster_image_url' => 'poster_image_url',
       'properties' => 'properties',
-      'custom' => 'custom'
+      'custom' => 'custom',
+      'access_status' => 'access_status'
   );
 
   
@@ -73,6 +75,14 @@ class CreateEvent implements ArrayAccess {
   */
   public $questions; /* array[QuestionInclude] */
   /**
+  * Дата начала события
+  */
+  public $starts_at; /* DateTime */
+  /**
+  * Дата окончания события
+  */
+  public $ends_at; /* DateTime */
+  /**
   * Название события
   */
   public $name; /* string */
@@ -84,14 +94,6 @@ class CreateEvent implements ArrayAccess {
   * Полное описание с html-тегами
   */
   public $description_html; /* string */
-  /**
-  * Дата начала события в формате ISO
-  */
-  public $starts_at; /* string */
-  /**
-  * Дата окончания события в формате ISO
-  */
-  public $ends_at; /* string */
   /**
   * Список категорий, в которые входит событие
   */
@@ -112,6 +114,10 @@ class CreateEvent implements ArrayAccess {
   * Объект с дополнительными полями, специфичными для данной организации
   */
   public $custom; /* object */
+  /**
+  * Статус доступа к событию
+  */
+  public $access_status; /* string */
 
   public function __construct(array $data = null) {
     
@@ -130,6 +136,16 @@ class CreateEvent implements ArrayAccess {
     }
     
     
+    if(isset($data["starts_at"])) {
+      $this->starts_at = $data["starts_at"];
+    }
+    
+    
+    if(isset($data["ends_at"])) {
+      $this->ends_at = $data["ends_at"];
+    }
+    
+    
     if(isset($data["name"])) {
       $this->name = $data["name"];
     }
@@ -142,16 +158,6 @@ class CreateEvent implements ArrayAccess {
     
     if(isset($data["description_html"])) {
       $this->description_html = $data["description_html"];
-    }
-    
-    
-    if(isset($data["starts_at"])) {
-      $this->starts_at = $data["starts_at"];
-    }
-    
-    
-    if(isset($data["ends_at"])) {
-      $this->ends_at = $data["ends_at"];
     }
     
     
@@ -177,6 +183,11 @@ class CreateEvent implements ArrayAccess {
     
     if(isset($data["custom"])) {
       $this->custom = $data["custom"];
+    }
+    
+    
+    if(isset($data["access_status"])) {
+      $this->access_status = $data["access_status"];
     }
     
   }

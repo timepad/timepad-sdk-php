@@ -26,7 +26,7 @@ namespace TimepadApi\models;
 
 use \ArrayAccess;
 
-class RegistrationData implements ArrayAccess {
+class RegistrationDataResponse implements ArrayAccess {
   static $swaggerTypes = array(
       'price_max' => 'float',
       'price_min' => 'float',

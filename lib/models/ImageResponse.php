@@ -26,58 +26,36 @@ namespace TimepadApi\models;
 
 use \ArrayAccess;
 
-class EditTicketTypeInclude implements ArrayAccess {
+class ImageResponse implements ArrayAccess {
   static $swaggerTypes = array(
-      'id' => 'int',
-      'price' => 'int',
-      'name' => 'string',
-      'description' => 'string'
+      'default_url' => 'string',
+      'uploadcare_url' => 'string'
   );
 
   static $attributeMap = array(
-      'id' => 'id',
-      'price' => 'price',
-      'name' => 'name',
-      'description' => 'description'
+      'default_url' => 'default_url',
+      'uploadcare_url' => 'uploadcare_url'
   );
 
   
   /**
-  * Id существующего билета
+  * Картинка стандартного размера
   */
-  public $id; /* int */
+  public $default_url; /* string */
   /**
-  * Цена билета
+  * Адрес картинки на uploadcare, к которому можно прибавлять запросы в формате uploadcare
   */
-  public $price; /* int */
-  /**
-  * Название билета
-  */
-  public $name; /* string */
-  /**
-  * Описание билета
-  */
-  public $description; /* string */
+  public $uploadcare_url; /* string */
 
   public function __construct(array $data = null) {
     
-    if(isset($data["id"])) {
-      $this->id = $data["id"];
+    if(isset($data["default_url"])) {
+      $this->default_url = $data["default_url"];
     }
     
     
-    if(isset($data["price"])) {
-      $this->price = $data["price"];
-    }
-    
-    
-    if(isset($data["name"])) {
-      $this->name = $data["name"];
-    }
-    
-    
-    if(isset($data["description"])) {
-      $this->description = $data["description"];
+    if(isset($data["uploadcare_url"])) {
+      $this->uploadcare_url = $data["uploadcare_url"];
     }
     
   }

@@ -26,7 +26,7 @@ namespace TimepadApi\models;
 
 use \ArrayAccess;
 
-class Event implements ArrayAccess {
+class EventResponse implements ArrayAccess {
   static $swaggerTypes = array(
       'id' => 'int',
       'created_at' => 'DateTime',
@@ -36,19 +36,19 @@ class Event implements ArrayAccess {
       'description_short' => 'string',
       'description_html' => 'string',
       'url' => 'string',
-      'poster_image' => 'Image',
+      'poster_image' => 'ImageResponse',
       'ad_partner_percent' => 'int',
       'locale' => 'string',
-      'location' => 'Location',
-      'organization' => 'Organization',
-      'categories' => 'array[Category]',
-      'ticket_types' => 'array[TicketType]',
-      'questions' => 'array[Question]',
-      'widgets' => 'array[Widget]',
+      'location' => 'LocationResponse',
+      'organization' => 'OrganizationResponse',
+      'categories' => 'array[CategoryResponse]',
+      'ticket_types' => 'array[TicketTypeResponse]',
+      'questions' => 'array[QuestionResponse]',
+      'widgets' => 'array[WidgetResponse]',
       'properties' => 'array[string]',
       'moderation_status' => 'string',
       'access_status' => 'string',
-      'registration_data' => 'RegistrationData'
+      'registration_data' => 'RegistrationDataResponse'
   );
 
   static $attributeMap = array(
@@ -111,7 +111,7 @@ class Event implements ArrayAccess {
   /**
   * Картинка события
   */
-  public $poster_image; /* Image */
+  public $poster_image; /* ImageResponse */
   /**
   * Процент, который получают партнёры за продажу билета на это событие
   */
@@ -123,27 +123,27 @@ class Event implements ArrayAccess {
   /**
   * Место проведения события
   */
-  public $location; /* Location */
+  public $location; /* LocationResponse */
   /**
   * Организация, проводящая событие
   */
-  public $organization; /* Organization */
+  public $organization; /* OrganizationResponse */
   /**
   * Категории события
   */
-  public $categories; /* array[Category] */
+  public $categories; /* array[CategoryResponse] */
   /**
   * Доступные типы билетов
   */
-  public $ticket_types; /* array[TicketType] */
+  public $ticket_types; /* array[TicketTypeResponse] */
   /**
   * Вопросы, задающиеся при регистрации
   */
-  public $questions; /* array[Question] */
+  public $questions; /* array[QuestionResponse] */
   /**
   * Виджеты, доступные для события
   */
-  public $widgets; /* array[Widget] */
+  public $widgets; /* array[WidgetResponse] */
   /**
   * Список особенностей события
   */
@@ -159,7 +159,7 @@ class Event implements ArrayAccess {
   /**
   * Обобщённые данные о билетах
   */
-  public $registration_data; /* RegistrationData */
+  public $registration_data; /* RegistrationDataResponse */
 
   public function __construct(array $data = null) {
     

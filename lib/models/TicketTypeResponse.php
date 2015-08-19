@@ -26,7 +26,7 @@ namespace TimepadApi\models;
 
 use \ArrayAccess;
 
-class TicketType implements ArrayAccess {
+class TicketTypeResponse implements ArrayAccess {
   static $swaggerTypes = array(
       'id' => 'int',
       'name' => 'string',
@@ -38,7 +38,11 @@ class TicketType implements ArrayAccess {
       'sale_ends_at' => 'DateTime',
       'public_key' => 'string',
       'is_active' => 'bool',
-      'ad_partner_profit' => 'float'
+      'ad_partner_profit' => 'float',
+      'sold' => 'float',
+      'attended' => 'float',
+      'limit' => 'float',
+      'status' => 'string'
   );
 
   static $attributeMap = array(
@@ -52,7 +56,11 @@ class TicketType implements ArrayAccess {
       'sale_ends_at' => 'sale_ends_at',
       'public_key' => 'public_key',
       'is_active' => 'is_active',
-      'ad_partner_profit' => 'ad_partner_profit'
+      'ad_partner_profit' => 'ad_partner_profit',
+      'sold' => 'sold',
+      'attended' => 'attended',
+      'limit' => 'limit',
+      'status' => 'status'
   );
 
   
@@ -100,6 +108,22 @@ class TicketType implements ArrayAccess {
   * Партнёрская прибыль
   */
   public $ad_partner_profit; /* float */
+  /**
+  * Количество проданных билетов
+  */
+  public $sold; /* float */
+  /**
+  * Количество посетивших людей
+  */
+  public $attended; /* float */
+  /**
+  * Ограничение на количество билетов в этой категории
+  */
+  public $limit; /* float */
+  /**
+  * Статус категории билета
+  */
+  public $status; /* string */
 
   public function __construct(array $data = null) {
     
@@ -155,6 +179,26 @@ class TicketType implements ArrayAccess {
     
     if(isset($data["ad_partner_profit"])) {
       $this->ad_partner_profit = $data["ad_partner_profit"];
+    }
+    
+    
+    if(isset($data["sold"])) {
+      $this->sold = $data["sold"];
+    }
+    
+    
+    if(isset($data["attended"])) {
+      $this->attended = $data["attended"];
+    }
+    
+    
+    if(isset($data["limit"])) {
+      $this->limit = $data["limit"];
+    }
+    
+    
+    if(isset($data["status"])) {
+      $this->status = $data["status"];
     }
     
   }

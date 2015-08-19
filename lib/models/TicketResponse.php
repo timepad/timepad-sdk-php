@@ -26,50 +26,41 @@ namespace TimepadApi\models;
 
 use \ArrayAccess;
 
-class Organization implements ArrayAccess {
+class TicketResponse implements ArrayAccess {
   static $swaggerTypes = array(
       'id' => 'int',
-      'name' => 'string',
-      'description_html' => 'string',
-      'url' => 'string',
-      'logo_image' => 'Image',
-      'subdomain' => 'string'
+      'number' => 'string',
+      'answers' => 'object',
+      'ticket_type' => 'array[TicketTypeResponse]',
+      'attendance' => 'array[AttendanceResponse]',
+      'place' => 'array[PlaceResponse]',
+      'codes' => 'array[CodesResponse]'
   );
 
   static $attributeMap = array(
       'id' => 'id',
-      'name' => 'name',
-      'description_html' => 'description_html',
-      'url' => 'url',
-      'logo_image' => 'logo_image',
-      'subdomain' => 'subdomain'
+      'number' => 'number',
+      'answers' => 'answers',
+      'ticket_type' => 'ticket_type',
+      'attendance' => 'attendance',
+      'place' => 'place',
+      'codes' => 'codes'
   );
 
   
   /**
-  * Уникальный номер организации
+  * Уникальный номер типа билета
   */
   public $id; /* int */
   /**
-  * Название организации
+  * Номер билета
   */
-  public $name; /* string */
-  /**
-  * Описание организации
-  */
-  public $description_html; /* string */
-  /**
-  * URL организации на сайте
-  */
-  public $url; /* string */
-  /**
-  * Логотип
-  */
-  public $logo_image; /* Image */
-  /**
-  * Уникальное название организации - часть URL
-  */
-  public $subdomain; /* string */
+  public $number; /* string */
+  public $answers; /* object */
+  public $ticket_type; /* array[TicketTypeResponse] */
+  public $attendance; /* array[AttendanceResponse] */
+  public $place; /* array[PlaceResponse] */
+  public $codes; /* array[CodesResponse] */
 
   public function __construct(array $data = null) {
     
@@ -78,28 +69,33 @@ class Organization implements ArrayAccess {
     }
     
     
-    if(isset($data["name"])) {
-      $this->name = $data["name"];
+    if(isset($data["number"])) {
+      $this->number = $data["number"];
     }
     
     
-    if(isset($data["description_html"])) {
-      $this->description_html = $data["description_html"];
+    if(isset($data["answers"])) {
+      $this->answers = $data["answers"];
     }
     
     
-    if(isset($data["url"])) {
-      $this->url = $data["url"];
+    if(isset($data["ticket_type"])) {
+      $this->ticket_type = $data["ticket_type"];
     }
     
     
-    if(isset($data["logo_image"])) {
-      $this->logo_image = $data["logo_image"];
+    if(isset($data["attendance"])) {
+      $this->attendance = $data["attendance"];
     }
     
     
-    if(isset($data["subdomain"])) {
-      $this->subdomain = $data["subdomain"];
+    if(isset($data["place"])) {
+      $this->place = $data["place"];
+    }
+    
+    
+    if(isset($data["codes"])) {
+      $this->codes = $data["codes"];
     }
     
   }

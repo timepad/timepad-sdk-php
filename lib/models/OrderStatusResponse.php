@@ -26,36 +26,36 @@ namespace TimepadApi\models;
 
 use \ArrayAccess;
 
-class Answer implements ArrayAccess {
+class OrderStatusResponse implements ArrayAccess {
   static $swaggerTypes = array(
-      'id' => 'int',
-      'name' => 'string'
+      'name' => 'string',
+      'title' => 'string'
   );
 
   static $attributeMap = array(
-      'id' => 'id',
-      'name' => 'name'
+      'name' => 'name',
+      'title' => 'title'
   );
 
   
   /**
-  * Уникальный номер ответа
-  */
-  public $id; /* int */
-  /**
-  * Текст ответа
+  * Идентификатор статуса
   */
   public $name; /* string */
+  /**
+  * Человекочитаемый статус заказа
+  */
+  public $title; /* string */
 
   public function __construct(array $data = null) {
     
-    if(isset($data["id"])) {
-      $this->id = $data["id"];
+    if(isset($data["name"])) {
+      $this->name = $data["name"];
     }
     
     
-    if(isset($data["name"])) {
-      $this->name = $data["name"];
+    if(isset($data["title"])) {
+      $this->title = $data["title"];
     }
     
   }

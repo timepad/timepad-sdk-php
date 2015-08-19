@@ -26,30 +26,36 @@ namespace TimepadApi\models;
 
 use \ArrayAccess;
 
-class EventsResponse implements ArrayAccess {
+class EditOrderVisitorsAttendanceIncludeApiRequest implements ArrayAccess {
   static $swaggerTypes = array(
-      'total' => 'int',
-      'values' => 'array[EventResponse]'
+      'starts_at' => 'DateTime',
+      'ends_at' => 'DateTime'
   );
 
   static $attributeMap = array(
-      'total' => 'total',
-      'values' => 'values'
+      'starts_at' => 'starts_at',
+      'ends_at' => 'ends_at'
   );
 
   
-  public $total; /* int */
-  public $values; /* array[EventResponse] */
+  /**
+  * Дата посещения пользователем события
+  */
+  public $starts_at; /* DateTime */
+  /**
+  * Дата ухода пользователя с события
+  */
+  public $ends_at; /* DateTime */
 
   public function __construct(array $data = null) {
     
-    if(isset($data["total"])) {
-      $this->total = $data["total"];
+    if(isset($data["starts_at"])) {
+      $this->starts_at = $data["starts_at"];
     }
     
     
-    if(isset($data["values"])) {
-      $this->values = $data["values"];
+    if(isset($data["ends_at"])) {
+      $this->ends_at = $data["ends_at"];
     }
     
   }

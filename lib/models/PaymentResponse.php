@@ -26,25 +26,47 @@ namespace TimepadApi\models;
 
 use \ArrayAccess;
 
-class Widget implements ArrayAccess {
+class PaymentResponse implements ArrayAccess {
   static $swaggerTypes = array(
-      'code_html' => 'string'
+      'amount' => 'float',
+      'paid_at' => 'DateTime',
+      'payment_type' => 'string'
   );
 
   static $attributeMap = array(
-      'code_html' => 'code_html'
+      'amount' => 'amount',
+      'paid_at' => 'paid_at',
+      'payment_type' => 'payment_type'
   );
 
   
   /**
-  * Код вставки виджета в сайт
+  * Оплаченная сумма (количество рублей, отданных покупателем платёжной системе в этом заказе)
   */
-  public $code_html; /* string */
+  public $amount; /* float */
+  /**
+  * Дата оплаты
+  */
+  public $paid_at; /* DateTime */
+  /**
+  * Платёжная система оплаты
+  */
+  public $payment_type; /* string */
 
   public function __construct(array $data = null) {
     
-    if(isset($data["code_html"])) {
-      $this->code_html = $data["code_html"];
+    if(isset($data["amount"])) {
+      $this->amount = $data["amount"];
+    }
+    
+    
+    if(isset($data["paid_at"])) {
+      $this->paid_at = $data["paid_at"];
+    }
+    
+    
+    if(isset($data["payment_type"])) {
+      $this->payment_type = $data["payment_type"];
     }
     
   }
