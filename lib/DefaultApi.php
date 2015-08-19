@@ -656,7 +656,7 @@ class DefaultApi {
   }
   
   /**
-   * getEventOrders
+   * getSingleEventOrder
    *
    * Получить заказ с указанным id
    *
@@ -665,7 +665,7 @@ class DefaultApi {
    * @param int $order_id Номер заказа (required)
    * @return RegistrationOrderResponse
    */
-   public function getEventOrders($fields, $event_id, $order_id) {
+   public function getSingleEventOrder($fields, $event_id, $order_id) {
 
       // parse inputs
       $resourcePath = "/v1/events/{event_id}/orders/{order_id}";
@@ -720,7 +720,7 @@ class DefaultApi {
   }
   
   /**
-   * getEventOrders
+   * editEventOrder
    *
    * Отредактировать заказ с указанным id
    *
@@ -729,7 +729,7 @@ class DefaultApi {
    * @param EditOrder $body Список изменённых параметров заказа (required)
    * @return RegistrationOrderResponse
    */
-   public function getEventOrders($event_id, $order_id, $body) {
+   public function editEventOrder($event_id, $order_id, $body) {
 
       // parse inputs
       $resourcePath = "/v1/events/{event_id}/orders/{order_id}";
