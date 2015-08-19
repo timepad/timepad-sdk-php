@@ -34,7 +34,7 @@ class OrganizationResponse implements ArrayAccess {
       'url' => 'string',
       'logo_image' => 'ImageResponse',
       'subdomain' => 'string',
-      'permissions' => 'string'
+      'permissions' => 'array[string]'
   );
 
   static $attributeMap = array(
@@ -75,7 +75,7 @@ class OrganizationResponse implements ArrayAccess {
   /**
   * Настройки доступов для организаций
   */
-  public $permissions; /* string */
+  public $permissions; /* array[string] */
 
   public function __construct(array $data = null) {
     
