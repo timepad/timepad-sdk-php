@@ -27,52 +27,52 @@ namespace TimepadApi\models;
 use \ArrayAccess;
 
 class CodesResponse implements ArrayAccess {
-  static $swaggerTypes = array(
-      'ean13' => 'string',
-      'ean8' => 'string'
-  );
+    static $swaggerTypes = array(
+        'ean13' => 'string',
+        'ean8' => 'string'
+    );
 
-  static $attributeMap = array(
-      'ean13' => 'ean13',
-      'ean8' => 'ean8'
-  );
+    static $attributeMap = array(
+        'ean13' => 'ean13',
+        'ean8' => 'ean8'
+    );
 
-  
-  /**
-  * ean13 код билета
-  */
-  public $ean13; /* string */
-  /**
-  * ean13 код билета
-  */
-  public $ean8; /* string */
-
-  public function __construct(array $data = null) {
     
-    if(isset($data["ean13"])) {
-      $this->ean13 = $data["ean13"];
+    /**
+    * ean13 код билета
+    */
+    public $ean13; /* string */
+    /**
+    * ean13 код билета
+    */
+    public $ean8; /* string */
+
+    public function __construct(array $data = null) {
+    
+        if(isset($data["ean13"])) {
+            $this->ean13 = $data["ean13"];
+        }
+    
+    
+        if(isset($data["ean8"])) {
+            $this->ean8 = $data["ean8"];
+        }
+    
     }
-    
-    
-    if(isset($data["ean8"])) {
-      $this->ean8 = $data["ean8"];
+
+    public function offsetExists($offset) {
+        return isset($this->$offset);
     }
-    
-  }
 
-  public function offsetExists($offset) {
-    return isset($this->$offset);
-  }
+    public function offsetGet($offset) {
+        return $this->$offset;
+    }
 
-  public function offsetGet($offset) {
-    return $this->$offset;
-  }
+    public function offsetSet($offset, $value) {
+        $this->$offset = $value;
+    }
 
-  public function offsetSet($offset, $value) {
-    $this->$offset = $value;
-  }
-
-  public function offsetUnset($offset) {
-    unset($this->$offset);
-  }
+    public function offsetUnset($offset) {
+        unset($this->$offset);
+    }
 }

@@ -27,107 +27,107 @@ namespace TimepadApi\models;
 use \ArrayAccess;
 
 class QuestionResponse implements ArrayAccess {
-  static $swaggerTypes = array(
-      'field_id' => 'int',
-      'name' => 'string',
-      'type' => 'string',
-      'possible_answers' => 'array[AnswerResponse]',
-      'is_mandatory' => 'bool',
-      'is_for_every_visitor' => 'bool',
-      'meta' => 'object'
-  );
+    static $swaggerTypes = array(
+        'field_id' => 'int',
+        'name' => 'string',
+        'type' => 'string',
+        'possible_answers' => 'array[AnswerResponse]',
+        'is_mandatory' => 'bool',
+        'is_for_every_visitor' => 'bool',
+        'meta' => 'object'
+    );
 
-  static $attributeMap = array(
-      'field_id' => 'field_id',
-      'name' => 'name',
-      'type' => 'type',
-      'possible_answers' => 'possible_answers',
-      'is_mandatory' => 'is_mandatory',
-      'is_for_every_visitor' => 'is_for_every_visitor',
-      'meta' => 'meta'
-  );
+    static $attributeMap = array(
+        'field_id' => 'field_id',
+        'name' => 'name',
+        'type' => 'type',
+        'possible_answers' => 'possible_answers',
+        'is_mandatory' => 'is_mandatory',
+        'is_for_every_visitor' => 'is_for_every_visitor',
+        'meta' => 'meta'
+    );
 
-  
-  /**
-  * Название поля вопроса
-  */
-  public $field_id; /* int */
-  /**
-  * Текст вопроса
-  */
-  public $name; /* string */
-  /**
-  * Тип вопроса
-  */
-  public $type; /* string */
-  /**
-  * Список предлагаемых ответов (если вопрос предполагает такой список)
-  */
-  public $possible_answers; /* array[AnswerResponse] */
-  /**
-  * На вопрос обязательно отвечать
-  */
-  public $is_mandatory; /* bool */
-  /**
-  * Выводить вопрос отдельно для каждого купленного билета
-  */
-  public $is_for_every_visitor; /* bool */
-  /**
-  * Дополнительные данные
-  */
-  public $meta; /* object */
+    
+    /**
+    * Название поля вопроса
+    */
+    public $field_id; /* int */
+    /**
+    * Текст вопроса
+    */
+    public $name; /* string */
+    /**
+    * Тип вопроса
+    */
+    public $type; /* string */
+    /**
+    * Список предлагаемых ответов (если вопрос предполагает такой список)
+    */
+    public $possible_answers; /* array[AnswerResponse] */
+    /**
+    * На вопрос обязательно отвечать
+    */
+    public $is_mandatory; /* bool */
+    /**
+    * Выводить вопрос отдельно для каждого купленного билета
+    */
+    public $is_for_every_visitor; /* bool */
+    /**
+    * Дополнительные данные
+    */
+    public $meta; /* object */
 
-  public function __construct(array $data = null) {
+    public function __construct(array $data = null) {
     
-    if(isset($data["field_id"])) {
-      $this->field_id = $data["field_id"];
+        if(isset($data["field_id"])) {
+            $this->field_id = $data["field_id"];
+        }
+    
+    
+        if(isset($data["name"])) {
+            $this->name = $data["name"];
+        }
+    
+    
+        if(isset($data["type"])) {
+            $this->type = $data["type"];
+        }
+    
+    
+        if(isset($data["possible_answers"])) {
+            $this->possible_answers = $data["possible_answers"];
+        }
+    
+    
+        if(isset($data["is_mandatory"])) {
+            $this->is_mandatory = $data["is_mandatory"];
+        }
+    
+    
+        if(isset($data["is_for_every_visitor"])) {
+            $this->is_for_every_visitor = $data["is_for_every_visitor"];
+        }
+    
+    
+        if(isset($data["meta"])) {
+            $this->meta = $data["meta"];
+        }
+    
     }
-    
-    
-    if(isset($data["name"])) {
-      $this->name = $data["name"];
-    }
-    
-    
-    if(isset($data["type"])) {
-      $this->type = $data["type"];
-    }
-    
-    
-    if(isset($data["possible_answers"])) {
-      $this->possible_answers = $data["possible_answers"];
-    }
-    
-    
-    if(isset($data["is_mandatory"])) {
-      $this->is_mandatory = $data["is_mandatory"];
-    }
-    
-    
-    if(isset($data["is_for_every_visitor"])) {
-      $this->is_for_every_visitor = $data["is_for_every_visitor"];
-    }
-    
-    
-    if(isset($data["meta"])) {
-      $this->meta = $data["meta"];
-    }
-    
-  }
 
-  public function offsetExists($offset) {
-    return isset($this->$offset);
-  }
+    public function offsetExists($offset) {
+        return isset($this->$offset);
+    }
 
-  public function offsetGet($offset) {
-    return $this->$offset;
-  }
+    public function offsetGet($offset) {
+        return $this->$offset;
+    }
 
-  public function offsetSet($offset, $value) {
-    $this->$offset = $value;
-  }
+    public function offsetSet($offset, $value) {
+        $this->$offset = $value;
+    }
 
-  public function offsetUnset($offset) {
-    unset($this->$offset);
-  }
+    public function offsetUnset($offset) {
+        unset($this->$offset);
+    }
 }

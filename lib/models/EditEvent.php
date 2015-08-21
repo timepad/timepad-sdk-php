@@ -27,162 +27,162 @@ namespace TimepadApi\models;
 use \ArrayAccess;
 
 class EditEvent implements ArrayAccess {
-  static $swaggerTypes = array(
-      'ticket_types' => 'array[EditTicketTypeIncludeApiRequest]',
-      'name' => 'string',
-      'description_short' => 'string',
-      'description_html' => 'string',
-      'starts_at' => 'string',
-      'ends_at' => 'string',
-      'categories' => 'array[CategoryInclude]',
-      'location' => 'LocationInclude',
-      'poster_image_url' => 'string',
-      'properties' => 'array[string]',
-      'custom' => 'object',
-      'access_status' => 'string'
-  );
+    static $swaggerTypes = array(
+        'ticket_types' => 'array[EditTicketTypeIncludeApiRequest]',
+        'name' => 'string',
+        'description_short' => 'string',
+        'description_html' => 'string',
+        'starts_at' => 'string',
+        'ends_at' => 'string',
+        'categories' => 'array[CategoryInclude]',
+        'location' => 'LocationInclude',
+        'poster_image_url' => 'string',
+        'properties' => 'array[string]',
+        'custom' => 'object',
+        'access_status' => 'string'
+    );
 
-  static $attributeMap = array(
-      'ticket_types' => 'ticket_types',
-      'name' => 'name',
-      'description_short' => 'description_short',
-      'description_html' => 'description_html',
-      'starts_at' => 'starts_at',
-      'ends_at' => 'ends_at',
-      'categories' => 'categories',
-      'location' => 'location',
-      'poster_image_url' => 'poster_image_url',
-      'properties' => 'properties',
-      'custom' => 'custom',
-      'access_status' => 'access_status'
-  );
+    static $attributeMap = array(
+        'ticket_types' => 'ticket_types',
+        'name' => 'name',
+        'description_short' => 'description_short',
+        'description_html' => 'description_html',
+        'starts_at' => 'starts_at',
+        'ends_at' => 'ends_at',
+        'categories' => 'categories',
+        'location' => 'location',
+        'poster_image_url' => 'poster_image_url',
+        'properties' => 'properties',
+        'custom' => 'custom',
+        'access_status' => 'access_status'
+    );
 
-  
-  /**
-  * Список видов билетов
-  */
-  public $ticket_types; /* array[EditTicketTypeIncludeApiRequest] */
-  /**
-  * Название события
-  */
-  public $name; /* string */
-  /**
-  * Краткое описание/подзаголовок события
-  */
-  public $description_short; /* string */
-  /**
-  * Полное описание с html-тегами
-  */
-  public $description_html; /* string */
-  /**
-  * Дата начала события в формате ISO
-  */
-  public $starts_at; /* string */
-  /**
-  * Дата окончания события в формате ISO
-  */
-  public $ends_at; /* string */
-  /**
-  * Список категорий, в которые входит событие
-  */
-  public $categories; /* array[CategoryInclude] */
-  /**
-  * Место проведения события
-  */
-  public $location; /* LocationInclude */
-  /**
-  * URL картинки события
-  */
-  public $poster_image_url; /* string */
-  /**
-  * Список настроек события (например, мультианкета)
-  */
-  public $properties; /* array[string] */
-  /**
-  * Объект с дополнительными полями, специфичными для данной организации
-  */
-  public $custom; /* object */
-  /**
-  * Статус доступа к событию
-  */
-  public $access_status; /* string */
+    
+    /**
+    * Список видов билетов
+    */
+    public $ticket_types; /* array[EditTicketTypeIncludeApiRequest] */
+    /**
+    * Название события
+    */
+    public $name; /* string */
+    /**
+    * Краткое описание/подзаголовок события
+    */
+    public $description_short; /* string */
+    /**
+    * Полное описание с html-тегами
+    */
+    public $description_html; /* string */
+    /**
+    * Дата начала события в формате ISO
+    */
+    public $starts_at; /* string */
+    /**
+    * Дата окончания события в формате ISO
+    */
+    public $ends_at; /* string */
+    /**
+    * Список категорий, в которые входит событие
+    */
+    public $categories; /* array[CategoryInclude] */
+    /**
+    * Место проведения события
+    */
+    public $location; /* LocationInclude */
+    /**
+    * URL картинки события
+    */
+    public $poster_image_url; /* string */
+    /**
+    * Список настроек события (например, мультианкета)
+    */
+    public $properties; /* array[string] */
+    /**
+    * Объект с дополнительными полями, специфичными для данной организации
+    */
+    public $custom; /* object */
+    /**
+    * Статус доступа к событию
+    */
+    public $access_status; /* string */
 
-  public function __construct(array $data = null) {
+    public function __construct(array $data = null) {
     
-    if(isset($data["ticket_types"])) {
-      $this->ticket_types = $data["ticket_types"];
+        if(isset($data["ticket_types"])) {
+            $this->ticket_types = $data["ticket_types"];
+        }
+    
+    
+        if(isset($data["name"])) {
+            $this->name = $data["name"];
+        }
+    
+    
+        if(isset($data["description_short"])) {
+            $this->description_short = $data["description_short"];
+        }
+    
+    
+        if(isset($data["description_html"])) {
+            $this->description_html = $data["description_html"];
+        }
+    
+    
+        if(isset($data["starts_at"])) {
+            $this->starts_at = $data["starts_at"];
+        }
+    
+    
+        if(isset($data["ends_at"])) {
+            $this->ends_at = $data["ends_at"];
+        }
+    
+    
+        if(isset($data["categories"])) {
+            $this->categories = $data["categories"];
+        }
+    
+    
+        if(isset($data["location"])) {
+            $this->location = $data["location"];
+        }
+    
+    
+        if(isset($data["poster_image_url"])) {
+            $this->poster_image_url = $data["poster_image_url"];
+        }
+    
+    
+        if(isset($data["properties"])) {
+            $this->properties = $data["properties"];
+        }
+    
+    
+        if(isset($data["custom"])) {
+            $this->custom = $data["custom"];
+        }
+    
+    
+        if(isset($data["access_status"])) {
+            $this->access_status = $data["access_status"];
+        }
+    
     }
-    
-    
-    if(isset($data["name"])) {
-      $this->name = $data["name"];
-    }
-    
-    
-    if(isset($data["description_short"])) {
-      $this->description_short = $data["description_short"];
-    }
-    
-    
-    if(isset($data["description_html"])) {
-      $this->description_html = $data["description_html"];
-    }
-    
-    
-    if(isset($data["starts_at"])) {
-      $this->starts_at = $data["starts_at"];
-    }
-    
-    
-    if(isset($data["ends_at"])) {
-      $this->ends_at = $data["ends_at"];
-    }
-    
-    
-    if(isset($data["categories"])) {
-      $this->categories = $data["categories"];
-    }
-    
-    
-    if(isset($data["location"])) {
-      $this->location = $data["location"];
-    }
-    
-    
-    if(isset($data["poster_image_url"])) {
-      $this->poster_image_url = $data["poster_image_url"];
-    }
-    
-    
-    if(isset($data["properties"])) {
-      $this->properties = $data["properties"];
-    }
-    
-    
-    if(isset($data["custom"])) {
-      $this->custom = $data["custom"];
-    }
-    
-    
-    if(isset($data["access_status"])) {
-      $this->access_status = $data["access_status"];
-    }
-    
-  }
 
-  public function offsetExists($offset) {
-    return isset($this->$offset);
-  }
+    public function offsetExists($offset) {
+        return isset($this->$offset);
+    }
 
-  public function offsetGet($offset) {
-    return $this->$offset;
-  }
+    public function offsetGet($offset) {
+        return $this->$offset;
+    }
 
-  public function offsetSet($offset, $value) {
-    $this->$offset = $value;
-  }
+    public function offsetSet($offset, $value) {
+        $this->$offset = $value;
+    }
 
-  public function offsetUnset($offset) {
-    unset($this->$offset);
-  }
+    public function offsetUnset($offset) {
+        unset($this->$offset);
+    }
 }

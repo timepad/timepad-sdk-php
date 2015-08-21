@@ -20,19 +20,19 @@ namespace TimepadApi;
 use \Exception;
 
 class APIClientException extends Exception {
-  protected $response, $response_info;
+    protected $response, $response_info;
 
-  public function __construct($message="", $code=0, $response_info=null, $response=null) {
-    parent::__construct($message, $code);
-    $this->response_info = $response_info;
-    $this->response = $response;
-  }
+    public function __construct($message = "", $code = 0, $response_info = null, $response = null) {
+        parent::__construct($message, $code);
+        $this->response_info = $response_info;
+        $this->response = json_decode($response)->response_status;
+    }
 
-  public function getResponse() {
-    return $this->response;
-  }
+    public function getResponse() {
+        return $this->response;
+    }
 
-  public function getResponseInfo() {
-    return $this->response_info;
-  }
+    public function getResponseInfo() {
+        return $this->response_info;
+    }
 }

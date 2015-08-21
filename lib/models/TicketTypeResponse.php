@@ -27,195 +27,195 @@ namespace TimepadApi\models;
 use \ArrayAccess;
 
 class TicketTypeResponse implements ArrayAccess {
-  static $swaggerTypes = array(
-      'id' => 'int',
-      'name' => 'string',
-      'buy_amount_min' => 'float',
-      'buy_amount_max' => 'float',
-      'price' => 'float',
-      'is_promocode_locked' => 'bool',
-      'remaining' => 'int',
-      'sale_ends_at' => 'DateTime',
-      'public_key' => 'string',
-      'is_active' => 'bool',
-      'ad_partner_profit' => 'float',
-      'sold' => 'float',
-      'attended' => 'float',
-      'limit' => 'float',
-      'status' => 'string'
-  );
+    static $swaggerTypes = array(
+        'id' => 'int',
+        'name' => 'string',
+        'buy_amount_min' => 'float',
+        'buy_amount_max' => 'float',
+        'price' => 'float',
+        'is_promocode_locked' => 'bool',
+        'remaining' => 'int',
+        'sale_ends_at' => 'DateTime',
+        'public_key' => 'string',
+        'is_active' => 'bool',
+        'ad_partner_profit' => 'float',
+        'sold' => 'float',
+        'attended' => 'float',
+        'limit' => 'float',
+        'status' => 'string'
+    );
 
-  static $attributeMap = array(
-      'id' => 'id',
-      'name' => 'name',
-      'buy_amount_min' => 'buy_amount_min',
-      'buy_amount_max' => 'buy_amount_max',
-      'price' => 'price',
-      'is_promocode_locked' => 'is_promocode_locked',
-      'remaining' => 'remaining',
-      'sale_ends_at' => 'sale_ends_at',
-      'public_key' => 'public_key',
-      'is_active' => 'is_active',
-      'ad_partner_profit' => 'ad_partner_profit',
-      'sold' => 'sold',
-      'attended' => 'attended',
-      'limit' => 'limit',
-      'status' => 'status'
-  );
+    static $attributeMap = array(
+        'id' => 'id',
+        'name' => 'name',
+        'buy_amount_min' => 'buy_amount_min',
+        'buy_amount_max' => 'buy_amount_max',
+        'price' => 'price',
+        'is_promocode_locked' => 'is_promocode_locked',
+        'remaining' => 'remaining',
+        'sale_ends_at' => 'sale_ends_at',
+        'public_key' => 'public_key',
+        'is_active' => 'is_active',
+        'ad_partner_profit' => 'ad_partner_profit',
+        'sold' => 'sold',
+        'attended' => 'attended',
+        'limit' => 'limit',
+        'status' => 'status'
+    );
 
-  
-  /**
-  * Уникальный номер типа билета
-  */
-  public $id; /* int */
-  /**
-  * Название типа билета
-  */
-  public $name; /* string */
-  /**
-  * Минимальное количество билетов в одной покупке
-  */
-  public $buy_amount_min; /* float */
-  /**
-  * Максимальное количество билетов в одной покупке
-  */
-  public $buy_amount_max; /* float */
-  /**
-  * Цена билета
-  */
-  public $price; /* float */
-  /**
-  * Закрыт ли этот тип введённым промокодом
-  */
-  public $is_promocode_locked; /* bool */
-  /**
-  * Сколько билетов осталось
-  */
-  public $remaining; /* int */
-  /**
-  * Дата окончания продажи этого типа билета
-  */
-  public $sale_ends_at; /* DateTime */
-  /**
-  * Публичный ключ для расшифровки QR-кода билета этого типа
-  */
-  public $public_key; /* string */
-  /**
-  * Активность типа билета
-  */
-  public $is_active; /* bool */
-  /**
-  * Партнёрская прибыль
-  */
-  public $ad_partner_profit; /* float */
-  /**
-  * Количество проданных билетов
-  */
-  public $sold; /* float */
-  /**
-  * Количество посетивших людей
-  */
-  public $attended; /* float */
-  /**
-  * Ограничение на количество билетов в этой категории
-  */
-  public $limit; /* float */
-  /**
-  * Статус категории билета
-  */
-  public $status; /* string */
+    
+    /**
+    * Уникальный номер типа билета
+    */
+    public $id; /* int */
+    /**
+    * Название типа билета
+    */
+    public $name; /* string */
+    /**
+    * Минимальное количество билетов в одной покупке
+    */
+    public $buy_amount_min; /* float */
+    /**
+    * Максимальное количество билетов в одной покупке
+    */
+    public $buy_amount_max; /* float */
+    /**
+    * Цена билета
+    */
+    public $price; /* float */
+    /**
+    * Закрыт ли этот тип введённым промокодом
+    */
+    public $is_promocode_locked; /* bool */
+    /**
+    * Сколько билетов осталось
+    */
+    public $remaining; /* int */
+    /**
+    * Дата окончания продажи этого типа билета
+    */
+    public $sale_ends_at; /* DateTime */
+    /**
+    * Публичный ключ для расшифровки QR-кода билета этого типа
+    */
+    public $public_key; /* string */
+    /**
+    * Активность типа билета
+    */
+    public $is_active; /* bool */
+    /**
+    * Партнёрская прибыль
+    */
+    public $ad_partner_profit; /* float */
+    /**
+    * Количество проданных билетов
+    */
+    public $sold; /* float */
+    /**
+    * Количество посетивших людей
+    */
+    public $attended; /* float */
+    /**
+    * Ограничение на количество билетов в этой категории
+    */
+    public $limit; /* float */
+    /**
+    * Статус категории билета
+    */
+    public $status; /* string */
 
-  public function __construct(array $data = null) {
+    public function __construct(array $data = null) {
     
-    if(isset($data["id"])) {
-      $this->id = $data["id"];
+        if(isset($data["id"])) {
+            $this->id = $data["id"];
+        }
+    
+    
+        if(isset($data["name"])) {
+            $this->name = $data["name"];
+        }
+    
+    
+        if(isset($data["buy_amount_min"])) {
+            $this->buy_amount_min = $data["buy_amount_min"];
+        }
+    
+    
+        if(isset($data["buy_amount_max"])) {
+            $this->buy_amount_max = $data["buy_amount_max"];
+        }
+    
+    
+        if(isset($data["price"])) {
+            $this->price = $data["price"];
+        }
+    
+    
+        if(isset($data["is_promocode_locked"])) {
+            $this->is_promocode_locked = $data["is_promocode_locked"];
+        }
+    
+    
+        if(isset($data["remaining"])) {
+            $this->remaining = $data["remaining"];
+        }
+    
+    
+        if(isset($data["sale_ends_at"])) {
+            $this->sale_ends_at = $data["sale_ends_at"];
+        }
+    
+    
+        if(isset($data["public_key"])) {
+            $this->public_key = $data["public_key"];
+        }
+    
+    
+        if(isset($data["is_active"])) {
+            $this->is_active = $data["is_active"];
+        }
+    
+    
+        if(isset($data["ad_partner_profit"])) {
+            $this->ad_partner_profit = $data["ad_partner_profit"];
+        }
+    
+    
+        if(isset($data["sold"])) {
+            $this->sold = $data["sold"];
+        }
+    
+    
+        if(isset($data["attended"])) {
+            $this->attended = $data["attended"];
+        }
+    
+    
+        if(isset($data["limit"])) {
+            $this->limit = $data["limit"];
+        }
+    
+    
+        if(isset($data["status"])) {
+            $this->status = $data["status"];
+        }
+    
     }
-    
-    
-    if(isset($data["name"])) {
-      $this->name = $data["name"];
-    }
-    
-    
-    if(isset($data["buy_amount_min"])) {
-      $this->buy_amount_min = $data["buy_amount_min"];
-    }
-    
-    
-    if(isset($data["buy_amount_max"])) {
-      $this->buy_amount_max = $data["buy_amount_max"];
-    }
-    
-    
-    if(isset($data["price"])) {
-      $this->price = $data["price"];
-    }
-    
-    
-    if(isset($data["is_promocode_locked"])) {
-      $this->is_promocode_locked = $data["is_promocode_locked"];
-    }
-    
-    
-    if(isset($data["remaining"])) {
-      $this->remaining = $data["remaining"];
-    }
-    
-    
-    if(isset($data["sale_ends_at"])) {
-      $this->sale_ends_at = $data["sale_ends_at"];
-    }
-    
-    
-    if(isset($data["public_key"])) {
-      $this->public_key = $data["public_key"];
-    }
-    
-    
-    if(isset($data["is_active"])) {
-      $this->is_active = $data["is_active"];
-    }
-    
-    
-    if(isset($data["ad_partner_profit"])) {
-      $this->ad_partner_profit = $data["ad_partner_profit"];
-    }
-    
-    
-    if(isset($data["sold"])) {
-      $this->sold = $data["sold"];
-    }
-    
-    
-    if(isset($data["attended"])) {
-      $this->attended = $data["attended"];
-    }
-    
-    
-    if(isset($data["limit"])) {
-      $this->limit = $data["limit"];
-    }
-    
-    
-    if(isset($data["status"])) {
-      $this->status = $data["status"];
-    }
-    
-  }
 
-  public function offsetExists($offset) {
-    return isset($this->$offset);
-  }
+    public function offsetExists($offset) {
+        return isset($this->$offset);
+    }
 
-  public function offsetGet($offset) {
-    return $this->$offset;
-  }
+    public function offsetGet($offset) {
+        return $this->$offset;
+    }
 
-  public function offsetSet($offset, $value) {
-    $this->$offset = $value;
-  }
+    public function offsetSet($offset, $value) {
+        $this->$offset = $value;
+    }
 
-  public function offsetUnset($offset) {
-    unset($this->$offset);
-  }
+    public function offsetUnset($offset) {
+        unset($this->$offset);
+    }
 }

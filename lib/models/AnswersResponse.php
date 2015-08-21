@@ -27,33 +27,33 @@ namespace TimepadApi\models;
 use \ArrayAccess;
 
 class AnswersResponse implements ArrayAccess {
-  static $swaggerTypes = array(
-      
-  );
+    static $swaggerTypes = array(
+        
+    );
 
-  static $attributeMap = array(
-      
-  );
+    static $attributeMap = array(
+        
+    );
 
-  
-
-  public function __construct(array $data = null) {
     
-  }
 
-  public function offsetExists($offset) {
-    return isset($this->$offset);
-  }
+    public function __construct(array $data = null) {
+    
+    }
 
-  public function offsetGet($offset) {
-    return $this->$offset;
-  }
+    public function offsetExists($offset) {
+        return isset($this->$offset);
+    }
 
-  public function offsetSet($offset, $value) {
-    $this->$offset = $value;
-  }
+    public function offsetGet($offset) {
+        return $this->$offset;
+    }
 
-  public function offsetUnset($offset) {
-    unset($this->$offset);
-  }
+    public function offsetSet($offset, $value) {
+        $this->$offset = $value;
+    }
+
+    public function offsetUnset($offset) {
+        unset($this->$offset);
+    }
 }

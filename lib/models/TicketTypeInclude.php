@@ -27,63 +27,63 @@ namespace TimepadApi\models;
 use \ArrayAccess;
 
 class TicketTypeInclude implements ArrayAccess {
-  static $swaggerTypes = array(
-      'price' => 'int',
-      'name' => 'string',
-      'description' => 'string'
-  );
+    static $swaggerTypes = array(
+        'price' => 'int',
+        'name' => 'string',
+        'description' => 'string'
+    );
 
-  static $attributeMap = array(
-      'price' => 'price',
-      'name' => 'name',
-      'description' => 'description'
-  );
+    static $attributeMap = array(
+        'price' => 'price',
+        'name' => 'name',
+        'description' => 'description'
+    );
 
-  
-  /**
-  * Цена билета
-  */
-  public $price; /* int */
-  /**
-  * Название билета
-  */
-  public $name; /* string */
-  /**
-  * Описание билета
-  */
-  public $description; /* string */
-
-  public function __construct(array $data = null) {
     
-    if(isset($data["price"])) {
-      $this->price = $data["price"];
+    /**
+    * Цена билета
+    */
+    public $price; /* int */
+    /**
+    * Название билета
+    */
+    public $name; /* string */
+    /**
+    * Описание билета
+    */
+    public $description; /* string */
+
+    public function __construct(array $data = null) {
+    
+        if(isset($data["price"])) {
+            $this->price = $data["price"];
+        }
+    
+    
+        if(isset($data["name"])) {
+            $this->name = $data["name"];
+        }
+    
+    
+        if(isset($data["description"])) {
+            $this->description = $data["description"];
+        }
+    
     }
-    
-    
-    if(isset($data["name"])) {
-      $this->name = $data["name"];
+
+    public function offsetExists($offset) {
+        return isset($this->$offset);
     }
-    
-    
-    if(isset($data["description"])) {
-      $this->description = $data["description"];
+
+    public function offsetGet($offset) {
+        return $this->$offset;
     }
-    
-  }
 
-  public function offsetExists($offset) {
-    return isset($this->$offset);
-  }
+    public function offsetSet($offset, $value) {
+        $this->$offset = $value;
+    }
 
-  public function offsetGet($offset) {
-    return $this->$offset;
-  }
-
-  public function offsetSet($offset, $value) {
-    $this->$offset = $value;
-  }
-
-  public function offsetUnset($offset) {
-    unset($this->$offset);
-  }
+    public function offsetUnset($offset) {
+        unset($this->$offset);
+    }
 }

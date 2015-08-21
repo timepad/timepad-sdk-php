@@ -27,107 +27,107 @@ namespace TimepadApi\models;
 use \ArrayAccess;
 
 class OrganizationResponse implements ArrayAccess {
-  static $swaggerTypes = array(
-      'id' => 'int',
-      'name' => 'string',
-      'description_html' => 'string',
-      'url' => 'string',
-      'logo_image' => 'ImageResponse',
-      'subdomain' => 'string',
-      'permissions' => 'array[string]'
-  );
+    static $swaggerTypes = array(
+        'id' => 'int',
+        'name' => 'string',
+        'description_html' => 'string',
+        'url' => 'string',
+        'logo_image' => 'ImageResponse',
+        'subdomain' => 'string',
+        'permissions' => 'array[string]'
+    );
 
-  static $attributeMap = array(
-      'id' => 'id',
-      'name' => 'name',
-      'description_html' => 'description_html',
-      'url' => 'url',
-      'logo_image' => 'logo_image',
-      'subdomain' => 'subdomain',
-      'permissions' => 'permissions'
-  );
+    static $attributeMap = array(
+        'id' => 'id',
+        'name' => 'name',
+        'description_html' => 'description_html',
+        'url' => 'url',
+        'logo_image' => 'logo_image',
+        'subdomain' => 'subdomain',
+        'permissions' => 'permissions'
+    );
 
-  
-  /**
-  * Уникальный номер организации
-  */
-  public $id; /* int */
-  /**
-  * Название организации
-  */
-  public $name; /* string */
-  /**
-  * Описание организации
-  */
-  public $description_html; /* string */
-  /**
-  * URL организации на сайте
-  */
-  public $url; /* string */
-  /**
-  * Логотип
-  */
-  public $logo_image; /* ImageResponse */
-  /**
-  * Уникальное название организации - часть URL
-  */
-  public $subdomain; /* string */
-  /**
-  * Настройки доступов для организаций
-  */
-  public $permissions; /* array[string] */
+    
+    /**
+    * Уникальный номер организации
+    */
+    public $id; /* int */
+    /**
+    * Название организации
+    */
+    public $name; /* string */
+    /**
+    * Описание организации
+    */
+    public $description_html; /* string */
+    /**
+    * URL организации на сайте
+    */
+    public $url; /* string */
+    /**
+    * Логотип
+    */
+    public $logo_image; /* ImageResponse */
+    /**
+    * Уникальное название организации - часть URL
+    */
+    public $subdomain; /* string */
+    /**
+    * Настройки доступов для организаций
+    */
+    public $permissions; /* array[string] */
 
-  public function __construct(array $data = null) {
+    public function __construct(array $data = null) {
     
-    if(isset($data["id"])) {
-      $this->id = $data["id"];
+        if(isset($data["id"])) {
+            $this->id = $data["id"];
+        }
+    
+    
+        if(isset($data["name"])) {
+            $this->name = $data["name"];
+        }
+    
+    
+        if(isset($data["description_html"])) {
+            $this->description_html = $data["description_html"];
+        }
+    
+    
+        if(isset($data["url"])) {
+            $this->url = $data["url"];
+        }
+    
+    
+        if(isset($data["logo_image"])) {
+            $this->logo_image = $data["logo_image"];
+        }
+    
+    
+        if(isset($data["subdomain"])) {
+            $this->subdomain = $data["subdomain"];
+        }
+    
+    
+        if(isset($data["permissions"])) {
+            $this->permissions = $data["permissions"];
+        }
+    
     }
-    
-    
-    if(isset($data["name"])) {
-      $this->name = $data["name"];
-    }
-    
-    
-    if(isset($data["description_html"])) {
-      $this->description_html = $data["description_html"];
-    }
-    
-    
-    if(isset($data["url"])) {
-      $this->url = $data["url"];
-    }
-    
-    
-    if(isset($data["logo_image"])) {
-      $this->logo_image = $data["logo_image"];
-    }
-    
-    
-    if(isset($data["subdomain"])) {
-      $this->subdomain = $data["subdomain"];
-    }
-    
-    
-    if(isset($data["permissions"])) {
-      $this->permissions = $data["permissions"];
-    }
-    
-  }
 
-  public function offsetExists($offset) {
-    return isset($this->$offset);
-  }
+    public function offsetExists($offset) {
+        return isset($this->$offset);
+    }
 
-  public function offsetGet($offset) {
-    return $this->$offset;
-  }
+    public function offsetGet($offset) {
+        return $this->$offset;
+    }
 
-  public function offsetSet($offset, $value) {
-    $this->$offset = $value;
-  }
+    public function offsetSet($offset, $value) {
+        $this->$offset = $value;
+    }
 
-  public function offsetUnset($offset) {
-    unset($this->$offset);
-  }
+    public function offsetUnset($offset) {
+        unset($this->$offset);
+    }
 }

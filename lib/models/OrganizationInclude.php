@@ -27,52 +27,52 @@ namespace TimepadApi\models;
 use \ArrayAccess;
 
 class OrganizationInclude implements ArrayAccess {
-  static $swaggerTypes = array(
-      'id' => 'int',
-      'subdomain' => 'string'
-  );
+    static $swaggerTypes = array(
+        'id' => 'int',
+        'subdomain' => 'string'
+    );
 
-  static $attributeMap = array(
-      'id' => 'id',
-      'subdomain' => 'subdomain'
-  );
+    static $attributeMap = array(
+        'id' => 'id',
+        'subdomain' => 'subdomain'
+    );
 
-  
-  /**
-  * ID организации в Таймпаде
-  */
-  public $id; /* int */
-  /**
-  * URL-идентификатор организации в Таймпаде (***.timepad.ru)
-  */
-  public $subdomain; /* string */
-
-  public function __construct(array $data = null) {
     
-    if(isset($data["id"])) {
-      $this->id = $data["id"];
+    /**
+    * ID организации в Таймпаде
+    */
+    public $id; /* int */
+    /**
+    * URL-идентификатор организации в Таймпаде (***.timepad.ru)
+    */
+    public $subdomain; /* string */
+
+    public function __construct(array $data = null) {
+    
+        if(isset($data["id"])) {
+            $this->id = $data["id"];
+        }
+    
+    
+        if(isset($data["subdomain"])) {
+            $this->subdomain = $data["subdomain"];
+        }
+    
     }
-    
-    
-    if(isset($data["subdomain"])) {
-      $this->subdomain = $data["subdomain"];
+
+    public function offsetExists($offset) {
+        return isset($this->$offset);
     }
-    
-  }
 
-  public function offsetExists($offset) {
-    return isset($this->$offset);
-  }
+    public function offsetGet($offset) {
+        return $this->$offset;
+    }
 
-  public function offsetGet($offset) {
-    return $this->$offset;
-  }
+    public function offsetSet($offset, $value) {
+        $this->$offset = $value;
+    }
 
-  public function offsetSet($offset, $value) {
-    $this->$offset = $value;
-  }
-
-  public function offsetUnset($offset) {
-    unset($this->$offset);
-  }
+    public function offsetUnset($offset) {
+        unset($this->$offset);
+    }
 }

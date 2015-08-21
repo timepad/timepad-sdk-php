@@ -27,63 +27,63 @@ namespace TimepadApi\models;
 use \ArrayAccess;
 
 class EditOrderVisitorsIncludeApiRequest implements ArrayAccess {
-  static $swaggerTypes = array(
-      'id' => 'int',
-      'answers' => 'object',
-      'attendance' => 'EditOrderAttendanceApiRequest'
-  );
+    static $swaggerTypes = array(
+        'id' => 'int',
+        'answers' => 'object',
+        'attendance' => 'EditOrderAttendanceApiRequest'
+    );
 
-  static $attributeMap = array(
-      'id' => 'id',
-      'answers' => 'answers',
-      'attendance' => 'attendance'
-  );
+    static $attributeMap = array(
+        'id' => 'id',
+        'answers' => 'answers',
+        'attendance' => 'attendance'
+    );
 
-  
-  /**
-  * Id регистрации
-  */
-  public $id; /* int */
-  /**
-  * Ответы на анкету регистрации
-  */
-  public $answers; /* object */
-  /**
-  * Посещение события
-  */
-  public $attendance; /* EditOrderAttendanceApiRequest */
-
-  public function __construct(array $data = null) {
     
-    if(isset($data["id"])) {
-      $this->id = $data["id"];
+    /**
+    * Id регистрации
+    */
+    public $id; /* int */
+    /**
+    * Ответы на анкету регистрации
+    */
+    public $answers; /* object */
+    /**
+    * Посещение события
+    */
+    public $attendance; /* EditOrderAttendanceApiRequest */
+
+    public function __construct(array $data = null) {
+    
+        if(isset($data["id"])) {
+            $this->id = $data["id"];
+        }
+    
+    
+        if(isset($data["answers"])) {
+            $this->answers = $data["answers"];
+        }
+    
+    
+        if(isset($data["attendance"])) {
+            $this->attendance = $data["attendance"];
+        }
+    
     }
-    
-    
-    if(isset($data["answers"])) {
-      $this->answers = $data["answers"];
+
+    public function offsetExists($offset) {
+        return isset($this->$offset);
     }
-    
-    
-    if(isset($data["attendance"])) {
-      $this->attendance = $data["attendance"];
+
+    public function offsetGet($offset) {
+        return $this->$offset;
     }
-    
-  }
 
-  public function offsetExists($offset) {
-    return isset($this->$offset);
-  }
+    public function offsetSet($offset, $value) {
+        $this->$offset = $value;
+    }
 
-  public function offsetGet($offset) {
-    return $this->$offset;
-  }
-
-  public function offsetSet($offset, $value) {
-    $this->$offset = $value;
-  }
-
-  public function offsetUnset($offset) {
-    unset($this->$offset);
-  }
+    public function offsetUnset($offset) {
+        unset($this->$offset);
+    }
 }

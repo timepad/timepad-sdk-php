@@ -27,52 +27,52 @@ namespace TimepadApi\models;
 use \ArrayAccess;
 
 class LocationInclude implements ArrayAccess {
-  static $swaggerTypes = array(
-      'city' => 'string',
-      'address' => 'string'
-  );
+    static $swaggerTypes = array(
+        'city' => 'string',
+        'address' => 'string'
+    );
 
-  static $attributeMap = array(
-      'city' => 'city',
-      'address' => 'address'
-  );
+    static $attributeMap = array(
+        'city' => 'city',
+        'address' => 'address'
+    );
 
-  
-  /**
-  * Город проведения события
-  */
-  public $city; /* string */
-  /**
-  * Адрес проведения события
-  */
-  public $address; /* string */
-
-  public function __construct(array $data = null) {
     
-    if(isset($data["city"])) {
-      $this->city = $data["city"];
+    /**
+    * Город проведения события
+    */
+    public $city; /* string */
+    /**
+    * Адрес проведения события
+    */
+    public $address; /* string */
+
+    public function __construct(array $data = null) {
+    
+        if(isset($data["city"])) {
+            $this->city = $data["city"];
+        }
+    
+    
+        if(isset($data["address"])) {
+            $this->address = $data["address"];
+        }
+    
     }
-    
-    
-    if(isset($data["address"])) {
-      $this->address = $data["address"];
+
+    public function offsetExists($offset) {
+        return isset($this->$offset);
     }
-    
-  }
 
-  public function offsetExists($offset) {
-    return isset($this->$offset);
-  }
+    public function offsetGet($offset) {
+        return $this->$offset;
+    }
 
-  public function offsetGet($offset) {
-    return $this->$offset;
-  }
+    public function offsetSet($offset, $value) {
+        $this->$offset = $value;
+    }
 
-  public function offsetSet($offset, $value) {
-    $this->$offset = $value;
-  }
-
-  public function offsetUnset($offset) {
-    unset($this->$offset);
-  }
+    public function offsetUnset($offset) {
+        unset($this->$offset);
+    }
 }

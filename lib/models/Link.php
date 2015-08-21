@@ -27,74 +27,74 @@ namespace TimepadApi\models;
 use \ArrayAccess;
 
 class Link implements ArrayAccess {
-  static $swaggerTypes = array(
-      'name' => 'string',
-      'title' => 'string',
-      'href' => 'string',
-      'templated' => 'bool'
-  );
+    static $swaggerTypes = array(
+        'name' => 'string',
+        'title' => 'string',
+        'href' => 'string',
+        'templated' => 'bool'
+    );
 
-  static $attributeMap = array(
-      'name' => 'name',
-      'title' => 'title',
-      'href' => 'href',
-      'templated' => 'templated'
-  );
+    static $attributeMap = array(
+        'name' => 'name',
+        'title' => 'title',
+        'href' => 'href',
+        'templated' => 'templated'
+    );
 
-  
-  /**
-  * Машиночитаемое описание ссылки (для оплат - строковый id платёжки)
-  */
-  public $name; /* string */
-  /**
-  * Человекочитаемое описание ссылки (для оплат - название платёжки)
-  */
-  public $title; /* string */
-  /**
-  * Ссылка
-  */
-  public $href; /* string */
-  /**
-  * Признак того, что ссылка - шаблон. У curies - true, в остальных случаях не присутствует
-  */
-  public $templated; /* bool */
-
-  public function __construct(array $data = null) {
     
-    if(isset($data["name"])) {
-      $this->name = $data["name"];
+    /**
+    * Машиночитаемое описание ссылки (для оплат - строковый id платёжки)
+    */
+    public $name; /* string */
+    /**
+    * Человекочитаемое описание ссылки (для оплат - название платёжки)
+    */
+    public $title; /* string */
+    /**
+    * Ссылка
+    */
+    public $href; /* string */
+    /**
+    * Признак того, что ссылка - шаблон. У curies - true, в остальных случаях не присутствует
+    */
+    public $templated; /* bool */
+
+    public function __construct(array $data = null) {
+    
+        if(isset($data["name"])) {
+            $this->name = $data["name"];
+        }
+    
+    
+        if(isset($data["title"])) {
+            $this->title = $data["title"];
+        }
+    
+    
+        if(isset($data["href"])) {
+            $this->href = $data["href"];
+        }
+    
+    
+        if(isset($data["templated"])) {
+            $this->templated = $data["templated"];
+        }
+    
     }
-    
-    
-    if(isset($data["title"])) {
-      $this->title = $data["title"];
+
+    public function offsetExists($offset) {
+        return isset($this->$offset);
     }
-    
-    
-    if(isset($data["href"])) {
-      $this->href = $data["href"];
+
+    public function offsetGet($offset) {
+        return $this->$offset;
     }
-    
-    
-    if(isset($data["templated"])) {
-      $this->templated = $data["templated"];
+
+    public function offsetSet($offset, $value) {
+        $this->$offset = $value;
     }
-    
-  }
 
-  public function offsetExists($offset) {
-    return isset($this->$offset);
-  }
-
-  public function offsetGet($offset) {
-    return $this->$offset;
-  }
-
-  public function offsetSet($offset, $value) {
-    $this->$offset = $value;
-  }
-
-  public function offsetUnset($offset) {
-    unset($this->$offset);
-  }
+    public function offsetUnset($offset) {
+        unset($this->$offset);
+    }
 }

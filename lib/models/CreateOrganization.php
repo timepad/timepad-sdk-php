@@ -27,63 +27,63 @@ namespace TimepadApi\models;
 use \ArrayAccess;
 
 class CreateOrganization implements ArrayAccess {
-  static $swaggerTypes = array(
-      'name' => 'string',
-      'subdomain' => 'string',
-      'phone' => 'string'
-  );
+    static $swaggerTypes = array(
+        'name' => 'string',
+        'subdomain' => 'string',
+        'phone' => 'string'
+    );
 
-  static $attributeMap = array(
-      'name' => 'name',
-      'subdomain' => 'subdomain',
-      'phone' => 'phone'
-  );
+    static $attributeMap = array(
+        'name' => 'name',
+        'subdomain' => 'subdomain',
+        'phone' => 'phone'
+    );
 
-  
-  /**
-  * Название организации
-  */
-  public $name; /* string */
-  /**
-  * Уникальное название организации - часть URL
-  */
-  public $subdomain; /* string */
-  /**
-  * Телефон организатора
-  */
-  public $phone; /* string */
-
-  public function __construct(array $data = null) {
     
-    if(isset($data["name"])) {
-      $this->name = $data["name"];
+    /**
+    * Название организации
+    */
+    public $name; /* string */
+    /**
+    * Уникальное название организации - часть URL
+    */
+    public $subdomain; /* string */
+    /**
+    * Телефон организатора
+    */
+    public $phone; /* string */
+
+    public function __construct(array $data = null) {
+    
+        if(isset($data["name"])) {
+            $this->name = $data["name"];
+        }
+    
+    
+        if(isset($data["subdomain"])) {
+            $this->subdomain = $data["subdomain"];
+        }
+    
+    
+        if(isset($data["phone"])) {
+            $this->phone = $data["phone"];
+        }
+    
     }
-    
-    
-    if(isset($data["subdomain"])) {
-      $this->subdomain = $data["subdomain"];
+
+    public function offsetExists($offset) {
+        return isset($this->$offset);
     }
-    
-    
-    if(isset($data["phone"])) {
-      $this->phone = $data["phone"];
+
+    public function offsetGet($offset) {
+        return $this->$offset;
     }
-    
-  }
 
-  public function offsetExists($offset) {
-    return isset($this->$offset);
-  }
+    public function offsetSet($offset, $value) {
+        $this->$offset = $value;
+    }
 
-  public function offsetGet($offset) {
-    return $this->$offset;
-  }
-
-  public function offsetSet($offset, $value) {
-    $this->$offset = $value;
-  }
-
-  public function offsetUnset($offset) {
-    unset($this->$offset);
-  }
+    public function offsetUnset($offset) {
+        unset($this->$offset);
+    }
 }

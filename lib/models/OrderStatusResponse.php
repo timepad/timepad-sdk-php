@@ -27,52 +27,52 @@ namespace TimepadApi\models;
 use \ArrayAccess;
 
 class OrderStatusResponse implements ArrayAccess {
-  static $swaggerTypes = array(
-      'name' => 'string',
-      'title' => 'string'
-  );
+    static $swaggerTypes = array(
+        'name' => 'string',
+        'title' => 'string'
+    );
 
-  static $attributeMap = array(
-      'name' => 'name',
-      'title' => 'title'
-  );
+    static $attributeMap = array(
+        'name' => 'name',
+        'title' => 'title'
+    );
 
-  
-  /**
-  * Идентификатор статуса
-  */
-  public $name; /* string */
-  /**
-  * Человекочитаемый статус заказа
-  */
-  public $title; /* string */
-
-  public function __construct(array $data = null) {
     
-    if(isset($data["name"])) {
-      $this->name = $data["name"];
+    /**
+    * Идентификатор статуса
+    */
+    public $name; /* string */
+    /**
+    * Человекочитаемый статус заказа
+    */
+    public $title; /* string */
+
+    public function __construct(array $data = null) {
+    
+        if(isset($data["name"])) {
+            $this->name = $data["name"];
+        }
+    
+    
+        if(isset($data["title"])) {
+            $this->title = $data["title"];
+        }
+    
     }
-    
-    
-    if(isset($data["title"])) {
-      $this->title = $data["title"];
+
+    public function offsetExists($offset) {
+        return isset($this->$offset);
     }
-    
-  }
 
-  public function offsetExists($offset) {
-    return isset($this->$offset);
-  }
+    public function offsetGet($offset) {
+        return $this->$offset;
+    }
 
-  public function offsetGet($offset) {
-    return $this->$offset;
-  }
+    public function offsetSet($offset, $value) {
+        $this->$offset = $value;
+    }
 
-  public function offsetSet($offset, $value) {
-    $this->$offset = $value;
-  }
-
-  public function offsetUnset($offset) {
-    unset($this->$offset);
-  }
+    public function offsetUnset($offset) {
+        unset($this->$offset);
+    }
 }

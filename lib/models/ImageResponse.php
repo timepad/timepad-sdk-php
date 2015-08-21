@@ -27,52 +27,52 @@ namespace TimepadApi\models;
 use \ArrayAccess;
 
 class ImageResponse implements ArrayAccess {
-  static $swaggerTypes = array(
-      'default_url' => 'string',
-      'uploadcare_url' => 'string'
-  );
+    static $swaggerTypes = array(
+        'default_url' => 'string',
+        'uploadcare_url' => 'string'
+    );
 
-  static $attributeMap = array(
-      'default_url' => 'default_url',
-      'uploadcare_url' => 'uploadcare_url'
-  );
+    static $attributeMap = array(
+        'default_url' => 'default_url',
+        'uploadcare_url' => 'uploadcare_url'
+    );
 
-  
-  /**
-  * Картинка стандартного размера
-  */
-  public $default_url; /* string */
-  /**
-  * Адрес картинки на uploadcare, к которому можно прибавлять запросы в формате uploadcare
-  */
-  public $uploadcare_url; /* string */
-
-  public function __construct(array $data = null) {
     
-    if(isset($data["default_url"])) {
-      $this->default_url = $data["default_url"];
+    /**
+    * Картинка стандартного размера
+    */
+    public $default_url; /* string */
+    /**
+    * Адрес картинки на uploadcare, к которому можно прибавлять запросы в формате uploadcare
+    */
+    public $uploadcare_url; /* string */
+
+    public function __construct(array $data = null) {
+    
+        if(isset($data["default_url"])) {
+            $this->default_url = $data["default_url"];
+        }
+    
+    
+        if(isset($data["uploadcare_url"])) {
+            $this->uploadcare_url = $data["uploadcare_url"];
+        }
+    
     }
-    
-    
-    if(isset($data["uploadcare_url"])) {
-      $this->uploadcare_url = $data["uploadcare_url"];
+
+    public function offsetExists($offset) {
+        return isset($this->$offset);
     }
-    
-  }
 
-  public function offsetExists($offset) {
-    return isset($this->$offset);
-  }
+    public function offsetGet($offset) {
+        return $this->$offset;
+    }
 
-  public function offsetGet($offset) {
-    return $this->$offset;
-  }
+    public function offsetSet($offset, $value) {
+        $this->$offset = $value;
+    }
 
-  public function offsetSet($offset, $value) {
-    $this->$offset = $value;
-  }
-
-  public function offsetUnset($offset) {
-    unset($this->$offset);
-  }
+    public function offsetUnset($offset) {
+        unset($this->$offset);
+    }
 }

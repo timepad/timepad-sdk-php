@@ -27,74 +27,74 @@ namespace TimepadApi\models;
 use \ArrayAccess;
 
 class QuestionInclude implements ArrayAccess {
-  static $swaggerTypes = array(
-      'field_id' => 'string',
-      'is_mandatory' => 'bool',
-      'name' => 'string',
-      'comment' => 'string'
-  );
+    static $swaggerTypes = array(
+        'field_id' => 'string',
+        'is_mandatory' => 'bool',
+        'name' => 'string',
+        'comment' => 'string'
+    );
 
-  static $attributeMap = array(
-      'field_id' => 'field_id',
-      'is_mandatory' => 'is_mandatory',
-      'name' => 'name',
-      'comment' => 'comment'
-  );
+    static $attributeMap = array(
+        'field_id' => 'field_id',
+        'is_mandatory' => 'is_mandatory',
+        'name' => 'name',
+        'comment' => 'comment'
+    );
 
-  
-  /**
-  * Текстовый идентификатор для стандартных вопросов
-  */
-  public $field_id; /* string */
-  /**
-  * Обязателен ли вопрос:
-  */
-  public $is_mandatory; /* bool */
-  /**
-  * Текст вопроса
-  */
-  public $name; /* string */
-  /**
-  * Подсказка под вопросом
-  */
-  public $comment; /* string */
-
-  public function __construct(array $data = null) {
     
-    if(isset($data["field_id"])) {
-      $this->field_id = $data["field_id"];
+    /**
+    * Текстовый идентификатор для стандартных вопросов
+    */
+    public $field_id; /* string */
+    /**
+    * Обязателен ли вопрос:
+    */
+    public $is_mandatory; /* bool */
+    /**
+    * Текст вопроса
+    */
+    public $name; /* string */
+    /**
+    * Подсказка под вопросом
+    */
+    public $comment; /* string */
+
+    public function __construct(array $data = null) {
+    
+        if(isset($data["field_id"])) {
+            $this->field_id = $data["field_id"];
+        }
+    
+    
+        if(isset($data["is_mandatory"])) {
+            $this->is_mandatory = $data["is_mandatory"];
+        }
+    
+    
+        if(isset($data["name"])) {
+            $this->name = $data["name"];
+        }
+    
+    
+        if(isset($data["comment"])) {
+            $this->comment = $data["comment"];
+        }
+    
     }
-    
-    
-    if(isset($data["is_mandatory"])) {
-      $this->is_mandatory = $data["is_mandatory"];
+
+    public function offsetExists($offset) {
+        return isset($this->$offset);
     }
-    
-    
-    if(isset($data["name"])) {
-      $this->name = $data["name"];
+
+    public function offsetGet($offset) {
+        return $this->$offset;
     }
-    
-    
-    if(isset($data["comment"])) {
-      $this->comment = $data["comment"];
+
+    public function offsetSet($offset, $value) {
+        $this->$offset = $value;
     }
-    
-  }
 
-  public function offsetExists($offset) {
-    return isset($this->$offset);
-  }
-
-  public function offsetGet($offset) {
-    return $this->$offset;
-  }
-
-  public function offsetSet($offset, $value) {
-    $this->$offset = $value;
-  }
-
-  public function offsetUnset($offset) {
-    unset($this->$offset);
-  }
+    public function offsetUnset($offset) {
+        unset($this->$offset);
+    }
 }

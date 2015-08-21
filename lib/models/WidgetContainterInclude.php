@@ -27,52 +27,52 @@ namespace TimepadApi\models;
 use \ArrayAccess;
 
 class WidgetContainterInclude implements ArrayAccess {
-  static $swaggerTypes = array(
-      'custom' => 'string',
-      'button' => 'string'
-  );
+    static $swaggerTypes = array(
+        'custom' => 'string',
+        'button' => 'string'
+    );
 
-  static $attributeMap = array(
-      'custom' => 'custom',
-      'button' => 'button'
-  );
+    static $attributeMap = array(
+        'custom' => 'custom',
+        'button' => 'button'
+    );
 
-  
-  /**
-  * Код вставки виджета в сайт
-  */
-  public $custom; /* string */
-  /**
-  * Код виджета-кнопки для вставки на сайт
-  */
-  public $button; /* string */
-
-  public function __construct(array $data = null) {
     
-    if(isset($data["custom"])) {
-      $this->custom = $data["custom"];
+    /**
+    * Код вставки виджета в сайт
+    */
+    public $custom; /* string */
+    /**
+    * Код виджета-кнопки для вставки на сайт
+    */
+    public $button; /* string */
+
+    public function __construct(array $data = null) {
+    
+        if(isset($data["custom"])) {
+            $this->custom = $data["custom"];
+        }
+    
+    
+        if(isset($data["button"])) {
+            $this->button = $data["button"];
+        }
+    
     }
-    
-    
-    if(isset($data["button"])) {
-      $this->button = $data["button"];
+
+    public function offsetExists($offset) {
+        return isset($this->$offset);
     }
-    
-  }
 
-  public function offsetExists($offset) {
-    return isset($this->$offset);
-  }
+    public function offsetGet($offset) {
+        return $this->$offset;
+    }
 
-  public function offsetGet($offset) {
-    return $this->$offset;
-  }
+    public function offsetSet($offset, $value) {
+        $this->$offset = $value;
+    }
 
-  public function offsetSet($offset, $value) {
-    $this->$offset = $value;
-  }
-
-  public function offsetUnset($offset) {
-    unset($this->$offset);
-  }
+    public function offsetUnset($offset) {
+        unset($this->$offset);
+    }
 }

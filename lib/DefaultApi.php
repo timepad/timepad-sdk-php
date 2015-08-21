@@ -24,822 +24,831 @@ namespace TimepadApi;
 
 class DefaultApi {
 
-  function __construct($apiClient) {
-    $this->apiClient = $apiClient;
-  }
-
-  
-  /**
-   * introspectToken
-   *
-   * Получить информацию о пользователе API
-   *
-   * @param string $token Идентификатор токена (required)
-   * @return Introspect
-   */
-   public function introspectToken($token) {
-
-      // parse inputs
-      $resourcePath = "/introspect";
-      $resourcePath = str_replace("{format}", "json", $resourcePath);
-      $method = "GET";
-      $queryParams = array();
-      $headerParams = array();
-      $formParams = array();
-      $_header_accept = '';
-      if ($_header_accept !== '') {
-        $headerParams['Accept'] = $_header_accept;
-      }
-      $_header_content_type = array();
-      $headerParams['Content-Type'] = count($_header_content_type) > 0 ? $_header_content_type[0] : 'application/json';
-
-      // query params
-      if($token !== null) {
-        $queryParams['token'] = $this->apiClient->toQueryValue($token);
-      }
-      
-      
-      
-      
-      
-      $preparedBody = $formParams;
-      
-
-      if (strpos($headerParams['Content-Type'], "application/x-www-form-urlencoded") > -1) {
-        $preparedBody = http_build_query($preparedBody);
-      }
-
-      // make the API Call
-      $response = $this->apiClient->callAPI($resourcePath, $method,
-                                            $queryParams, $preparedBody,
-                                            $headerParams);
-
-      if(! $response) {
-        return null;
-      }
-
-  		$responseObject = $this->apiClient->deserialize($response,
-  		                                                'Introspect');
-  		return $responseObject;
-  }
-  
-  /**
-   * introspectTokenPost
-   *
-   * Получить информацию о пользователе API
-   *
-   * @param string $token Идентификатор токена (required)
-   * @return Introspect
-   */
-   public function introspectTokenPost($token) {
-
-      // parse inputs
-      $resourcePath = "/introspect";
-      $resourcePath = str_replace("{format}", "json", $resourcePath);
-      $method = "POST";
-      $queryParams = array();
-      $headerParams = array();
-      $formParams = array();
-      $_header_accept = '';
-      if ($_header_accept !== '') {
-        $headerParams['Accept'] = $_header_accept;
-      }
-      $_header_content_type = array();
-      $headerParams['Content-Type'] = count($_header_content_type) > 0 ? $_header_content_type[0] : 'application/json';
-
-      
-      
-      
-      // form params
-      if ($token !== null) {
-        $formParams['token'] = $this->apiClient->toFormValue($token);
-      }
-      
-      
-      $preparedBody = $formParams;
-      
-
-      if (strpos($headerParams['Content-Type'], "application/x-www-form-urlencoded") > -1) {
-        $preparedBody = http_build_query($preparedBody);
-      }
-
-      // make the API Call
-      $response = $this->apiClient->callAPI($resourcePath, $method,
-                                            $queryParams, $preparedBody,
-                                            $headerParams);
-
-      if(! $response) {
-        return null;
-      }
-
-  		$responseObject = $this->apiClient->deserialize($response,
-  		                                                'Introspect');
-  		return $responseObject;
-  }
-  
-  /**
-   * authorize
-   *
-   * Получить токен для работы с API, требующими авторизации
-   *
-   * @param string $client_id Идентификатор клиента (required)
-   * @param string $redirect_uri Ссылка на которую произойдёт редирект (required)
-   * @param string $response_type Возвращаемый тип ответа. Единственное поддерживаемое значение - token (required)
-   * @param array[string] $scope Запрашиваемые приложением разрешения через запятую. Возможные значения: view_private_events (required)
-   * @return void
-   */
-   public function authorize($client_id, $redirect_uri, $response_type, $scope) {
-
-      // parse inputs
-      $resourcePath = "/oauth/authorize";
-      $resourcePath = str_replace("{format}", "json", $resourcePath);
-      $method = "GET";
-      $queryParams = array();
-      $headerParams = array();
-      $formParams = array();
-      $_header_accept = '';
-      if ($_header_accept !== '') {
-        $headerParams['Accept'] = $_header_accept;
-      }
-      $_header_content_type = array();
-      $headerParams['Content-Type'] = count($_header_content_type) > 0 ? $_header_content_type[0] : 'application/json';
-
-      // query params
-      if($client_id !== null) {
-        $queryParams['client_id'] = $this->apiClient->toQueryValue($client_id);
-      }// query params
-      if($redirect_uri !== null) {
-        $queryParams['redirect_uri'] = $this->apiClient->toQueryValue($redirect_uri);
-      }// query params
-      if($response_type !== null) {
-        $queryParams['response_type'] = $this->apiClient->toQueryValue($response_type);
-      }// query params
-      if($scope !== null) {
-        $queryParams['scope'] = $this->apiClient->toQueryValue($scope);
-      }
-      
-      
-      
-      
-      
-      $preparedBody = $formParams;
-      
-
-      if (strpos($headerParams['Content-Type'], "application/x-www-form-urlencoded") > -1) {
-        $preparedBody = http_build_query($preparedBody);
-      }
-
-      // make the API Call
-      $response = $this->apiClient->callAPI($resourcePath, $method,
-                                            $queryParams, $preparedBody,
-                                            $headerParams);
-
-      
-  }
-  
-  /**
-   * getEvents
-   *
-   * Получить список событий по заданным фильтрам
-   *
-   * @param array[string] $fields Список полей, которые нужно вывести (required)
-   * @param int $limit Сколько элементов списка вывести (required)
-   * @param int $skip С какого элемента списка начать вывод (required)
-   * @param array[string] $sort Поле, по которому сортировать (required)
-   * @param array[int] $category_ids Категории, к которым принадлежат события (required)
-   * @param array[int] $category_ids_exclude Категории, к которым не принадлежат события (required)
-   * @param array[string] $cities Города, события из которых выводить (required)
-   * @param array[string] $cities_exclude Города, события из которых не выводить (required)
-   * @param array[int] $organization_ids Номера организаций, события из которых выводить (required)
-   * @param array[int] $organization_ids_exclude Номера организаций, события из которых не выводить (required)
-   * @param array[int] $event_ids Номера событий, которые нужно вывести (required)
-   * @param array[int] $event_ids_exclude Номера событий, которые нужно пропустить (required)
-   * @param array[string] $keywords Слова, которые должны быть в названии или описании события (required)
-   * @param array[string] $keywords_exclude Слова, которых не должно быть в названии или описании события (required)
-   * @param array[string] $access_statuses Список режимов доступа, в которых находятся события. Возможные значения: private, draft, link_only, public. Доступно только организаторам (required)
-   * @param array[string] $moderation_statuses Список уровней качества, установленных для события модератором. Возможные значения: featured, shown, hidden, not_moderated. (required)
-   * @param int $price_min Цена, выше которой должен стоить хотя бы один билет события (required)
-   * @param int $price_max Цена, ниже которой должен стоить хотя бы один билет события (required)
-   * @param int $ad_partner_percent_min Хотя бы у одного вида билета события партнёрская комиссия в процентах выше этого значения (required)
-   * @param int $ad_partner_percent_max Хотя бы у одного вида билета партнёрская комиссия в процентах ниже этого значения (required)
-   * @param int $ad_partner_profit_min Хотя бы у одного вида билета партнёрская комиссия в рублях выше этого значения (required)
-   * @param int $ad_partner_profit_max Хотя бы у одного вида билета партнёрская комиссия в рублях ниже этого значения (required)
-   * @param DateTime $starts_at_min Дата начала события позднее этого значения (required)
-   * @param DateTime $starts_at_max Дата начала события раньше этого значения (required)
-   * @param DateTime $created_at_min Дата создания события на Timepad позднее этого значения (required)
-   * @param DateTime $created_at_max Дата создания события на Timepad раньше этого значения (required)
-   * @return EventsResponse
-   */
-   public function getEvents($fields, $limit, $skip, $sort, $category_ids, $category_ids_exclude, $cities, $cities_exclude, $organization_ids, $organization_ids_exclude, $event_ids, $event_ids_exclude, $keywords, $keywords_exclude, $access_statuses, $moderation_statuses, $price_min, $price_max, $ad_partner_percent_min, $ad_partner_percent_max, $ad_partner_profit_min, $ad_partner_profit_max, $starts_at_min, $starts_at_max, $created_at_min, $created_at_max) {
-
-      // parse inputs
-      $resourcePath = "/v1/events";
-      $resourcePath = str_replace("{format}", "json", $resourcePath);
-      $method = "GET";
-      $queryParams = array();
-      $headerParams = array();
-      $formParams = array();
-      $_header_accept = '';
-      if ($_header_accept !== '') {
-        $headerParams['Accept'] = $_header_accept;
-      }
-      $_header_content_type = array();
-      $headerParams['Content-Type'] = count($_header_content_type) > 0 ? $_header_content_type[0] : 'application/json';
-
-      // query params
-      if($fields !== null) {
-        $queryParams['fields'] = $this->apiClient->toQueryValue($fields);
-      }// query params
-      if($limit !== null) {
-        $queryParams['limit'] = $this->apiClient->toQueryValue($limit);
-      }// query params
-      if($skip !== null) {
-        $queryParams['skip'] = $this->apiClient->toQueryValue($skip);
-      }// query params
-      if($sort !== null) {
-        $queryParams['sort'] = $this->apiClient->toQueryValue($sort);
-      }// query params
-      if($category_ids !== null) {
-        $queryParams['category_ids'] = $this->apiClient->toQueryValue($category_ids);
-      }// query params
-      if($category_ids_exclude !== null) {
-        $queryParams['category_ids_exclude'] = $this->apiClient->toQueryValue($category_ids_exclude);
-      }// query params
-      if($cities !== null) {
-        $queryParams['cities'] = $this->apiClient->toQueryValue($cities);
-      }// query params
-      if($cities_exclude !== null) {
-        $queryParams['cities_exclude'] = $this->apiClient->toQueryValue($cities_exclude);
-      }// query params
-      if($organization_ids !== null) {
-        $queryParams['organization_ids'] = $this->apiClient->toQueryValue($organization_ids);
-      }// query params
-      if($organization_ids_exclude !== null) {
-        $queryParams['organization_ids_exclude'] = $this->apiClient->toQueryValue($organization_ids_exclude);
-      }// query params
-      if($event_ids !== null) {
-        $queryParams['event_ids'] = $this->apiClient->toQueryValue($event_ids);
-      }// query params
-      if($event_ids_exclude !== null) {
-        $queryParams['event_ids_exclude'] = $this->apiClient->toQueryValue($event_ids_exclude);
-      }// query params
-      if($keywords !== null) {
-        $queryParams['keywords'] = $this->apiClient->toQueryValue($keywords);
-      }// query params
-      if($keywords_exclude !== null) {
-        $queryParams['keywords_exclude'] = $this->apiClient->toQueryValue($keywords_exclude);
-      }// query params
-      if($access_statuses !== null) {
-        $queryParams['access_statuses'] = $this->apiClient->toQueryValue($access_statuses);
-      }// query params
-      if($moderation_statuses !== null) {
-        $queryParams['moderation_statuses'] = $this->apiClient->toQueryValue($moderation_statuses);
-      }// query params
-      if($price_min !== null) {
-        $queryParams['price_min'] = $this->apiClient->toQueryValue($price_min);
-      }// query params
-      if($price_max !== null) {
-        $queryParams['price_max'] = $this->apiClient->toQueryValue($price_max);
-      }// query params
-      if($ad_partner_percent_min !== null) {
-        $queryParams['ad_partner_percent_min'] = $this->apiClient->toQueryValue($ad_partner_percent_min);
-      }// query params
-      if($ad_partner_percent_max !== null) {
-        $queryParams['ad_partner_percent_max'] = $this->apiClient->toQueryValue($ad_partner_percent_max);
-      }// query params
-      if($ad_partner_profit_min !== null) {
-        $queryParams['ad_partner_profit_min'] = $this->apiClient->toQueryValue($ad_partner_profit_min);
-      }// query params
-      if($ad_partner_profit_max !== null) {
-        $queryParams['ad_partner_profit_max'] = $this->apiClient->toQueryValue($ad_partner_profit_max);
-      }// query params
-      if($starts_at_min !== null) {
-        $queryParams['starts_at_min'] = $this->apiClient->toQueryValue($starts_at_min);
-      }// query params
-      if($starts_at_max !== null) {
-        $queryParams['starts_at_max'] = $this->apiClient->toQueryValue($starts_at_max);
-      }// query params
-      if($created_at_min !== null) {
-        $queryParams['created_at_min'] = $this->apiClient->toQueryValue($created_at_min);
-      }// query params
-      if($created_at_max !== null) {
-        $queryParams['created_at_max'] = $this->apiClient->toQueryValue($created_at_max);
-      }
-      
-      
-      
-      
-      
-      $preparedBody = $formParams;
-      
-
-      if (strpos($headerParams['Content-Type'], "application/x-www-form-urlencoded") > -1) {
-        $preparedBody = http_build_query($preparedBody);
-      }
-
-      // make the API Call
-      $response = $this->apiClient->callAPI($resourcePath, $method,
-                                            $queryParams, $preparedBody,
-                                            $headerParams);
-
-      if(! $response) {
-        return null;
-      }
-
-  		$responseObject = $this->apiClient->deserialize($response,
-  		                                                'EventsResponse');
-  		return $responseObject;
-  }
-  
-  /**
-   * addEvent
-   *
-   * Создать событие
-   *
-   * @param CreateEvent $body Описание создаваемого события (required)
-   * @return EventResponse
-   */
-   public function addEvent($body) {
-
-      // parse inputs
-      $resourcePath = "/v1/events";
-      $resourcePath = str_replace("{format}", "json", $resourcePath);
-      $method = "POST";
-      $queryParams = array();
-      $headerParams = array();
-      $formParams = array();
-      $_header_accept = '';
-      if ($_header_accept !== '') {
-        $headerParams['Accept'] = $_header_accept;
-      }
-      $_header_content_type = array();
-      $headerParams['Content-Type'] = count($_header_content_type) > 0 ? $_header_content_type[0] : 'application/json';
-
-      
-      
-      
-      
-      // body params
-      $preparedBody = null;
-      if (isset($body)) {
-        $preparedBody = $body;
-      }
-      // for HTTP post (form)
-      $preparedBody = $preparedBody ?: $formParams;
-      
-      
-
-      if (strpos($headerParams['Content-Type'], "application/x-www-form-urlencoded") > -1) {
-        $preparedBody = http_build_query($preparedBody);
-      }
-
-      // make the API Call
-      $response = $this->apiClient->callAPI($resourcePath, $method,
-                                            $queryParams, $preparedBody,
-                                            $headerParams);
-
-      if(! $response) {
-        return null;
-      }
-
-  		$responseObject = $this->apiClient->deserialize($response,
-  		                                                'EventResponse');
-  		return $responseObject;
-  }
-  
-  /**
-   * getSingleEvent
-   *
-   * Получить событие по данному id
-   *
-   * @param array[string] $fields Список полей, которые нужно вывести (required)
-   * @param int $event_id Номер событий, которые нужно вывести (required)
-   * @return EventResponse
-   */
-   public function getSingleEvent($fields, $event_id) {
-
-      // parse inputs
-      $resourcePath = "/v1/events/{event_id}";
-      $resourcePath = str_replace("{format}", "json", $resourcePath);
-      $method = "GET";
-      $queryParams = array();
-      $headerParams = array();
-      $formParams = array();
-      $_header_accept = '';
-      if ($_header_accept !== '') {
-        $headerParams['Accept'] = $_header_accept;
-      }
-      $_header_content_type = array();
-      $headerParams['Content-Type'] = count($_header_content_type) > 0 ? $_header_content_type[0] : 'application/json';
-
-      // query params
-      if($fields !== null) {
-        $queryParams['fields'] = $this->apiClient->toQueryValue($fields);
-      }
-      
-      // path params
-      if($event_id !== null) {
-        $resourcePath = str_replace("{" . "event_id" . "}",
-                                    $this->apiClient->toPathValue($event_id), $resourcePath);
-      }
-      
-      
-      
-      $preparedBody = $formParams;
-      
-
-      if (strpos($headerParams['Content-Type'], "application/x-www-form-urlencoded") > -1) {
-        $preparedBody = http_build_query($preparedBody);
-      }
-
-      // make the API Call
-      $response = $this->apiClient->callAPI($resourcePath, $method,
-                                            $queryParams, $preparedBody,
-                                            $headerParams);
-
-      if(! $response) {
-        return null;
-      }
-
-  		$responseObject = $this->apiClient->deserialize($response,
-  		                                                'EventResponse');
-  		return $responseObject;
-  }
-  
-  /**
-   * editEvent
-   *
-   * Редактировать событие
-   *
-   * @param int $event_id Id редактируемого события (required)
-   * @param EditEvent $body Список изменённых параметров события (required)
-   * @return EventResponse
-   */
-   public function editEvent($event_id, $body) {
-
-      // parse inputs
-      $resourcePath = "/v1/events/{event_id}";
-      $resourcePath = str_replace("{format}", "json", $resourcePath);
-      $method = "POST";
-      $queryParams = array();
-      $headerParams = array();
-      $formParams = array();
-      $_header_accept = '';
-      if ($_header_accept !== '') {
-        $headerParams['Accept'] = $_header_accept;
-      }
-      $_header_content_type = array();
-      $headerParams['Content-Type'] = count($_header_content_type) > 0 ? $_header_content_type[0] : 'application/json';
-
-      
-      
-      // path params
-      if($event_id !== null) {
-        $resourcePath = str_replace("{" . "event_id" . "}",
-                                    $this->apiClient->toPathValue($event_id), $resourcePath);
-      }
-      
-      // body params
-      $preparedBody = null;
-      if (isset($body)) {
-        $preparedBody = $body;
-      }
-      // for HTTP post (form)
-      $preparedBody = $preparedBody ?: $formParams;
-      
-      
-
-      if (strpos($headerParams['Content-Type'], "application/x-www-form-urlencoded") > -1) {
-        $preparedBody = http_build_query($preparedBody);
-      }
-
-      // make the API Call
-      $response = $this->apiClient->callAPI($resourcePath, $method,
-                                            $queryParams, $preparedBody,
-                                            $headerParams);
-
-      if(! $response) {
-        return null;
-      }
-
-  		$responseObject = $this->apiClient->deserialize($response,
-  		                                                'EventResponse');
-  		return $responseObject;
-  }
-  
-  /**
-   * getEventOrders
-   *
-   * Получить заказы события с указанным номером
-   *
-   * @param int $limit Сколько элементов списка вывести (required)
-   * @param int $skip С какого элемента списка начать вывод (required)
-   * @param array[string] $fields Список полей, которые нужно вывести (required)
-   * @param int $event_id Номер события, к которому относятся заказы (required)
-   * @return RegistrationOrdersResponse
-   */
-   public function getEventOrders($limit, $skip, $fields, $event_id) {
-
-      // parse inputs
-      $resourcePath = "/v1/events/{event_id}/orders";
-      $resourcePath = str_replace("{format}", "json", $resourcePath);
-      $method = "GET";
-      $queryParams = array();
-      $headerParams = array();
-      $formParams = array();
-      $_header_accept = '';
-      if ($_header_accept !== '') {
-        $headerParams['Accept'] = $_header_accept;
-      }
-      $_header_content_type = array();
-      $headerParams['Content-Type'] = count($_header_content_type) > 0 ? $_header_content_type[0] : 'application/json';
-
-      // query params
-      if($limit !== null) {
-        $queryParams['limit'] = $this->apiClient->toQueryValue($limit);
-      }// query params
-      if($skip !== null) {
-        $queryParams['skip'] = $this->apiClient->toQueryValue($skip);
-      }// query params
-      if($fields !== null) {
-        $queryParams['fields'] = $this->apiClient->toQueryValue($fields);
-      }
-      
-      // path params
-      if($event_id !== null) {
-        $resourcePath = str_replace("{" . "event_id" . "}",
-                                    $this->apiClient->toPathValue($event_id), $resourcePath);
-      }
-      
-      
-      
-      $preparedBody = $formParams;
-      
-
-      if (strpos($headerParams['Content-Type'], "application/x-www-form-urlencoded") > -1) {
-        $preparedBody = http_build_query($preparedBody);
-      }
-
-      // make the API Call
-      $response = $this->apiClient->callAPI($resourcePath, $method,
-                                            $queryParams, $preparedBody,
-                                            $headerParams);
-
-      if(! $response) {
-        return null;
-      }
-
-  		$responseObject = $this->apiClient->deserialize($response,
-  		                                                'RegistrationOrdersResponse');
-  		return $responseObject;
-  }
-  
-  /**
-   * addOrder
-   *
-   * Создать заказ
-   *
-   * @param int $event_id Номер события (required)
-   * @param CreateOrder $body Описание создаваемого заказа (required)
-   * @return RegistrationOrderResponse
-   */
-   public function addOrder($event_id, $body) {
-
-      // parse inputs
-      $resourcePath = "/v1/events/{event_id}/orders";
-      $resourcePath = str_replace("{format}", "json", $resourcePath);
-      $method = "POST";
-      $queryParams = array();
-      $headerParams = array();
-      $formParams = array();
-      $_header_accept = '';
-      if ($_header_accept !== '') {
-        $headerParams['Accept'] = $_header_accept;
-      }
-      $_header_content_type = array();
-      $headerParams['Content-Type'] = count($_header_content_type) > 0 ? $_header_content_type[0] : 'application/json';
-
-      
-      
-      // path params
-      if($event_id !== null) {
-        $resourcePath = str_replace("{" . "event_id" . "}",
-                                    $this->apiClient->toPathValue($event_id), $resourcePath);
-      }
-      
-      // body params
-      $preparedBody = null;
-      if (isset($body)) {
-        $preparedBody = $body;
-      }
-      // for HTTP post (form)
-      $preparedBody = $preparedBody ?: $formParams;
-      
-      
-
-      if (strpos($headerParams['Content-Type'], "application/x-www-form-urlencoded") > -1) {
-        $preparedBody = http_build_query($preparedBody);
-      }
-
-      // make the API Call
-      $response = $this->apiClient->callAPI($resourcePath, $method,
-                                            $queryParams, $preparedBody,
-                                            $headerParams);
-
-      if(! $response) {
-        return null;
-      }
-
-  		$responseObject = $this->apiClient->deserialize($response,
-  		                                                'RegistrationOrderResponse');
-  		return $responseObject;
-  }
-  
-  /**
-   * getSingleEventOrder
-   *
-   * Получить заказ с указанным id
-   *
-   * @param array[string] $fields Список полей, которые нужно вывести (required)
-   * @param int $event_id Номер события, к которому относится заказ (required)
-   * @param int $order_id Номер заказа (required)
-   * @return RegistrationOrderResponse
-   */
-   public function getSingleEventOrder($fields, $event_id, $order_id) {
-
-      // parse inputs
-      $resourcePath = "/v1/events/{event_id}/orders/{order_id}";
-      $resourcePath = str_replace("{format}", "json", $resourcePath);
-      $method = "GET";
-      $queryParams = array();
-      $headerParams = array();
-      $formParams = array();
-      $_header_accept = '';
-      if ($_header_accept !== '') {
-        $headerParams['Accept'] = $_header_accept;
-      }
-      $_header_content_type = array();
-      $headerParams['Content-Type'] = count($_header_content_type) > 0 ? $_header_content_type[0] : 'application/json';
-
-      // query params
-      if($fields !== null) {
-        $queryParams['fields'] = $this->apiClient->toQueryValue($fields);
-      }
-      
-      // path params
-      if($event_id !== null) {
-        $resourcePath = str_replace("{" . "event_id" . "}",
-                                    $this->apiClient->toPathValue($event_id), $resourcePath);
-      }// path params
-      if($order_id !== null) {
-        $resourcePath = str_replace("{" . "order_id" . "}",
-                                    $this->apiClient->toPathValue($order_id), $resourcePath);
-      }
-      
-      
-      
-      $preparedBody = $formParams;
-      
-
-      if (strpos($headerParams['Content-Type'], "application/x-www-form-urlencoded") > -1) {
-        $preparedBody = http_build_query($preparedBody);
-      }
-
-      // make the API Call
-      $response = $this->apiClient->callAPI($resourcePath, $method,
-                                            $queryParams, $preparedBody,
-                                            $headerParams);
-
-      if(! $response) {
-        return null;
-      }
-
-  		$responseObject = $this->apiClient->deserialize($response,
-  		                                                'RegistrationOrderResponse');
-  		return $responseObject;
-  }
-  
-  /**
-   * editEventOrder
-   *
-   * Отредактировать заказ с указанным id
-   *
-   * @param int $event_id Номер события, к которому относится заказ (required)
-   * @param int $order_id Номер заказа (required)
-   * @param EditOrder $body Список изменённых параметров заказа (required)
-   * @return RegistrationOrderResponse
-   */
-   public function editEventOrder($event_id, $order_id, $body) {
-
-      // parse inputs
-      $resourcePath = "/v1/events/{event_id}/orders/{order_id}";
-      $resourcePath = str_replace("{format}", "json", $resourcePath);
-      $method = "PATCH";
-      $queryParams = array();
-      $headerParams = array();
-      $formParams = array();
-      $_header_accept = '';
-      if ($_header_accept !== '') {
-        $headerParams['Accept'] = $_header_accept;
-      }
-      $_header_content_type = array();
-      $headerParams['Content-Type'] = count($_header_content_type) > 0 ? $_header_content_type[0] : 'application/json';
-
-      
-      
-      // path params
-      if($event_id !== null) {
-        $resourcePath = str_replace("{" . "event_id" . "}",
-                                    $this->apiClient->toPathValue($event_id), $resourcePath);
-      }// path params
-      if($order_id !== null) {
-        $resourcePath = str_replace("{" . "order_id" . "}",
-                                    $this->apiClient->toPathValue($order_id), $resourcePath);
-      }
-      
-      // body params
-      $preparedBody = null;
-      if (isset($body)) {
-        $preparedBody = $body;
-      }
-      // for HTTP post (form)
-      $preparedBody = $preparedBody ?: $formParams;
-      
-      
-
-      if (strpos($headerParams['Content-Type'], "application/x-www-form-urlencoded") > -1) {
-        $preparedBody = http_build_query($preparedBody);
-      }
-
-      // make the API Call
-      $response = $this->apiClient->callAPI($resourcePath, $method,
-                                            $queryParams, $preparedBody,
-                                            $headerParams);
-
-      if(! $response) {
-        return null;
-      }
-
-  		$responseObject = $this->apiClient->deserialize($response,
-  		                                                'RegistrationOrderResponse');
-  		return $responseObject;
-  }
-  
-  /**
-   * addOrganization
-   *
-   * Создать новую организацию
-   *
-   * @param CreateOrganization $body Список полей, которые нужно вывести (required)
-   * @return OrganizationResponse
-   */
-   public function addOrganization($body) {
-
-      // parse inputs
-      $resourcePath = "/v1/organizations";
-      $resourcePath = str_replace("{format}", "json", $resourcePath);
-      $method = "POST";
-      $queryParams = array();
-      $headerParams = array();
-      $formParams = array();
-      $_header_accept = '';
-      if ($_header_accept !== '') {
-        $headerParams['Accept'] = $_header_accept;
-      }
-      $_header_content_type = array();
-      $headerParams['Content-Type'] = count($_header_content_type) > 0 ? $_header_content_type[0] : 'application/json';
-
-      
-      
-      
-      
-      // body params
-      $preparedBody = null;
-      if (isset($body)) {
-        $preparedBody = $body;
-      }
-      // for HTTP post (form)
-      $preparedBody = $preparedBody ?: $formParams;
-      
-      
-
-      if (strpos($headerParams['Content-Type'], "application/x-www-form-urlencoded") > -1) {
-        $preparedBody = http_build_query($preparedBody);
-      }
-
-      // make the API Call
-      $response = $this->apiClient->callAPI($resourcePath, $method,
-                                            $queryParams, $preparedBody,
-                                            $headerParams);
-
-      if(! $response) {
-        return null;
-      }
-
-  		$responseObject = $this->apiClient->deserialize($response,
-  		                                                'OrganizationResponse');
-  		return $responseObject;
-  }
-  
+    function __construct($apiClient) {
+        $this->apiClient = $apiClient;
+    }
+
+    
+    /**
+     * introspectToken
+     *
+     * Получить информацию о пользователе API
+     *
+     * @param array[string] $params Ассоциативный массив параметров. Может содержать следующие поля:
+     *
+     * 'token' (string) Идентификатор токена (optional)
+     *
+     * @return Introspect
+     */
+    public function introspectToken($params = []) {
+        $resourcePath = "/introspect";
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+        $method = "GET";
+        $queryParams = array();
+        $headerParams = array();
+        $formParams = array();
+        $_header_accept = '';
+        if ($_header_accept !== '') {
+            $headerParams['Accept'] = $_header_accept;
+        }
+        $_header_content_type = array();
+        $headerParams['Content-Type'] = count($_header_content_type) > 0 ? $_header_content_type[0] : 'application/json';
+
+        // query params
+        if (isset($params['token'])) {
+            $queryParams['token'] = $this->apiClient->toQueryValue($params['token']);
+        }
+
+        // header params
+
+        // path params
+
+        // form params
+
+        // body params
+        $preparedBody = $formParams;
+        
+
+        if (strpos($headerParams['Content-Type'], "application/x-www-form-urlencoded") > -1) {
+            $preparedBody = http_build_query($preparedBody);
+        }
+
+        // make the API Call
+        $response = $this->apiClient->callAPI($resourcePath, $method, $queryParams, $preparedBody, $headerParams);
+        
+        if (!$response) {
+            return null;
+        }
+
+        $responseObject = $this->apiClient->deserialize($response, 'Introspect');
+        return $responseObject;
+    }
+   
+    /**
+     * introspectTokenPost
+     *
+     * Получить информацию о пользователе API
+     *
+     * @param array[string] $params Ассоциативный массив параметров. Может содержать следующие поля:
+     *
+     * 'token' (string) Идентификатор токена (optional)
+     *
+     * @return Introspect
+     */
+    public function introspectTokenPost($params = []) {
+        $resourcePath = "/introspect";
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+        $method = "POST";
+        $queryParams = array();
+        $headerParams = array();
+        $formParams = array();
+        $_header_accept = '';
+        if ($_header_accept !== '') {
+            $headerParams['Accept'] = $_header_accept;
+        }
+        $_header_content_type = array();
+        $headerParams['Content-Type'] = count($_header_content_type) > 0 ? $_header_content_type[0] : 'application/json';
+
+        // query params
+
+        // header params
+
+        // path params
+
+        // form params
+        if (isset($params['token'])) {
+            $formParams['token'] = $this->apiClient->toFormValue($params['token']);
+        }
+
+        // body params
+        $preparedBody = $formParams;
+        
+
+        if (strpos($headerParams['Content-Type'], "application/x-www-form-urlencoded") > -1) {
+            $preparedBody = http_build_query($preparedBody);
+        }
+
+        // make the API Call
+        $response = $this->apiClient->callAPI($resourcePath, $method, $queryParams, $preparedBody, $headerParams);
+        
+        if (!$response) {
+            return null;
+        }
+
+        $responseObject = $this->apiClient->deserialize($response, 'Introspect');
+        return $responseObject;
+    }
+   
+    /**
+     * authorize
+     *
+     * Получить токен для работы с API, требующими авторизации
+     *
+     * @param array[string] $params Ассоциативный массив параметров. Может содержать следующие поля:
+     *
+     * 'client_id' (string) Идентификатор клиента (optional)
+     * 'redirect_uri' (string) Ссылка на которую произойдёт редирект (optional)
+     * 'response_type' (string) Возвращаемый тип ответа. Единственное поддерживаемое значение - token (optional)
+     * 'scope' (array[string]) Запрашиваемые приложением разрешения через запятую. Возможные значения: view_private_events (optional)
+     *
+     * @return void
+     */
+    public function authorize($params = []) {
+        $resourcePath = "/oauth/authorize";
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+        $method = "GET";
+        $queryParams = array();
+        $headerParams = array();
+        $formParams = array();
+        $_header_accept = '';
+        if ($_header_accept !== '') {
+            $headerParams['Accept'] = $_header_accept;
+        }
+        $_header_content_type = array();
+        $headerParams['Content-Type'] = count($_header_content_type) > 0 ? $_header_content_type[0] : 'application/json';
+
+        // query params
+        if (isset($params['client_id'])) {
+            $queryParams['client_id'] = $this->apiClient->toQueryValue($params['client_id']);
+        }
+        if (isset($params['redirect_uri'])) {
+            $queryParams['redirect_uri'] = $this->apiClient->toQueryValue($params['redirect_uri']);
+        }
+        if (isset($params['response_type'])) {
+            $queryParams['response_type'] = $this->apiClient->toQueryValue($params['response_type']);
+        }
+        if (isset($params['scope'])) {
+            $queryParams['scope'] = $this->apiClient->toQueryValue($params['scope']);
+        }
+
+        // header params
+
+        // path params
+
+        // form params
+
+        // body params
+        $preparedBody = $formParams;
+        
+
+        if (strpos($headerParams['Content-Type'], "application/x-www-form-urlencoded") > -1) {
+            $preparedBody = http_build_query($preparedBody);
+        }
+
+        // make the API Call
+        $response = $this->apiClient->callAPI($resourcePath, $method, $queryParams, $preparedBody, $headerParams);
+        
+    }
+   
+    /**
+     * getEvents
+     *
+     * Получить список событий по заданным фильтрам
+     *
+     * @param array[string] $params Ассоциативный массив параметров. Может содержать следующие поля:
+     *
+     * 'fields' (array[string]) Список полей, которые нужно вывести (optional)
+     * 'limit' (int) Сколько элементов списка вывести (optional)
+     * 'skip' (int) С какого элемента списка начать вывод (optional)
+     * 'sort' (array[string]) Поле, по которому сортировать (optional)
+     * 'category_ids' (array[int]) Категории, к которым принадлежат события (optional)
+     * 'category_ids_exclude' (array[int]) Категории, к которым не принадлежат события (optional)
+     * 'cities' (array[string]) Города, события из которых выводить (optional)
+     * 'cities_exclude' (array[string]) Города, события из которых не выводить (optional)
+     * 'organization_ids' (array[int]) Номера организаций, события из которых выводить (optional)
+     * 'organization_ids_exclude' (array[int]) Номера организаций, события из которых не выводить (optional)
+     * 'event_ids' (array[int]) Номера событий, которые нужно вывести (optional)
+     * 'event_ids_exclude' (array[int]) Номера событий, которые нужно пропустить (optional)
+     * 'keywords' (array[string]) Слова, которые должны быть в названии или описании события (optional)
+     * 'keywords_exclude' (array[string]) Слова, которых не должно быть в названии или описании события (optional)
+     * 'access_statuses' (array[string]) Список режимов доступа, в которых находятся события. Возможные значения: private, draft, link_only, public. Доступно только организаторам (optional)
+     * 'moderation_statuses' (array[string]) Список уровней качества, установленных для события модератором. Возможные значения: featured, shown, hidden, not_moderated. (optional)
+     * 'price_min' (int) Цена, выше которой должен стоить хотя бы один билет события (optional)
+     * 'price_max' (int) Цена, ниже которой должен стоить хотя бы один билет события (optional)
+     * 'ad_partner_percent_min' (int) Хотя бы у одного вида билета события партнёрская комиссия в процентах выше этого значения (optional)
+     * 'ad_partner_percent_max' (int) Хотя бы у одного вида билета партнёрская комиссия в процентах ниже этого значения (optional)
+     * 'ad_partner_profit_min' (int) Хотя бы у одного вида билета партнёрская комиссия в рублях выше этого значения (optional)
+     * 'ad_partner_profit_max' (int) Хотя бы у одного вида билета партнёрская комиссия в рублях ниже этого значения (optional)
+     * 'starts_at_min' (DateTime) Дата начала события позднее этого значения (optional)
+     * 'starts_at_max' (DateTime) Дата начала события раньше этого значения (optional)
+     * 'created_at_min' (DateTime) Дата создания события на Timepad позднее этого значения (optional)
+     * 'created_at_max' (DateTime) Дата создания события на Timepad раньше этого значения (optional)
+     *
+     * @return EventsResponse
+     */
+    public function getEvents($params = []) {
+        $resourcePath = "/v1/events";
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+        $method = "GET";
+        $queryParams = array();
+        $headerParams = array();
+        $formParams = array();
+        $_header_accept = '';
+        if ($_header_accept !== '') {
+            $headerParams['Accept'] = $_header_accept;
+        }
+        $_header_content_type = array();
+        $headerParams['Content-Type'] = count($_header_content_type) > 0 ? $_header_content_type[0] : 'application/json';
+
+        // query params
+        if (isset($params['fields'])) {
+            $queryParams['fields'] = $this->apiClient->toQueryValue($params['fields']);
+        }
+        if (isset($params['limit'])) {
+            $queryParams['limit'] = $this->apiClient->toQueryValue($params['limit']);
+        }
+        if (isset($params['skip'])) {
+            $queryParams['skip'] = $this->apiClient->toQueryValue($params['skip']);
+        }
+        if (isset($params['sort'])) {
+            $queryParams['sort'] = $this->apiClient->toQueryValue($params['sort']);
+        }
+        if (isset($params['category_ids'])) {
+            $queryParams['category_ids'] = $this->apiClient->toQueryValue($params['category_ids']);
+        }
+        if (isset($params['category_ids_exclude'])) {
+            $queryParams['category_ids_exclude'] = $this->apiClient->toQueryValue($params['category_ids_exclude']);
+        }
+        if (isset($params['cities'])) {
+            $queryParams['cities'] = $this->apiClient->toQueryValue($params['cities']);
+        }
+        if (isset($params['cities_exclude'])) {
+            $queryParams['cities_exclude'] = $this->apiClient->toQueryValue($params['cities_exclude']);
+        }
+        if (isset($params['organization_ids'])) {
+            $queryParams['organization_ids'] = $this->apiClient->toQueryValue($params['organization_ids']);
+        }
+        if (isset($params['organization_ids_exclude'])) {
+            $queryParams['organization_ids_exclude'] = $this->apiClient->toQueryValue($params['organization_ids_exclude']);
+        }
+        if (isset($params['event_ids'])) {
+            $queryParams['event_ids'] = $this->apiClient->toQueryValue($params['event_ids']);
+        }
+        if (isset($params['event_ids_exclude'])) {
+            $queryParams['event_ids_exclude'] = $this->apiClient->toQueryValue($params['event_ids_exclude']);
+        }
+        if (isset($params['keywords'])) {
+            $queryParams['keywords'] = $this->apiClient->toQueryValue($params['keywords']);
+        }
+        if (isset($params['keywords_exclude'])) {
+            $queryParams['keywords_exclude'] = $this->apiClient->toQueryValue($params['keywords_exclude']);
+        }
+        if (isset($params['access_statuses'])) {
+            $queryParams['access_statuses'] = $this->apiClient->toQueryValue($params['access_statuses']);
+        }
+        if (isset($params['moderation_statuses'])) {
+            $queryParams['moderation_statuses'] = $this->apiClient->toQueryValue($params['moderation_statuses']);
+        }
+        if (isset($params['price_min'])) {
+            $queryParams['price_min'] = $this->apiClient->toQueryValue($params['price_min']);
+        }
+        if (isset($params['price_max'])) {
+            $queryParams['price_max'] = $this->apiClient->toQueryValue($params['price_max']);
+        }
+        if (isset($params['ad_partner_percent_min'])) {
+            $queryParams['ad_partner_percent_min'] = $this->apiClient->toQueryValue($params['ad_partner_percent_min']);
+        }
+        if (isset($params['ad_partner_percent_max'])) {
+            $queryParams['ad_partner_percent_max'] = $this->apiClient->toQueryValue($params['ad_partner_percent_max']);
+        }
+        if (isset($params['ad_partner_profit_min'])) {
+            $queryParams['ad_partner_profit_min'] = $this->apiClient->toQueryValue($params['ad_partner_profit_min']);
+        }
+        if (isset($params['ad_partner_profit_max'])) {
+            $queryParams['ad_partner_profit_max'] = $this->apiClient->toQueryValue($params['ad_partner_profit_max']);
+        }
+        if (isset($params['starts_at_min'])) {
+            $queryParams['starts_at_min'] = $this->apiClient->toQueryValue($params['starts_at_min']);
+        }
+        if (isset($params['starts_at_max'])) {
+            $queryParams['starts_at_max'] = $this->apiClient->toQueryValue($params['starts_at_max']);
+        }
+        if (isset($params['created_at_min'])) {
+            $queryParams['created_at_min'] = $this->apiClient->toQueryValue($params['created_at_min']);
+        }
+        if (isset($params['created_at_max'])) {
+            $queryParams['created_at_max'] = $this->apiClient->toQueryValue($params['created_at_max']);
+        }
+
+        // header params
+
+        // path params
+
+        // form params
+
+        // body params
+        $preparedBody = $formParams;
+        
+
+        if (strpos($headerParams['Content-Type'], "application/x-www-form-urlencoded") > -1) {
+            $preparedBody = http_build_query($preparedBody);
+        }
+
+        // make the API Call
+        $response = $this->apiClient->callAPI($resourcePath, $method, $queryParams, $preparedBody, $headerParams);
+        
+        if (!$response) {
+            return null;
+        }
+
+        $responseObject = $this->apiClient->deserialize($response, 'EventsResponse');
+        return $responseObject;
+    }
+   
+    /**
+     * addEvent
+     *
+     * Создать событие
+     *
+     * @param array[string] $params Ассоциативный массив параметров. Может содержать следующие поля:
+     *
+     * 'body' (CreateEvent) Описание создаваемого события (optional)
+     *
+     * @return EventResponse
+     */
+    public function addEvent($params = []) {
+        $resourcePath = "/v1/events";
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+        $method = "POST";
+        $queryParams = array();
+        $headerParams = array();
+        $formParams = array();
+        $_header_accept = '';
+        if ($_header_accept !== '') {
+            $headerParams['Accept'] = $_header_accept;
+        }
+        $_header_content_type = array();
+        $headerParams['Content-Type'] = count($_header_content_type) > 0 ? $_header_content_type[0] : 'application/json';
+
+        // query params
+
+        // header params
+
+        // path params
+
+        // form params
+
+        // body params
+        $preparedBody = null;
+        if (isset($params['body'])) {
+            $preparedBody = $params['body'];
+        }
+
+        // for HTTP post (form)
+        $preparedBody = $preparedBody ?: $formParams;
+        
+
+        if (strpos($headerParams['Content-Type'], "application/x-www-form-urlencoded") > -1) {
+            $preparedBody = http_build_query($preparedBody);
+        }
+
+        // make the API Call
+        $response = $this->apiClient->callAPI($resourcePath, $method, $queryParams, $preparedBody, $headerParams);
+        
+        if (!$response) {
+            return null;
+        }
+
+        $responseObject = $this->apiClient->deserialize($response, 'EventResponse');
+        return $responseObject;
+    }
+   
+    /**
+     * getSingleEvent
+     *
+     * Получить событие по данному id
+     *
+     * @param array[string] $params Ассоциативный массив параметров. Может содержать следующие поля:
+     *
+     * 'fields' (array[string]) Список полей, которые нужно вывести (optional)
+     * 'event_id' (int) Номер событий, которые нужно вывести (required)
+     *
+     * @return EventResponse
+     */
+    public function getSingleEvent($params = []) {
+        $resourcePath = "/v1/events/{event_id}";
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+        $method = "GET";
+        $queryParams = array();
+        $headerParams = array();
+        $formParams = array();
+        $_header_accept = '';
+        if ($_header_accept !== '') {
+            $headerParams['Accept'] = $_header_accept;
+        }
+        $_header_content_type = array();
+        $headerParams['Content-Type'] = count($_header_content_type) > 0 ? $_header_content_type[0] : 'application/json';
+
+        // query params
+        if (isset($params['fields'])) {
+            $queryParams['fields'] = $this->apiClient->toQueryValue($params['fields']);
+        }
+
+        // header params
+
+        // path params
+        if (isset($params['event_id'])) {
+            $resourcePath = str_replace("{" . "event_id" . "}", $this->apiClient->toPathValue($params['event_id']), $resourcePath);
+        }
+
+        // form params
+
+        // body params
+        $preparedBody = $formParams;
+        
+
+        if (strpos($headerParams['Content-Type'], "application/x-www-form-urlencoded") > -1) {
+            $preparedBody = http_build_query($preparedBody);
+        }
+
+        // make the API Call
+        $response = $this->apiClient->callAPI($resourcePath, $method, $queryParams, $preparedBody, $headerParams);
+        
+        if (!$response) {
+            return null;
+        }
+
+        $responseObject = $this->apiClient->deserialize($response, 'EventResponse');
+        return $responseObject;
+    }
+   
+    /**
+     * editEvent
+     *
+     * Редактировать событие
+     *
+     * @param array[string] $params Ассоциативный массив параметров. Может содержать следующие поля:
+     *
+     * 'event_id' (int) Id редактируемого события (required)
+     * 'body' (EditEvent) Список изменённых параметров события (optional)
+     *
+     * @return EventResponse
+     */
+    public function editEvent($params = []) {
+        $resourcePath = "/v1/events/{event_id}";
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+        $method = "POST";
+        $queryParams = array();
+        $headerParams = array();
+        $formParams = array();
+        $_header_accept = '';
+        if ($_header_accept !== '') {
+            $headerParams['Accept'] = $_header_accept;
+        }
+        $_header_content_type = array();
+        $headerParams['Content-Type'] = count($_header_content_type) > 0 ? $_header_content_type[0] : 'application/json';
+
+        // query params
+
+        // header params
+
+        // path params
+        if (isset($params['event_id'])) {
+            $resourcePath = str_replace("{" . "event_id" . "}", $this->apiClient->toPathValue($params['event_id']), $resourcePath);
+        }
+
+        // form params
+
+        // body params
+        $preparedBody = null;
+        if (isset($params['body'])) {
+            $preparedBody = $params['body'];
+        }
+
+        // for HTTP post (form)
+        $preparedBody = $preparedBody ?: $formParams;
+        
+
+        if (strpos($headerParams['Content-Type'], "application/x-www-form-urlencoded") > -1) {
+            $preparedBody = http_build_query($preparedBody);
+        }
+
+        // make the API Call
+        $response = $this->apiClient->callAPI($resourcePath, $method, $queryParams, $preparedBody, $headerParams);
+        
+        if (!$response) {
+            return null;
+        }
+
+        $responseObject = $this->apiClient->deserialize($response, 'EventResponse');
+        return $responseObject;
+    }
+   
+    /**
+     * getEventOrders
+     *
+     * Получить заказы события с указанным номером
+     *
+     * @param array[string] $params Ассоциативный массив параметров. Может содержать следующие поля:
+     *
+     * 'limit' (int) Сколько элементов списка вывести (optional)
+     * 'skip' (int) С какого элемента списка начать вывод (optional)
+     * 'fields' (array[string]) Список полей, которые нужно вывести (optional)
+     * 'event_id' (int) Номер события, к которому относятся заказы (required)
+     *
+     * @return RegistrationOrdersResponse
+     */
+    public function getEventOrders($params = []) {
+        $resourcePath = "/v1/events/{event_id}/orders";
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+        $method = "GET";
+        $queryParams = array();
+        $headerParams = array();
+        $formParams = array();
+        $_header_accept = '';
+        if ($_header_accept !== '') {
+            $headerParams['Accept'] = $_header_accept;
+        }
+        $_header_content_type = array();
+        $headerParams['Content-Type'] = count($_header_content_type) > 0 ? $_header_content_type[0] : 'application/json';
+
+        // query params
+        if (isset($params['limit'])) {
+            $queryParams['limit'] = $this->apiClient->toQueryValue($params['limit']);
+        }
+        if (isset($params['skip'])) {
+            $queryParams['skip'] = $this->apiClient->toQueryValue($params['skip']);
+        }
+        if (isset($params['fields'])) {
+            $queryParams['fields'] = $this->apiClient->toQueryValue($params['fields']);
+        }
+
+        // header params
+
+        // path params
+        if (isset($params['event_id'])) {
+            $resourcePath = str_replace("{" . "event_id" . "}", $this->apiClient->toPathValue($params['event_id']), $resourcePath);
+        }
+
+        // form params
+
+        // body params
+        $preparedBody = $formParams;
+        
+
+        if (strpos($headerParams['Content-Type'], "application/x-www-form-urlencoded") > -1) {
+            $preparedBody = http_build_query($preparedBody);
+        }
+
+        // make the API Call
+        $response = $this->apiClient->callAPI($resourcePath, $method, $queryParams, $preparedBody, $headerParams);
+        
+        if (!$response) {
+            return null;
+        }
+
+        $responseObject = $this->apiClient->deserialize($response, 'RegistrationOrdersResponse');
+        return $responseObject;
+    }
+   
+    /**
+     * addOrder
+     *
+     * Создать заказ
+     *
+     * @param array[string] $params Ассоциативный массив параметров. Может содержать следующие поля:
+     *
+     * 'event_id' (int) Номер события (required)
+     * 'body' (CreateOrder) Описание создаваемого заказа (optional)
+     *
+     * @return RegistrationOrderResponse
+     */
+    public function addOrder($params = []) {
+        $resourcePath = "/v1/events/{event_id}/orders";
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+        $method = "POST";
+        $queryParams = array();
+        $headerParams = array();
+        $formParams = array();
+        $_header_accept = '';
+        if ($_header_accept !== '') {
+            $headerParams['Accept'] = $_header_accept;
+        }
+        $_header_content_type = array();
+        $headerParams['Content-Type'] = count($_header_content_type) > 0 ? $_header_content_type[0] : 'application/json';
+
+        // query params
+
+        // header params
+
+        // path params
+        if (isset($params['event_id'])) {
+            $resourcePath = str_replace("{" . "event_id" . "}", $this->apiClient->toPathValue($params['event_id']), $resourcePath);
+        }
+
+        // form params
+
+        // body params
+        $preparedBody = null;
+        if (isset($params['body'])) {
+            $preparedBody = $params['body'];
+        }
+
+        // for HTTP post (form)
+        $preparedBody = $preparedBody ?: $formParams;
+        
+
+        if (strpos($headerParams['Content-Type'], "application/x-www-form-urlencoded") > -1) {
+            $preparedBody = http_build_query($preparedBody);
+        }
+
+        // make the API Call
+        $response = $this->apiClient->callAPI($resourcePath, $method, $queryParams, $preparedBody, $headerParams);
+        
+        if (!$response) {
+            return null;
+        }
+
+        $responseObject = $this->apiClient->deserialize($response, 'RegistrationOrderResponse');
+        return $responseObject;
+    }
+   
+    /**
+     * getSingleEventOrder
+     *
+     * Получить заказ с указанным id
+     *
+     * @param array[string] $params Ассоциативный массив параметров. Может содержать следующие поля:
+     *
+     * 'fields' (array[string]) Список полей, которые нужно вывести (optional)
+     * 'event_id' (int) Номер события, к которому относится заказ (required)
+     * 'order_id' (int) Номер заказа (required)
+     *
+     * @return RegistrationOrderResponse
+     */
+    public function getSingleEventOrder($params = []) {
+        $resourcePath = "/v1/events/{event_id}/orders/{order_id}";
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+        $method = "GET";
+        $queryParams = array();
+        $headerParams = array();
+        $formParams = array();
+        $_header_accept = '';
+        if ($_header_accept !== '') {
+            $headerParams['Accept'] = $_header_accept;
+        }
+        $_header_content_type = array();
+        $headerParams['Content-Type'] = count($_header_content_type) > 0 ? $_header_content_type[0] : 'application/json';
+
+        // query params
+        if (isset($params['fields'])) {
+            $queryParams['fields'] = $this->apiClient->toQueryValue($params['fields']);
+        }
+
+        // header params
+
+        // path params
+        if (isset($params['event_id'])) {
+            $resourcePath = str_replace("{" . "event_id" . "}", $this->apiClient->toPathValue($params['event_id']), $resourcePath);
+        }
+        if (isset($params['order_id'])) {
+            $resourcePath = str_replace("{" . "order_id" . "}", $this->apiClient->toPathValue($params['order_id']), $resourcePath);
+        }
+
+        // form params
+
+        // body params
+        $preparedBody = $formParams;
+        
+
+        if (strpos($headerParams['Content-Type'], "application/x-www-form-urlencoded") > -1) {
+            $preparedBody = http_build_query($preparedBody);
+        }
+
+        // make the API Call
+        $response = $this->apiClient->callAPI($resourcePath, $method, $queryParams, $preparedBody, $headerParams);
+        
+        if (!$response) {
+            return null;
+        }
+
+        $responseObject = $this->apiClient->deserialize($response, 'RegistrationOrderResponse');
+        return $responseObject;
+    }
+   
+    /**
+     * editEventOrder
+     *
+     * Отредактировать заказ с указанным id
+     *
+     * @param array[string] $params Ассоциативный массив параметров. Может содержать следующие поля:
+     *
+     * 'event_id' (int) Номер события, к которому относится заказ (required)
+     * 'order_id' (int) Номер заказа (required)
+     * 'body' (EditOrder) Список изменённых параметров заказа (optional)
+     *
+     * @return RegistrationOrderResponse
+     */
+    public function editEventOrder($params = []) {
+        $resourcePath = "/v1/events/{event_id}/orders/{order_id}";
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+        $method = "PATCH";
+        $queryParams = array();
+        $headerParams = array();
+        $formParams = array();
+        $_header_accept = '';
+        if ($_header_accept !== '') {
+            $headerParams['Accept'] = $_header_accept;
+        }
+        $_header_content_type = array();
+        $headerParams['Content-Type'] = count($_header_content_type) > 0 ? $_header_content_type[0] : 'application/json';
+
+        // query params
+
+        // header params
+
+        // path params
+        if (isset($params['event_id'])) {
+            $resourcePath = str_replace("{" . "event_id" . "}", $this->apiClient->toPathValue($params['event_id']), $resourcePath);
+        }
+        if (isset($params['order_id'])) {
+            $resourcePath = str_replace("{" . "order_id" . "}", $this->apiClient->toPathValue($params['order_id']), $resourcePath);
+        }
+
+        // form params
+
+        // body params
+        $preparedBody = null;
+        if (isset($params['body'])) {
+            $preparedBody = $params['body'];
+        }
+
+        // for HTTP post (form)
+        $preparedBody = $preparedBody ?: $formParams;
+        
+
+        if (strpos($headerParams['Content-Type'], "application/x-www-form-urlencoded") > -1) {
+            $preparedBody = http_build_query($preparedBody);
+        }
+
+        // make the API Call
+        $response = $this->apiClient->callAPI($resourcePath, $method, $queryParams, $preparedBody, $headerParams);
+        
+        if (!$response) {
+            return null;
+        }
+
+        $responseObject = $this->apiClient->deserialize($response, 'RegistrationOrderResponse');
+        return $responseObject;
+    }
+   
+    /**
+     * addOrganization
+     *
+     * Создать новую организацию
+     *
+     * @param array[string] $params Ассоциативный массив параметров. Может содержать следующие поля:
+     *
+     * 'body' (CreateOrganization) Список полей, которые нужно вывести (optional)
+     *
+     * @return OrganizationResponse
+     */
+    public function addOrganization($params = []) {
+        $resourcePath = "/v1/organizations";
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+        $method = "POST";
+        $queryParams = array();
+        $headerParams = array();
+        $formParams = array();
+        $_header_accept = '';
+        if ($_header_accept !== '') {
+            $headerParams['Accept'] = $_header_accept;
+        }
+        $_header_content_type = array();
+        $headerParams['Content-Type'] = count($_header_content_type) > 0 ? $_header_content_type[0] : 'application/json';
+
+        // query params
+
+        // header params
+
+        // path params
+
+        // form params
+
+        // body params
+        $preparedBody = null;
+        if (isset($params['body'])) {
+            $preparedBody = $params['body'];
+        }
+
+        // for HTTP post (form)
+        $preparedBody = $preparedBody ?: $formParams;
+        
+
+        if (strpos($headerParams['Content-Type'], "application/x-www-form-urlencoded") > -1) {
+            $preparedBody = http_build_query($preparedBody);
+        }
+
+        // make the API Call
+        $response = $this->apiClient->callAPI($resourcePath, $method, $queryParams, $preparedBody, $headerParams);
+        
+        if (!$response) {
+            return null;
+        }
+
+        $responseObject = $this->apiClient->deserialize($response, 'OrganizationResponse');
+        return $responseObject;
+    }
+   
 
 }

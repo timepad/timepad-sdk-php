@@ -27,52 +27,52 @@ namespace TimepadApi\models;
 use \ArrayAccess;
 
 class EditOrderVisitorsAttendanceIncludeApiRequest implements ArrayAccess {
-  static $swaggerTypes = array(
-      'starts_at' => 'DateTime',
-      'ends_at' => 'DateTime'
-  );
+    static $swaggerTypes = array(
+        'starts_at' => 'DateTime',
+        'ends_at' => 'DateTime'
+    );
 
-  static $attributeMap = array(
-      'starts_at' => 'starts_at',
-      'ends_at' => 'ends_at'
-  );
+    static $attributeMap = array(
+        'starts_at' => 'starts_at',
+        'ends_at' => 'ends_at'
+    );
 
-  
-  /**
-  * Дата посещения пользователем события
-  */
-  public $starts_at; /* DateTime */
-  /**
-  * Дата ухода пользователя с события
-  */
-  public $ends_at; /* DateTime */
-
-  public function __construct(array $data = null) {
     
-    if(isset($data["starts_at"])) {
-      $this->starts_at = $data["starts_at"];
+    /**
+    * Дата посещения пользователем события
+    */
+    public $starts_at; /* DateTime */
+    /**
+    * Дата ухода пользователя с события
+    */
+    public $ends_at; /* DateTime */
+
+    public function __construct(array $data = null) {
+    
+        if(isset($data["starts_at"])) {
+            $this->starts_at = $data["starts_at"];
+        }
+    
+    
+        if(isset($data["ends_at"])) {
+            $this->ends_at = $data["ends_at"];
+        }
+    
     }
-    
-    
-    if(isset($data["ends_at"])) {
-      $this->ends_at = $data["ends_at"];
+
+    public function offsetExists($offset) {
+        return isset($this->$offset);
     }
-    
-  }
 
-  public function offsetExists($offset) {
-    return isset($this->$offset);
-  }
+    public function offsetGet($offset) {
+        return $this->$offset;
+    }
 
-  public function offsetGet($offset) {
-    return $this->$offset;
-  }
+    public function offsetSet($offset, $value) {
+        $this->$offset = $value;
+    }
 
-  public function offsetSet($offset, $value) {
-    $this->$offset = $value;
-  }
-
-  public function offsetUnset($offset) {
-    unset($this->$offset);
-  }
+    public function offsetUnset($offset) {
+        unset($this->$offset);
+    }
 }

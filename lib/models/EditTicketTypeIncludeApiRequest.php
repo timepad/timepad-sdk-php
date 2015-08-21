@@ -27,74 +27,74 @@ namespace TimepadApi\models;
 use \ArrayAccess;
 
 class EditTicketTypeIncludeApiRequest implements ArrayAccess {
-  static $swaggerTypes = array(
-      'id' => 'int',
-      'price' => 'int',
-      'status' => 'string',
-      'name' => 'string'
-  );
+    static $swaggerTypes = array(
+        'id' => 'int',
+        'price' => 'int',
+        'status' => 'string',
+        'name' => 'string'
+    );
 
-  static $attributeMap = array(
-      'id' => 'id',
-      'price' => 'price',
-      'status' => 'status',
-      'name' => 'name'
-  );
+    static $attributeMap = array(
+        'id' => 'id',
+        'price' => 'price',
+        'status' => 'status',
+        'name' => 'name'
+    );
 
-  
-  /**
-  * Id существующего билета
-  */
-  public $id; /* int */
-  /**
-  * Цена существующего билета
-  */
-  public $price; /* int */
-  /**
-  * Статус билета
-  */
-  public $status; /* string */
-  /**
-  * Название билета
-  */
-  public $name; /* string */
-
-  public function __construct(array $data = null) {
     
-    if(isset($data["id"])) {
-      $this->id = $data["id"];
+    /**
+    * Id существующего билета
+    */
+    public $id; /* int */
+    /**
+    * Цена существующего билета
+    */
+    public $price; /* int */
+    /**
+    * Статус билета
+    */
+    public $status; /* string */
+    /**
+    * Название билета
+    */
+    public $name; /* string */
+
+    public function __construct(array $data = null) {
+    
+        if(isset($data["id"])) {
+            $this->id = $data["id"];
+        }
+    
+    
+        if(isset($data["price"])) {
+            $this->price = $data["price"];
+        }
+    
+    
+        if(isset($data["status"])) {
+            $this->status = $data["status"];
+        }
+    
+    
+        if(isset($data["name"])) {
+            $this->name = $data["name"];
+        }
+    
     }
-    
-    
-    if(isset($data["price"])) {
-      $this->price = $data["price"];
+
+    public function offsetExists($offset) {
+        return isset($this->$offset);
     }
-    
-    
-    if(isset($data["status"])) {
-      $this->status = $data["status"];
+
+    public function offsetGet($offset) {
+        return $this->$offset;
     }
-    
-    
-    if(isset($data["name"])) {
-      $this->name = $data["name"];
+
+    public function offsetSet($offset, $value) {
+        $this->$offset = $value;
     }
-    
-  }
 
-  public function offsetExists($offset) {
-    return isset($this->$offset);
-  }
-
-  public function offsetGet($offset) {
-    return $this->$offset;
-  }
-
-  public function offsetSet($offset, $value) {
-    $this->$offset = $value;
-  }
-
-  public function offsetUnset($offset) {
-    unset($this->$offset);
-  }
+    public function offsetUnset($offset) {
+        unset($this->$offset);
+    }
 }

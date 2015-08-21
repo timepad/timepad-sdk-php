@@ -27,74 +27,74 @@ namespace TimepadApi\models;
 use \ArrayAccess;
 
 class LocationResponse implements ArrayAccess {
-  static $swaggerTypes = array(
-      'country' => 'string',
-      'city' => 'string',
-      'address' => 'string',
-      'coordinates' => 'array[float]'
-  );
+    static $swaggerTypes = array(
+        'country' => 'string',
+        'city' => 'string',
+        'address' => 'string',
+        'coordinates' => 'array[float]'
+    );
 
-  static $attributeMap = array(
-      'country' => 'country',
-      'city' => 'city',
-      'address' => 'address',
-      'coordinates' => 'coordinates'
-  );
+    static $attributeMap = array(
+        'country' => 'country',
+        'city' => 'city',
+        'address' => 'address',
+        'coordinates' => 'coordinates'
+    );
 
-  
-  /**
-  * Название страны
-  */
-  public $country; /* string */
-  /**
-  * Название города
-  */
-  public $city; /* string */
-  /**
-  * Адрес проведения события
-  */
-  public $address; /* string */
-  /**
-  * Широта и долгота для карт
-  */
-  public $coordinates; /* array[float] */
-
-  public function __construct(array $data = null) {
     
-    if(isset($data["country"])) {
-      $this->country = $data["country"];
+    /**
+    * Название страны
+    */
+    public $country; /* string */
+    /**
+    * Название города
+    */
+    public $city; /* string */
+    /**
+    * Адрес проведения события
+    */
+    public $address; /* string */
+    /**
+    * Широта и долгота для карт
+    */
+    public $coordinates; /* array[float] */
+
+    public function __construct(array $data = null) {
+    
+        if(isset($data["country"])) {
+            $this->country = $data["country"];
+        }
+    
+    
+        if(isset($data["city"])) {
+            $this->city = $data["city"];
+        }
+    
+    
+        if(isset($data["address"])) {
+            $this->address = $data["address"];
+        }
+    
+    
+        if(isset($data["coordinates"])) {
+            $this->coordinates = $data["coordinates"];
+        }
+    
     }
-    
-    
-    if(isset($data["city"])) {
-      $this->city = $data["city"];
+
+    public function offsetExists($offset) {
+        return isset($this->$offset);
     }
-    
-    
-    if(isset($data["address"])) {
-      $this->address = $data["address"];
+
+    public function offsetGet($offset) {
+        return $this->$offset;
     }
-    
-    
-    if(isset($data["coordinates"])) {
-      $this->coordinates = $data["coordinates"];
+
+    public function offsetSet($offset, $value) {
+        $this->$offset = $value;
     }
-    
-  }
 
-  public function offsetExists($offset) {
-    return isset($this->$offset);
-  }
-
-  public function offsetGet($offset) {
-    return $this->$offset;
-  }
-
-  public function offsetSet($offset, $value) {
-    $this->$offset = $value;
-  }
-
-  public function offsetUnset($offset) {
-    unset($this->$offset);
-  }
+    public function offsetUnset($offset) {
+        unset($this->$offset);
+    }
 }
