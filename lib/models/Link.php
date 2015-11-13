@@ -44,20 +44,28 @@ class Link implements ArrayAccess {
     
     /**
     * Машиночитаемое описание ссылки (для оплат - строковый id платёжки)
+    *
+    * @var string
     */
-    public $name; /* string */
+    public $name;
     /**
     * Человекочитаемое описание ссылки (для оплат - название платёжки)
+    *
+    * @var string
     */
-    public $title; /* string */
+    public $title;
     /**
     * Ссылка
+    *
+    * @var string
     */
-    public $href; /* string */
+    public $href;
     /**
     * Признак того, что ссылка - шаблон. У curies - true, в остальных случаях не присутствует
+    *
+    * @var bool
     */
-    public $templated; /* bool */
+    public $templated;
 
     public function __construct(array $data = null) {
     

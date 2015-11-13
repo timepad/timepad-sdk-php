@@ -40,12 +40,16 @@ class AnswerResponse implements ArrayAccess {
     
     /**
     * Уникальный номер ответа
+    *
+    * @var int
     */
-    public $id; /* int */
+    public $id;
     /**
     * Текст ответа
+    *
+    * @var string
     */
-    public $name; /* string */
+    public $name;
 
     public function __construct(array $data = null) {
     

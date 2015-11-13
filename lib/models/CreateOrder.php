@@ -28,9 +28,9 @@ use \ArrayAccess;
 
 class CreateOrder implements ArrayAccess {
     static $swaggerTypes = array(
-        'tickets' => 'array[TicketInclude]',
+        'tickets' => 'TicketInclude[]',
         'answers' => 'object',
-        'promocodes' => 'array[string]'
+        'promocodes' => 'string[]'
     );
 
     static $attributeMap = array(
@@ -42,16 +42,22 @@ class CreateOrder implements ArrayAccess {
     
     /**
     * Список видов билетов
+    *
+    * @var TicketInclude[]
     */
-    public $tickets; /* array[TicketInclude] */
+    public $tickets;
     /**
     * Список видов билетов
+    *
+    * @var object
     */
-    public $answers; /* object */
+    public $answers;
     /**
     * Промокоды
+    *
+    * @var string[]
     */
-    public $promocodes; /* array[string] */
+    public $promocodes;
 
     public function __construct(array $data = null) {
     

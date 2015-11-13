@@ -48,28 +48,40 @@ class RegistrationDataResponse implements ArrayAccess {
     
     /**
     * Цена самого дорогого билета
+    *
+    * @var float
     */
-    public $price_max; /* float */
+    public $price_max;
     /**
     * Цена самого дешёвого билета
+    *
+    * @var float
     */
-    public $price_min; /* float */
+    public $price_min;
     /**
     * Дата окончания продажи последней категории билета
+    *
+    * @var DateTime
     */
-    public $sale_ends_at; /* DateTime */
+    public $sale_ends_at;
     /**
     * Количество забронированных, проданных и бесплатных билетов
+    *
+    * @var int
     */
-    public $tickets_total; /* int */
+    public $tickets_total;
     /**
     * Максимальное количество доступных билетов, независимо от типа билета
+    *
+    * @var int
     */
-    public $tickets_limit; /* int */
+    public $tickets_limit;
     /**
     * Открыта ли регистрация
+    *
+    * @var bool
     */
-    public $is_registration_open; /* bool */
+    public $is_registration_open;
 
     public function __construct(array $data = null) {
     

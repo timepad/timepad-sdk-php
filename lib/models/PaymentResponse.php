@@ -42,16 +42,22 @@ class PaymentResponse implements ArrayAccess {
     
     /**
     * Оплаченная сумма (количество рублей, отданных покупателем платёжной системе в этом заказе)
+    *
+    * @var float
     */
-    public $amount; /* float */
+    public $amount;
     /**
     * Дата оплаты
+    *
+    * @var DateTime
     */
-    public $paid_at; /* DateTime */
+    public $paid_at;
     /**
     * Платёжная система оплаты
+    *
+    * @var string
     */
-    public $payment_type; /* string */
+    public $payment_type;
 
     public function __construct(array $data = null) {
     

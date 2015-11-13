@@ -40,12 +40,16 @@ class CodesResponse implements ArrayAccess {
     
     /**
     * ean13 код билета
+    *
+    * @var string
     */
-    public $ean13; /* string */
+    public $ean13;
     /**
     * ean13 код билета
+    *
+    * @var string
     */
-    public $ean8; /* string */
+    public $ean8;
 
     public function __construct(array $data = null) {
     

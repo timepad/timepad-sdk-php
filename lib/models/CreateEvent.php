@@ -28,26 +28,24 @@ use \ArrayAccess;
 
 class CreateEvent implements ArrayAccess {
     static $swaggerTypes = array(
-        'ticket_types' => 'array[TicketTypeInclude]',
         'organization' => 'OrganizationInclude',
-        'questions' => 'array[QuestionInclude]',
         'starts_at' => 'DateTime',
         'ends_at' => 'DateTime',
         'name' => 'string',
         'description_short' => 'string',
         'description_html' => 'string',
-        'categories' => 'array[CategoryInclude]',
+        'categories' => 'CategoryInclude[]',
         'location' => 'LocationInclude',
         'poster_image_url' => 'string',
-        'properties' => 'array[string]',
+        'properties' => 'string[]',
         'custom' => 'object',
-        'access_status' => 'string'
+        'questions' => 'QuestionInclude[]',
+        'access_status' => 'string',
+        'ticket_types' => 'TicketTypeInclude[]'
     );
 
     static $attributeMap = array(
-        'ticket_types' => 'ticket_types',
         'organization' => 'organization',
-        'questions' => 'questions',
         'starts_at' => 'starts_at',
         'ends_at' => 'ends_at',
         'name' => 'name',
@@ -58,81 +56,101 @@ class CreateEvent implements ArrayAccess {
         'poster_image_url' => 'poster_image_url',
         'properties' => 'properties',
         'custom' => 'custom',
-        'access_status' => 'access_status'
+        'questions' => 'questions',
+        'access_status' => 'access_status',
+        'ticket_types' => 'ticket_types'
     );
 
     
     /**
-    * Список видов билетов
-    */
-    public $ticket_types; /* array[TicketTypeInclude] */
-    /**
     * Организация, проводящая событие
+    *
+    * @var OrganizationInclude
     */
-    public $organization; /* OrganizationInclude */
-    /**
-    * Список вопросов в анкете регистрации
-    */
-    public $questions; /* array[QuestionInclude] */
+    public $organization;
     /**
     * Дата начала события
+    *
+    * @var DateTime
     */
-    public $starts_at; /* DateTime */
+    public $starts_at;
     /**
     * Дата окончания события
+    *
+    * @var DateTime
     */
-    public $ends_at; /* DateTime */
+    public $ends_at;
     /**
     * Название события
+    *
+    * @var string
     */
-    public $name; /* string */
+    public $name;
     /**
     * Краткое описание/подзаголовок события
+    *
+    * @var string
     */
-    public $description_short; /* string */
+    public $description_short;
     /**
     * Полное описание с html-тегами
+    *
+    * @var string
     */
-    public $description_html; /* string */
+    public $description_html;
     /**
     * Список категорий, в которые входит событие
+    *
+    * @var CategoryInclude[]
     */
-    public $categories; /* array[CategoryInclude] */
+    public $categories;
     /**
     * Место проведения события
+    *
+    * @var LocationInclude
     */
-    public $location; /* LocationInclude */
+    public $location;
     /**
     * URL картинки события
+    *
+    * @var string
     */
-    public $poster_image_url; /* string */
+    public $poster_image_url;
     /**
     * Список настроек события (например, мультианкета)
+    *
+    * @var string[]
     */
-    public $properties; /* array[string] */
+    public $properties;
     /**
     * Объект с дополнительными полями, специфичными для данной организации
+    *
+    * @var object
     */
-    public $custom; /* object */
+    public $custom;
+    /**
+    * Список вопросов в анкете регистрации
+    *
+    * @var QuestionInclude[]
+    */
+    public $questions;
     /**
     * Статус доступа к событию
+    *
+    * @var string
     */
-    public $access_status; /* string */
+    public $access_status;
+    /**
+    * Список видов билетов
+    *
+    * @var TicketTypeInclude[]
+    */
+    public $ticket_types;
 
     public function __construct(array $data = null) {
     
-        if(isset($data["ticket_types"])) {
-            $this->ticket_types = $data["ticket_types"];
-        }
-    
-    
         if(isset($data["organization"])) {
             $this->organization = $data["organization"];
-        }
-    
-    
-        if(isset($data["questions"])) {
-            $this->questions = $data["questions"];
         }
     
     
@@ -186,8 +204,18 @@ class CreateEvent implements ArrayAccess {
         }
     
     
+        if(isset($data["questions"])) {
+            $this->questions = $data["questions"];
+        }
+    
+    
         if(isset($data["access_status"])) {
             $this->access_status = $data["access_status"];
+        }
+    
+    
+        if(isset($data["ticket_types"])) {
+            $this->ticket_types = $data["ticket_types"];
         }
     
     }

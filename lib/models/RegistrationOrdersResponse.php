@@ -29,7 +29,7 @@ use \ArrayAccess;
 class RegistrationOrdersResponse implements ArrayAccess {
     static $swaggerTypes = array(
         'total' => 'int',
-        'values' => 'array[RegistrationOrderResponse]'
+        'values' => 'RegistrationOrderResponse[]'
     );
 
     static $attributeMap = array(
@@ -38,8 +38,8 @@ class RegistrationOrdersResponse implements ArrayAccess {
     );
 
     
-    public $total; /* int */
-    public $values; /* array[RegistrationOrderResponse] */
+    public $total;
+    public $values;
 
     public function __construct(array $data = null) {
     

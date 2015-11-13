@@ -41,11 +41,11 @@ class EventResponse implements ArrayAccess {
         'locale' => 'string',
         'location' => 'LocationResponse',
         'organization' => 'OrganizationResponse',
-        'categories' => 'array[CategoryResponse]',
-        'ticket_types' => 'array[TicketTypeResponse]',
-        'questions' => 'array[QuestionResponse]',
-        'widgets' => 'array[WidgetResponse]',
-        'properties' => 'array[string]',
+        'categories' => 'CategoryResponse[]',
+        'ticket_types' => 'TicketTypeResponse[]',
+        'questions' => 'QuestionResponse[]',
+        'widgets' => 'WidgetResponse[]',
+        'properties' => 'string[]',
         'moderation_status' => 'string',
         'access_status' => 'string',
         'registration_data' => 'RegistrationDataResponse'
@@ -78,88 +78,130 @@ class EventResponse implements ArrayAccess {
     
     /**
     * Уникальный номер события
+    *
+    * @var int
     */
-    public $id; /* int */
+    public $id;
     /**
     * Дата создания события
+    *
+    * @var DateTime
     */
-    public $created_at; /* DateTime */
+    public $created_at;
     /**
     * Дата начала события
+    *
+    * @var DateTime
     */
-    public $starts_at; /* DateTime */
+    public $starts_at;
     /**
     * Дата конца события
+    *
+    * @var DateTime
     */
-    public $ends_at; /* DateTime */
+    public $ends_at;
     /**
     * Название события
+    *
+    * @var string
     */
-    public $name; /* string */
+    public $name;
     /**
     * Короткое описание события или подзаголовок
+    *
+    * @var string
     */
-    public $description_short; /* string */
+    public $description_short;
     /**
     * Полное описание события
+    *
+    * @var string
     */
-    public $description_html; /* string */
+    public $description_html;
     /**
     * Адрес события в timepad
+    *
+    * @var string
     */
-    public $url; /* string */
+    public $url;
     /**
     * Картинка события
+    *
+    * @var ImageResponse
     */
-    public $poster_image; /* ImageResponse */
+    public $poster_image;
     /**
     * Процент, который получают партнёры за продажу билета на это событие
+    *
+    * @var int
     */
-    public $ad_partner_percent; /* int */
+    public $ad_partner_percent;
     /**
     * Язык события по умолчанию
+    *
+    * @var string
     */
-    public $locale; /* string */
+    public $locale;
     /**
     * Место проведения события
+    *
+    * @var LocationResponse
     */
-    public $location; /* LocationResponse */
+    public $location;
     /**
     * Организация, проводящая событие
+    *
+    * @var OrganizationResponse
     */
-    public $organization; /* OrganizationResponse */
+    public $organization;
     /**
     * Категории события
+    *
+    * @var CategoryResponse[]
     */
-    public $categories; /* array[CategoryResponse] */
+    public $categories;
     /**
     * Доступные типы билетов
+    *
+    * @var TicketTypeResponse[]
     */
-    public $ticket_types; /* array[TicketTypeResponse] */
+    public $ticket_types;
     /**
     * Вопросы, задающиеся при регистрации
+    *
+    * @var QuestionResponse[]
     */
-    public $questions; /* array[QuestionResponse] */
+    public $questions;
     /**
     * Виджеты, доступные для события
+    *
+    * @var WidgetResponse[]
     */
-    public $widgets; /* array[WidgetResponse] */
+    public $widgets;
     /**
     * Список особенностей события
+    *
+    * @var string[]
     */
-    public $properties; /* array[string] */
+    public $properties;
     /**
     * Статус модерации
+    *
+    * @var string
     */
-    public $moderation_status; /* string */
+    public $moderation_status;
     /**
     * Статус доступа к событию
+    *
+    * @var string
     */
-    public $access_status; /* string */
+    public $access_status;
     /**
     * Обобщённые данные о билетах
+    *
+    * @var RegistrationDataResponse
     */
-    public $registration_data; /* RegistrationDataResponse */
+    public $registration_data;
 
     public function __construct(array $data = null) {
     

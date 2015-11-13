@@ -40,12 +40,16 @@ class AttendanceResponse implements ArrayAccess {
     
     /**
     * Дата посещения события
+    *
+    * @var DateTime
     */
-    public $starts_at; /* DateTime */
+    public $starts_at;
     /**
     * Дата ухода с события
+    *
+    * @var DateTime
     */
-    public $ends_at; /* DateTime */
+    public $ends_at;
 
     public function __construct(array $data = null) {
     

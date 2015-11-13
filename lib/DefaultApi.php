@@ -34,7 +34,7 @@ class DefaultApi {
      *
      * Получить информацию о пользователе API
      *
-     * @param array[string] $params Ассоциативный массив параметров. Может содержать следующие поля:
+     * @param string[] $params Ассоциативный массив параметров. Может содержать следующие поля:
      *
      * 'token' (string) Идентификатор токена (optional)
      *
@@ -89,7 +89,7 @@ class DefaultApi {
      *
      * Получить информацию о пользователе API
      *
-     * @param array[string] $params Ассоциативный массив параметров. Может содержать следующие поля:
+     * @param string[] $params Ассоциативный массив параметров. Может содержать следующие поля:
      *
      * 'token' (string) Идентификатор токена (optional)
      *
@@ -144,12 +144,12 @@ class DefaultApi {
      *
      * Получить токен для работы с API, требующими авторизации
      *
-     * @param array[string] $params Ассоциативный массив параметров. Может содержать следующие поля:
+     * @param string[] $params Ассоциативный массив параметров. Может содержать следующие поля:
      *
      * 'client_id' (string) Идентификатор клиента (optional)
      * 'redirect_uri' (string) Ссылка на которую произойдёт редирект (optional)
      * 'response_type' (string) Возвращаемый тип ответа. Единственное поддерживаемое значение - token (optional)
-     * 'scope' (array[string]) Запрашиваемые приложением разрешения через запятую. Возможные значения: view_private_events (optional)
+     * 'scope' (string[]) Запрашиваемые приложением разрешения через запятую. Возможные значения: add_events, add_organizations, edit_events, view_private_events, view_visitors, edit_visitors, add_cash_payments (optional)
      *
      * @return void
      */
@@ -205,24 +205,24 @@ class DefaultApi {
      *
      * Получить список событий по заданным фильтрам
      *
-     * @param array[string] $params Ассоциативный массив параметров. Может содержать следующие поля:
+     * @param string[] $params Ассоциативный массив параметров. Может содержать следующие поля:
      *
-     * 'fields' (array[string]) Список полей, которые нужно вывести (optional)
+     * 'fields' (string[]) Список полей, которые нужно вывести (optional)
      * 'limit' (int) Сколько элементов списка вывести (optional)
      * 'skip' (int) С какого элемента списка начать вывод (optional)
-     * 'sort' (array[string]) Поле, по которому сортировать (optional)
-     * 'category_ids' (array[int]) Категории, к которым принадлежат события (optional)
-     * 'category_ids_exclude' (array[int]) Категории, к которым не принадлежат события (optional)
-     * 'cities' (array[string]) Города, события из которых выводить (optional)
-     * 'cities_exclude' (array[string]) Города, события из которых не выводить (optional)
-     * 'organization_ids' (array[int]) Номера организаций, события из которых выводить (optional)
-     * 'organization_ids_exclude' (array[int]) Номера организаций, события из которых не выводить (optional)
-     * 'event_ids' (array[int]) Номера событий, которые нужно вывести (optional)
-     * 'event_ids_exclude' (array[int]) Номера событий, которые нужно пропустить (optional)
-     * 'keywords' (array[string]) Слова, которые должны быть в названии или описании события (optional)
-     * 'keywords_exclude' (array[string]) Слова, которых не должно быть в названии или описании события (optional)
-     * 'access_statuses' (array[string]) Список режимов доступа, в которых находятся события. Возможные значения: private, draft, link_only, public. Доступно только организаторам (optional)
-     * 'moderation_statuses' (array[string]) Список уровней качества, установленных для события модератором. Возможные значения: featured, shown, hidden, not_moderated. (optional)
+     * 'sort' (string[]) Поле, по которому сортировать (optional)
+     * 'category_ids' (int[]) Категории, к которым принадлежат события (optional)
+     * 'category_ids_exclude' (int[]) Категории, к которым не принадлежат события (optional)
+     * 'cities' (string[]) Города, события из которых выводить (optional)
+     * 'cities_exclude' (string[]) Города, события из которых не выводить (optional)
+     * 'organization_ids' (int[]) Номера организаций, события из которых выводить (optional)
+     * 'organization_ids_exclude' (int[]) Номера организаций, события из которых не выводить (optional)
+     * 'event_ids' (int[]) Номера событий, которые нужно вывести (optional)
+     * 'event_ids_exclude' (int[]) Номера событий, которые нужно пропустить (optional)
+     * 'keywords' (string[]) Слова, которые должны быть в названии или описании события (optional)
+     * 'keywords_exclude' (string[]) Слова, которых не должно быть в названии или описании события (optional)
+     * 'access_statuses' (string[]) Список режимов доступа, в которых находятся события. Возможные значения: private, draft, link_only, public. Доступно только организаторам (optional)
+     * 'moderation_statuses' (string[]) Список уровней качества, установленных для события модератором. Возможные значения: featured, shown, hidden, not_moderated. (optional)
      * 'price_min' (int) Цена, выше которой должен стоить хотя бы один билет события (optional)
      * 'price_max' (int) Цена, ниже которой должен стоить хотя бы один билет события (optional)
      * 'ad_partner_percent_min' (int) Хотя бы у одного вида билета события партнёрская комиссия в процентах выше этого значения (optional)
@@ -360,7 +360,7 @@ class DefaultApi {
      *
      * Создать событие
      *
-     * @param array[string] $params Ассоциативный массив параметров. Может содержать следующие поля:
+     * @param string[] $params Ассоциативный массив параметров. Может содержать следующие поля:
      *
      * 'body' (CreateEvent) Описание создаваемого события (optional)
      *
@@ -418,9 +418,9 @@ class DefaultApi {
      *
      * Получить событие по данному id
      *
-     * @param array[string] $params Ассоциативный массив параметров. Может содержать следующие поля:
+     * @param string[] $params Ассоциативный массив параметров. Может содержать следующие поля:
      *
-     * 'fields' (array[string]) Список полей, которые нужно вывести (optional)
+     * 'fields' (string[]) Список полей, которые нужно вывести (optional)
      * 'event_id' (int) Номер событий, которые нужно вывести (required)
      *
      * @return EventResponse
@@ -477,7 +477,7 @@ class DefaultApi {
      *
      * Редактировать событие
      *
-     * @param array[string] $params Ассоциативный массив параметров. Может содержать следующие поля:
+     * @param string[] $params Ассоциативный массив параметров. Может содержать следующие поля:
      *
      * 'event_id' (int) Id редактируемого события (required)
      * 'body' (EditEvent) Список изменённых параметров события (optional)
@@ -539,11 +539,11 @@ class DefaultApi {
      *
      * Получить заказы события с указанным номером
      *
-     * @param array[string] $params Ассоциативный массив параметров. Может содержать следующие поля:
+     * @param string[] $params Ассоциативный массив параметров. Может содержать следующие поля:
      *
      * 'limit' (int) Сколько элементов списка вывести (optional)
      * 'skip' (int) С какого элемента списка начать вывод (optional)
-     * 'fields' (array[string]) Список полей, которые нужно вывести (optional)
+     * 'fields' (string[]) Список полей, которые нужно вывести (optional)
      * 'event_id' (int) Номер события, к которому относятся заказы (required)
      *
      * @return RegistrationOrdersResponse
@@ -606,7 +606,7 @@ class DefaultApi {
      *
      * Создать заказ
      *
-     * @param array[string] $params Ассоциативный массив параметров. Может содержать следующие поля:
+     * @param string[] $params Ассоциативный массив параметров. Может содержать следующие поля:
      *
      * 'event_id' (int) Номер события (required)
      * 'body' (CreateOrder) Описание создаваемого заказа (optional)
@@ -668,9 +668,9 @@ class DefaultApi {
      *
      * Получить заказ с указанным id
      *
-     * @param array[string] $params Ассоциативный массив параметров. Может содержать следующие поля:
+     * @param string[] $params Ассоциативный массив параметров. Может содержать следующие поля:
      *
-     * 'fields' (array[string]) Список полей, которые нужно вывести (optional)
+     * 'fields' (string[]) Список полей, которые нужно вывести (optional)
      * 'event_id' (int) Номер события, к которому относится заказ (required)
      * 'order_id' (int) Номер заказа (required)
      *
@@ -731,7 +731,7 @@ class DefaultApi {
      *
      * Отредактировать заказ с указанным id
      *
-     * @param array[string] $params Ассоциативный массив параметров. Может содержать следующие поля:
+     * @param string[] $params Ассоциативный массив параметров. Может содержать следующие поля:
      *
      * 'event_id' (int) Номер события, к которому относится заказ (required)
      * 'order_id' (int) Номер заказа (required)
@@ -797,7 +797,7 @@ class DefaultApi {
      *
      * Создать новую организацию
      *
-     * @param array[string] $params Ассоциативный массив параметров. Может содержать следующие поля:
+     * @param string[] $params Ассоциативный массив параметров. Может содержать следующие поля:
      *
      * 'body' (CreateOrganization) Список полей, которые нужно вывести (optional)
      *

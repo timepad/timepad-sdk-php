@@ -30,34 +30,66 @@ class QuestionInclude implements ArrayAccess {
     static $swaggerTypes = array(
         'field_id' => 'string',
         'is_mandatory' => 'bool',
+        'status' => 'string',
         'name' => 'string',
-        'comment' => 'string'
+        'comment' => 'string',
+        'type' => 'string',
+        'possible_answers' => 'string[]'
     );
 
     static $attributeMap = array(
         'field_id' => 'field_id',
         'is_mandatory' => 'is_mandatory',
+        'status' => 'status',
         'name' => 'name',
-        'comment' => 'comment'
+        'comment' => 'comment',
+        'type' => 'type',
+        'possible_answers' => 'possible_answers'
     );
 
     
     /**
     * Текстовый идентификатор для стандартных вопросов
+    *
+    * @var string
     */
-    public $field_id; /* string */
+    public $field_id;
     /**
     * Обязателен ли вопрос:
+    *
+    * @var bool
     */
-    public $is_mandatory; /* bool */
+    public $is_mandatory;
+    /**
+    * Статус вопроса
+    *
+    * @var string
+    */
+    public $status;
     /**
     * Текст вопроса
+    *
+    * @var string
     */
-    public $name; /* string */
+    public $name;
     /**
     * Подсказка под вопросом
+    *
+    * @var string
     */
-    public $comment; /* string */
+    public $comment;
+    /**
+    * Тип вопроса
+    *
+    * @var string
+    */
+    public $type;
+    /**
+    * Список ответов на вопрос
+    *
+    * @var string[]
+    */
+    public $possible_answers;
 
     public function __construct(array $data = null) {
     
@@ -71,6 +103,11 @@ class QuestionInclude implements ArrayAccess {
         }
     
     
+        if(isset($data["status"])) {
+            $this->status = $data["status"];
+        }
+    
+    
         if(isset($data["name"])) {
             $this->name = $data["name"];
         }
@@ -78,6 +115,16 @@ class QuestionInclude implements ArrayAccess {
     
         if(isset($data["comment"])) {
             $this->comment = $data["comment"];
+        }
+    
+    
+        if(isset($data["type"])) {
+            $this->type = $data["type"];
+        }
+    
+    
+        if(isset($data["possible_answers"])) {
+            $this->possible_answers = $data["possible_answers"];
         }
     
     }

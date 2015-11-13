@@ -40,12 +40,16 @@ class PlaceResponse implements ArrayAccess {
     
     /**
     * Идентификатор места
+    *
+    * @var string
     */
-    public $id; /* string */
+    public $id;
     /**
     * Объект описания места
+    *
+    * @var object
     */
-    public $description; /* object */
+    public $description;
 
     public function __construct(array $data = null) {
     

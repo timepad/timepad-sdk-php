@@ -38,8 +38,10 @@ class WidgetResponse implements ArrayAccess {
     
     /**
     * Код вставки виджета в сайт
+    *
+    * @var string
     */
-    public $code_html; /* string */
+    public $code_html;
 
     public function __construct(array $data = null) {
     

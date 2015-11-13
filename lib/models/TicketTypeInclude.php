@@ -42,16 +42,22 @@ class TicketTypeInclude implements ArrayAccess {
     
     /**
     * Цена билета
+    *
+    * @var int
     */
-    public $price; /* int */
+    public $price;
     /**
     * Название билета
+    *
+    * @var string
     */
-    public $name; /* string */
+    public $name;
     /**
     * Описание билета
+    *
+    * @var string
     */
-    public $description; /* string */
+    public $description;
 
     public function __construct(array $data = null) {
     

@@ -40,12 +40,16 @@ class EditOrderVisitorsAttendanceIncludeApiRequest implements ArrayAccess {
     
     /**
     * Дата посещения пользователем события
+    *
+    * @var DateTime
     */
-    public $starts_at; /* DateTime */
+    public $starts_at;
     /**
     * Дата ухода пользователя с события
+    *
+    * @var DateTime
     */
-    public $ends_at; /* DateTime */
+    public $ends_at;
 
     public function __construct(array $data = null) {
     

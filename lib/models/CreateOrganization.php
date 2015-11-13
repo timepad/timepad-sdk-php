@@ -42,16 +42,22 @@ class CreateOrganization implements ArrayAccess {
     
     /**
     * Название организации
+    *
+    * @var string
     */
-    public $name; /* string */
+    public $name;
     /**
     * Уникальное название организации - часть URL
+    *
+    * @var string
     */
-    public $subdomain; /* string */
+    public $subdomain;
     /**
     * Телефон организатора
+    *
+    * @var string
     */
-    public $phone; /* string */
+    public $phone;
 
     public function __construct(array $data = null) {
     

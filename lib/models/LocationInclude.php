@@ -40,12 +40,16 @@ class LocationInclude implements ArrayAccess {
     
     /**
     * Город проведения события
+    *
+    * @var string
     */
-    public $city; /* string */
+    public $city;
     /**
     * Адрес проведения события
+    *
+    * @var string
     */
-    public $address; /* string */
+    public $address;
 
     public function __construct(array $data = null) {
     

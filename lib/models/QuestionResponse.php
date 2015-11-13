@@ -30,8 +30,9 @@ class QuestionResponse implements ArrayAccess {
     static $swaggerTypes = array(
         'field_id' => 'int',
         'name' => 'string',
+        'comment' => 'string',
         'type' => 'string',
-        'possible_answers' => 'array[AnswerResponse]',
+        'possible_answers' => 'AnswerResponse[]',
         'is_mandatory' => 'bool',
         'is_for_every_visitor' => 'bool',
         'meta' => 'object'
@@ -40,6 +41,7 @@ class QuestionResponse implements ArrayAccess {
     static $attributeMap = array(
         'field_id' => 'field_id',
         'name' => 'name',
+        'comment' => 'comment',
         'type' => 'type',
         'possible_answers' => 'possible_answers',
         'is_mandatory' => 'is_mandatory',
@@ -50,32 +52,52 @@ class QuestionResponse implements ArrayAccess {
     
     /**
     * Название поля вопроса
+    *
+    * @var int
     */
-    public $field_id; /* int */
+    public $field_id;
     /**
     * Текст вопроса
+    *
+    * @var string
     */
-    public $name; /* string */
+    public $name;
+    /**
+    * Подсказка под вопросом
+    *
+    * @var string
+    */
+    public $comment;
     /**
     * Тип вопроса
+    *
+    * @var string
     */
-    public $type; /* string */
+    public $type;
     /**
     * Список предлагаемых ответов (если вопрос предполагает такой список)
+    *
+    * @var AnswerResponse[]
     */
-    public $possible_answers; /* array[AnswerResponse] */
+    public $possible_answers;
     /**
     * На вопрос обязательно отвечать
+    *
+    * @var bool
     */
-    public $is_mandatory; /* bool */
+    public $is_mandatory;
     /**
     * Выводить вопрос отдельно для каждого купленного билета
+    *
+    * @var bool
     */
-    public $is_for_every_visitor; /* bool */
+    public $is_for_every_visitor;
     /**
     * Дополнительные данные
+    *
+    * @var object
     */
-    public $meta; /* object */
+    public $meta;
 
     public function __construct(array $data = null) {
     
@@ -86,6 +108,11 @@ class QuestionResponse implements ArrayAccess {
     
         if(isset($data["name"])) {
             $this->name = $data["name"];
+        }
+    
+    
+        if(isset($data["comment"])) {
+            $this->comment = $data["comment"];
         }
     
     

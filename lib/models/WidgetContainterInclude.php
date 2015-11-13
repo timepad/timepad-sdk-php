@@ -40,12 +40,16 @@ class WidgetContainterInclude implements ArrayAccess {
     
     /**
     * Код вставки виджета в сайт
+    *
+    * @var string
     */
-    public $custom; /* string */
+    public $custom;
     /**
     * Код виджета-кнопки для вставки на сайт
+    *
+    * @var string
     */
-    public $button; /* string */
+    public $button;
 
     public function __construct(array $data = null) {
     

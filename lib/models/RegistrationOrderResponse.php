@@ -32,9 +32,9 @@ class RegistrationOrderResponse implements ArrayAccess {
         'created_at' => 'DateTime',
         'status' => 'OrderStatusResponse',
         'payment' => 'PaymentResponse',
-        'tickets' => 'array[TicketResponse]',
+        'tickets' => 'TicketResponse[]',
         'answers' => 'AnswersResponse',
-        'promocodes' => 'array[string]'
+        'promocodes' => 'string[]'
     );
 
     static $attributeMap = array(
@@ -50,32 +50,46 @@ class RegistrationOrderResponse implements ArrayAccess {
     
     /**
     * Уникальный номер события
+    *
+    * @var int
     */
-    public $id; /* int */
+    public $id;
     /**
     * Дата создания заказа
+    *
+    * @var DateTime
     */
-    public $created_at; /* DateTime */
+    public $created_at;
     /**
     * Дата создания заказа
+    *
+    * @var OrderStatusResponse
     */
-    public $status; /* OrderStatusResponse */
+    public $status;
     /**
     * Объект информации о платеже
+    *
+    * @var PaymentResponse
     */
-    public $payment; /* PaymentResponse */
+    public $payment;
     /**
     * Список регистраций
+    *
+    * @var TicketResponse[]
     */
-    public $tickets; /* array[TicketResponse] */
+    public $tickets;
     /**
     * Массив Ответов
+    *
+    * @var AnswersResponse
     */
-    public $answers; /* AnswersResponse */
+    public $answers;
     /**
     * Список промокодов
+    *
+    * @var string[]
     */
-    public $promocodes; /* array[string] */
+    public $promocodes;
 
     public function __construct(array $data = null) {
     

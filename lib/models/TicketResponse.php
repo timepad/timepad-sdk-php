@@ -30,11 +30,11 @@ class TicketResponse implements ArrayAccess {
     static $swaggerTypes = array(
         'id' => 'int',
         'number' => 'string',
-        'answers' => 'object',
-        'ticket_type' => 'array[TicketTypeResponse]',
-        'attendance' => 'array[AttendanceResponse]',
-        'place' => 'array[PlaceResponse]',
-        'codes' => 'array[CodesResponse]'
+        'answers' => 'AnswersResponse',
+        'ticket_type' => 'TicketTypeResponse',
+        'attendance' => 'AttendanceResponse',
+        'place' => 'PlaceResponse',
+        'codes' => 'CodesResponse'
     );
 
     static $attributeMap = array(
@@ -50,17 +50,46 @@ class TicketResponse implements ArrayAccess {
     
     /**
     * Уникальный номер типа билета
+    *
+    * @var int
     */
-    public $id; /* int */
+    public $id;
     /**
     * Номер билета
+    *
+    * @var string
     */
-    public $number; /* string */
-    public $answers; /* object */
-    public $ticket_type; /* array[TicketTypeResponse] */
-    public $attendance; /* array[AttendanceResponse] */
-    public $place; /* array[PlaceResponse] */
-    public $codes; /* array[CodesResponse] */
+    public $number;
+    /**
+    * Объект с ответами на вопросы анкеты
+    *
+    * @var AnswersResponse
+    */
+    public $answers;
+    /**
+    * Объект информации о типе билета
+    *
+    * @var TicketTypeResponse
+    */
+    public $ticket_type;
+    /**
+    * Объект информации о посещении пользователя с этим билетом
+    *
+    * @var AttendanceResponse
+    */
+    public $attendance;
+    /**
+    * Объект информации о месте билета
+    *
+    * @var PlaceResponse
+    */
+    public $place;
+    /**
+    * Объект информации о кодах билета
+    *
+    * @var CodesResponse
+    */
+    public $codes;
 
     public function __construct(array $data = null) {
     

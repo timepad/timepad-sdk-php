@@ -26,38 +26,78 @@ namespace TimepadApi\models;
 
 use \ArrayAccess;
 
-class EditTicketTypeIncludeApiRequest implements ArrayAccess {
+class TicketTypeIncludeApiRequest implements ArrayAccess {
     static $swaggerTypes = array(
         'id' => 'int',
         'price' => 'int',
         'status' => 'string',
-        'name' => 'string'
+        'name' => 'string',
+        'description' => 'string',
+        'sale_starts_at' => 'DateTime',
+        'sale_ends_at' => 'DateTime',
+        'limit' => 'int'
     );
 
     static $attributeMap = array(
         'id' => 'id',
         'price' => 'price',
         'status' => 'status',
-        'name' => 'name'
+        'name' => 'name',
+        'description' => 'description',
+        'sale_starts_at' => 'sale_starts_at',
+        'sale_ends_at' => 'sale_ends_at',
+        'limit' => 'limit'
     );
 
     
     /**
     * Id существующего билета
+    *
+    * @var int
     */
-    public $id; /* int */
+    public $id;
     /**
     * Цена существующего билета
+    *
+    * @var int
     */
-    public $price; /* int */
+    public $price;
     /**
     * Статус билета
+    *
+    * @var string
     */
-    public $status; /* string */
+    public $status;
     /**
     * Название билета
+    *
+    * @var string
     */
-    public $name; /* string */
+    public $name;
+    /**
+    * Описание типа билета
+    *
+    * @var string
+    */
+    public $description;
+    /**
+    * Дата начала продажи типа билета
+    *
+    * @var DateTime
+    */
+    public $sale_starts_at;
+    /**
+    * Дата окончания продажи типа билета
+    *
+    * @var DateTime
+    */
+    public $sale_ends_at;
+    /**
+    * Ограничение на количество билетов типа билета
+    *
+    * @var int
+    */
+    public $limit;
 
     public function __construct(array $data = null) {
     
@@ -78,6 +118,26 @@ class EditTicketTypeIncludeApiRequest implements ArrayAccess {
     
         if(isset($data["name"])) {
             $this->name = $data["name"];
+        }
+    
+    
+        if(isset($data["description"])) {
+            $this->description = $data["description"];
+        }
+    
+    
+        if(isset($data["sale_starts_at"])) {
+            $this->sale_starts_at = $data["sale_starts_at"];
+        }
+    
+    
+        if(isset($data["sale_ends_at"])) {
+            $this->sale_ends_at = $data["sale_ends_at"];
+        }
+    
+    
+        if(isset($data["limit"])) {
+            $this->limit = $data["limit"];
         }
     
     }

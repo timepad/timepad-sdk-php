@@ -32,7 +32,7 @@ class Introspect implements ArrayAccess {
         'client_id' => 'string',
         'user_id' => 'string',
         'user_email' => 'string',
-        'organizations' => 'array[OrganizationResponse]'
+        'organizations' => 'OrganizationResponse[]'
     );
 
     static $attributeMap = array(
@@ -46,24 +46,34 @@ class Introspect implements ArrayAccess {
     
     /**
     * Действует ли этот токен
+    *
+    * @var bool
     */
-    public $active; /* bool */
+    public $active;
     /**
     * Идентификатор клиента API, которым получен токен
+    *
+    * @var string
     */
-    public $client_id; /* string */
+    public $client_id;
     /**
     * Идентификатор пользователя, которым получен токен
+    *
+    * @var string
     */
-    public $user_id; /* string */
+    public $user_id;
     /**
     * Электронная почта пользователя, которым получен токен
+    *
+    * @var string
     */
-    public $user_email; /* string */
+    public $user_email;
     /**
     * Организации, к которым есть доступ пользователя
+    *
+    * @var OrganizationResponse[]
     */
-    public $organizations; /* array[OrganizationResponse] */
+    public $organizations;
 
     public function __construct(array $data = null) {
     

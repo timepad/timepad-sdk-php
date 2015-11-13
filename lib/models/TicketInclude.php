@@ -40,12 +40,16 @@ class TicketInclude implements ArrayAccess {
     
     /**
     * Ответы на анкету регистрации
+    *
+    * @var object
     */
-    public $answers; /* object */
+    public $answers;
     /**
     * Идентификатор типа билета
+    *
+    * @var string
     */
-    public $ticket_type_id; /* string */
+    public $ticket_type_id;
 
     public function __construct(array $data = null) {
     

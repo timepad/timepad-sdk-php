@@ -40,12 +40,16 @@ class CategoryInclude implements ArrayAccess {
     
     /**
     * ID категории в Таймпаде
+    *
+    * @var int
     */
-    public $id; /* int */
+    public $id;
     /**
     * Название категории в Таймпаде
+    *
+    * @var string
     */
-    public $name; /* string */
+    public $name;
 
     public function __construct(array $data = null) {
     

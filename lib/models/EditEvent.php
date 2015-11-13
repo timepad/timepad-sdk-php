@@ -28,17 +28,18 @@ use \ArrayAccess;
 
 class EditEvent implements ArrayAccess {
     static $swaggerTypes = array(
-        'ticket_types' => 'array[EditTicketTypeIncludeApiRequest]',
+        'ticket_types' => 'TicketTypeIncludeApiRequest[]',
         'name' => 'string',
         'description_short' => 'string',
         'description_html' => 'string',
         'starts_at' => 'string',
         'ends_at' => 'string',
-        'categories' => 'array[CategoryInclude]',
+        'categories' => 'CategoryInclude[]',
         'location' => 'LocationInclude',
         'poster_image_url' => 'string',
-        'properties' => 'array[string]',
+        'properties' => 'string[]',
         'custom' => 'object',
+        'questions' => 'QuestionInclude[]',
         'access_status' => 'string'
     );
 
@@ -54,58 +55,89 @@ class EditEvent implements ArrayAccess {
         'poster_image_url' => 'poster_image_url',
         'properties' => 'properties',
         'custom' => 'custom',
+        'questions' => 'questions',
         'access_status' => 'access_status'
     );
 
     
     /**
     * Список видов билетов
+    *
+    * @var TicketTypeIncludeApiRequest[]
     */
-    public $ticket_types; /* array[EditTicketTypeIncludeApiRequest] */
+    public $ticket_types;
     /**
     * Название события
+    *
+    * @var string
     */
-    public $name; /* string */
+    public $name;
     /**
     * Краткое описание/подзаголовок события
+    *
+    * @var string
     */
-    public $description_short; /* string */
+    public $description_short;
     /**
     * Полное описание с html-тегами
+    *
+    * @var string
     */
-    public $description_html; /* string */
+    public $description_html;
     /**
     * Дата начала события в формате ISO
+    *
+    * @var string
     */
-    public $starts_at; /* string */
+    public $starts_at;
     /**
     * Дата окончания события в формате ISO
+    *
+    * @var string
     */
-    public $ends_at; /* string */
+    public $ends_at;
     /**
     * Список категорий, в которые входит событие
+    *
+    * @var CategoryInclude[]
     */
-    public $categories; /* array[CategoryInclude] */
+    public $categories;
     /**
     * Место проведения события
+    *
+    * @var LocationInclude
     */
-    public $location; /* LocationInclude */
+    public $location;
     /**
     * URL картинки события
+    *
+    * @var string
     */
-    public $poster_image_url; /* string */
+    public $poster_image_url;
     /**
     * Список настроек события (например, мультианкета)
+    *
+    * @var string[]
     */
-    public $properties; /* array[string] */
+    public $properties;
     /**
     * Объект с дополнительными полями, специфичными для данной организации
+    *
+    * @var object
     */
-    public $custom; /* object */
+    public $custom;
+    /**
+    * Список вопросов в анкете регистрации
+    *
+    * @var QuestionInclude[]
+    */
+    public $questions;
     /**
     * Статус доступа к событию
+    *
+    * @var string
     */
-    public $access_status; /* string */
+    public $access_status;
 
     public function __construct(array $data = null) {
     
@@ -161,6 +193,11 @@ class EditEvent implements ArrayAccess {
     
         if(isset($data["custom"])) {
             $this->custom = $data["custom"];
+        }
+    
+    
+        if(isset($data["questions"])) {
+            $this->questions = $data["questions"];
         }
     
     

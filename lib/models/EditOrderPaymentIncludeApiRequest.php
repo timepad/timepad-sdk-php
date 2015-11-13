@@ -42,16 +42,22 @@ class EditOrderPaymentIncludeApiRequest implements ArrayAccess {
     
     /**
     * Дата оплаты заказа
+    *
+    * @var DateTime
     */
-    public $paid_at; /* DateTime */
+    public $paid_at;
     /**
     * Сумма заказа
+    *
+    * @var float
     */
-    public $amount; /* float */
+    public $amount;
     /**
     * Тип платежа
+    *
+    * @var string
     */
-    public $payment_type; /* string */
+    public $payment_type;
 
     public function __construct(array $data = null) {
     

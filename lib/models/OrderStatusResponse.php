@@ -40,12 +40,16 @@ class OrderStatusResponse implements ArrayAccess {
     
     /**
     * Идентификатор статуса
+    *
+    * @var string
     */
-    public $name; /* string */
+    public $name;
     /**
     * Человекочитаемый статус заказа
+    *
+    * @var string
     */
-    public $title; /* string */
+    public $title;
 
     public function __construct(array $data = null) {
     

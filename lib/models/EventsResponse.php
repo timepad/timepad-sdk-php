@@ -29,7 +29,7 @@ use \ArrayAccess;
 class EventsResponse implements ArrayAccess {
     static $swaggerTypes = array(
         'total' => 'int',
-        'values' => 'array[EventResponse]'
+        'values' => 'EventResponse[]'
     );
 
     static $attributeMap = array(
@@ -38,8 +38,8 @@ class EventsResponse implements ArrayAccess {
     );
 
     
-    public $total; /* int */
-    public $values; /* array[EventResponse] */
+    public $total;
+    public $values;
 
     public function __construct(array $data = null) {
     

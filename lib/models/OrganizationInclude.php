@@ -40,12 +40,16 @@ class OrganizationInclude implements ArrayAccess {
     
     /**
     * ID организации в Таймпаде
+    *
+    * @var int
     */
-    public $id; /* int */
+    public $id;
     /**
     * URL-идентификатор организации в Таймпаде (***.timepad.ru)
+    *
+    * @var string
     */
-    public $subdomain; /* string */
+    public $subdomain;
 
     public function __construct(array $data = null) {
     

@@ -30,12 +30,14 @@ class TicketTypeResponse implements ArrayAccess {
     static $swaggerTypes = array(
         'id' => 'int',
         'name' => 'string',
+        'description' => 'string',
         'buy_amount_min' => 'float',
         'buy_amount_max' => 'float',
         'price' => 'float',
         'is_promocode_locked' => 'bool',
         'remaining' => 'int',
         'sale_ends_at' => 'DateTime',
+        'sale_starts_at' => 'DateTime',
         'public_key' => 'string',
         'is_active' => 'bool',
         'ad_partner_profit' => 'float',
@@ -48,12 +50,14 @@ class TicketTypeResponse implements ArrayAccess {
     static $attributeMap = array(
         'id' => 'id',
         'name' => 'name',
+        'description' => 'description',
         'buy_amount_min' => 'buy_amount_min',
         'buy_amount_max' => 'buy_amount_max',
         'price' => 'price',
         'is_promocode_locked' => 'is_promocode_locked',
         'remaining' => 'remaining',
         'sale_ends_at' => 'sale_ends_at',
+        'sale_starts_at' => 'sale_starts_at',
         'public_key' => 'public_key',
         'is_active' => 'is_active',
         'ad_partner_profit' => 'ad_partner_profit',
@@ -66,64 +70,106 @@ class TicketTypeResponse implements ArrayAccess {
     
     /**
     * Уникальный номер типа билета
+    *
+    * @var int
     */
-    public $id; /* int */
+    public $id;
     /**
     * Название типа билета
+    *
+    * @var string
     */
-    public $name; /* string */
+    public $name;
+    /**
+    * Описание типа билета
+    *
+    * @var string
+    */
+    public $description;
     /**
     * Минимальное количество билетов в одной покупке
+    *
+    * @var float
     */
-    public $buy_amount_min; /* float */
+    public $buy_amount_min;
     /**
     * Максимальное количество билетов в одной покупке
+    *
+    * @var float
     */
-    public $buy_amount_max; /* float */
+    public $buy_amount_max;
     /**
     * Цена билета
+    *
+    * @var float
     */
-    public $price; /* float */
+    public $price;
     /**
     * Закрыт ли этот тип введённым промокодом
+    *
+    * @var bool
     */
-    public $is_promocode_locked; /* bool */
+    public $is_promocode_locked;
     /**
     * Сколько билетов осталось
+    *
+    * @var int
     */
-    public $remaining; /* int */
+    public $remaining;
     /**
-    * Дата окончания продажи этого типа билета
+    * Дата окончания продажи типа билета
+    *
+    * @var DateTime
     */
-    public $sale_ends_at; /* DateTime */
+    public $sale_ends_at;
+    /**
+    * Дата начала продажи типа билета
+    *
+    * @var DateTime
+    */
+    public $sale_starts_at;
     /**
     * Публичный ключ для расшифровки QR-кода билета этого типа
+    *
+    * @var string
     */
-    public $public_key; /* string */
+    public $public_key;
     /**
     * Активность типа билета
+    *
+    * @var bool
     */
-    public $is_active; /* bool */
+    public $is_active;
     /**
     * Партнёрская прибыль
+    *
+    * @var float
     */
-    public $ad_partner_profit; /* float */
+    public $ad_partner_profit;
     /**
     * Количество проданных билетов
+    *
+    * @var float
     */
-    public $sold; /* float */
+    public $sold;
     /**
     * Количество посетивших людей
+    *
+    * @var float
     */
-    public $attended; /* float */
+    public $attended;
     /**
-    * Ограничение на количество билетов в этой категории
+    * Ограничение на количество билетов в этом типе билета
+    *
+    * @var float
     */
-    public $limit; /* float */
+    public $limit;
     /**
-    * Статус категории билета
+    * Статус типа билета
+    *
+    * @var string
     */
-    public $status; /* string */
+    public $status;
 
     public function __construct(array $data = null) {
     
@@ -134,6 +180,11 @@ class TicketTypeResponse implements ArrayAccess {
     
         if(isset($data["name"])) {
             $this->name = $data["name"];
+        }
+    
+    
+        if(isset($data["description"])) {
+            $this->description = $data["description"];
         }
     
     
@@ -164,6 +215,11 @@ class TicketTypeResponse implements ArrayAccess {
     
         if(isset($data["sale_ends_at"])) {
             $this->sale_ends_at = $data["sale_ends_at"];
+        }
+    
+    
+        if(isset($data["sale_starts_at"])) {
+            $this->sale_starts_at = $data["sale_starts_at"];
         }
     
     

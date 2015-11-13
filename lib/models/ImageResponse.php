@@ -40,12 +40,16 @@ class ImageResponse implements ArrayAccess {
     
     /**
     * Картинка стандартного размера
+    *
+    * @var string
     */
-    public $default_url; /* string */
+    public $default_url;
     /**
     * Адрес картинки на uploadcare, к которому можно прибавлять запросы в формате uploadcare
+    *
+    * @var string
     */
-    public $uploadcare_url; /* string */
+    public $uploadcare_url;
 
     public function __construct(array $data = null) {
     

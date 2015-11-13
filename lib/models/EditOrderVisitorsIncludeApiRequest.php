@@ -42,16 +42,22 @@ class EditOrderVisitorsIncludeApiRequest implements ArrayAccess {
     
     /**
     * Id регистрации
+    *
+    * @var int
     */
-    public $id; /* int */
+    public $id;
     /**
     * Ответы на анкету регистрации
+    *
+    * @var object
     */
-    public $answers; /* object */
+    public $answers;
     /**
     * Посещение события
+    *
+    * @var EditOrderAttendanceApiRequest
     */
-    public $attendance; /* EditOrderAttendanceApiRequest */
+    public $attendance;
 
     public function __construct(array $data = null) {
     

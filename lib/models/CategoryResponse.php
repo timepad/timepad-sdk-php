@@ -40,12 +40,16 @@ class CategoryResponse implements ArrayAccess {
     
     /**
     * Уникальный номер категории
+    *
+    * @var int
     */
-    public $id; /* int */
+    public $id;
     /**
     * Название категории
+    *
+    * @var string
     */
-    public $name; /* string */
+    public $name;
 
     public function __construct(array $data = null) {
     
