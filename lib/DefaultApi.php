@@ -38,7 +38,7 @@ class DefaultApi {
      *
      * 'token' (string) Идентификатор токена (optional)
      *
-     * @return Introspect
+     * @return models\Introspect
      */
     public function introspectToken($params = []) {
         $resourcePath = "/introspect";
@@ -93,7 +93,7 @@ class DefaultApi {
      *
      * 'token' (string) Идентификатор токена (optional)
      *
-     * @return Introspect
+     * @return models\Introspect
      */
     public function introspectTokenPost($params = []) {
         $resourcePath = "/introspect";
@@ -234,7 +234,7 @@ class DefaultApi {
      * 'created_at_min' (DateTime) Дата создания события на Timepad позднее этого значения (optional)
      * 'created_at_max' (DateTime) Дата создания события на Timepad раньше этого значения (optional)
      *
-     * @return EventsResponse
+     * @return models\EventsResponse
      */
     public function getEvents($params = []) {
         $resourcePath = "/v1/events";
@@ -364,7 +364,7 @@ class DefaultApi {
      *
      * 'body' (CreateEvent) Описание создаваемого события (optional)
      *
-     * @return EventResponse
+     * @return models\EventResponse
      */
     public function addEvent($params = []) {
         $resourcePath = "/v1/events";
@@ -423,7 +423,7 @@ class DefaultApi {
      * 'fields' (string[]) Список полей, которые нужно вывести (optional)
      * 'event_id' (int) Номер событий, которые нужно вывести (required)
      *
-     * @return EventResponse
+     * @return models\EventResponse
      */
     public function getSingleEvent($params = []) {
         $resourcePath = "/v1/events/{event_id}";
@@ -482,7 +482,7 @@ class DefaultApi {
      * 'event_id' (int) Id редактируемого события (required)
      * 'body' (EditEvent) Список изменённых параметров события (optional)
      *
-     * @return EventResponse
+     * @return models\EventResponse
      */
     public function editEvent($params = []) {
         $resourcePath = "/v1/events/{event_id}";
@@ -546,7 +546,7 @@ class DefaultApi {
      * 'fields' (string[]) Список полей, которые нужно вывести (optional)
      * 'event_id' (int) Номер события, к которому относятся заказы (required)
      *
-     * @return RegistrationOrdersResponse
+     * @return models\RegistrationOrdersResponse
      */
     public function getEventOrders($params = []) {
         $resourcePath = "/v1/events/{event_id}/orders";
@@ -611,7 +611,7 @@ class DefaultApi {
      * 'event_id' (int) Номер события (required)
      * 'body' (CreateOrder) Описание создаваемого заказа (optional)
      *
-     * @return RegistrationOrderResponse
+     * @return models\RegistrationOrderResponse
      */
     public function addOrder($params = []) {
         $resourcePath = "/v1/events/{event_id}/orders";
@@ -674,7 +674,7 @@ class DefaultApi {
      * 'event_id' (int) Номер события, к которому относится заказ (required)
      * 'order_id' (int) Номер заказа (required)
      *
-     * @return RegistrationOrderResponse
+     * @return models\RegistrationOrderResponse
      */
     public function getSingleEventOrder($params = []) {
         $resourcePath = "/v1/events/{event_id}/orders/{order_id}";
@@ -737,7 +737,7 @@ class DefaultApi {
      * 'order_id' (int) Номер заказа (required)
      * 'body' (EditOrder) Список изменённых параметров заказа (optional)
      *
-     * @return RegistrationOrderResponse
+     * @return models\RegistrationOrderResponse
      */
     public function editEventOrder($params = []) {
         $resourcePath = "/v1/events/{event_id}/orders/{order_id}";
@@ -801,7 +801,7 @@ class DefaultApi {
      *
      * 'body' (CreateOrganization) Список полей, которые нужно вывести (optional)
      *
-     * @return OrganizationResponse
+     * @return models\OrganizationResponse
      */
     public function addOrganization($params = []) {
         $resourcePath = "/v1/organizations";
