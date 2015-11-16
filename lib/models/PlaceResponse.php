@@ -27,52 +27,56 @@ namespace TimepadApi\models;
 use \ArrayAccess;
 
 class PlaceResponse implements ArrayAccess {
-  static $swaggerTypes = array(
-      'id' => 'string',
-      'description' => 'object'
-  );
+    static $swaggerTypes = array(
+        'id' => 'string',
+        'description' => 'object'
+    );
 
-  static $attributeMap = array(
-      'id' => 'id',
-      'description' => 'description'
-  );
+    static $attributeMap = array(
+        'id' => 'id',
+        'description' => 'description'
+    );
 
-  
-  /**
-  * Идентификатор места
-  */
-  public $id; /* string */
-  /**
-  * Объект описания места
-  */
-  public $description; /* object */
-
-  public function __construct(array $data = null) {
     
-    if(isset($data["id"])) {
-      $this->id = $data["id"];
+    /**
+    * Идентификатор места
+    *
+    * @var string
+    */
+    public $id;
+    /**
+    * Объект описания места
+    *
+    * @var object
+    */
+    public $description;
+
+    public function __construct(array $data = null) {
+    
+        if(isset($data["id"])) {
+            $this->id = $data["id"];
+        }
+    
+    
+        if(isset($data["description"])) {
+            $this->description = $data["description"];
+        }
+    
     }
-    
-    
-    if(isset($data["description"])) {
-      $this->description = $data["description"];
+
+    public function offsetExists($offset) {
+        return isset($this->$offset);
     }
-    
-  }
 
-  public function offsetExists($offset) {
-    return isset($this->$offset);
-  }
+    public function offsetGet($offset) {
+        return $this->$offset;
+    }
 
-  public function offsetGet($offset) {
-    return $this->$offset;
-  }
+    public function offsetSet($offset, $value) {
+        $this->$offset = $value;
+    }
 
-  public function offsetSet($offset, $value) {
-    $this->$offset = $value;
-  }
-
-  public function offsetUnset($offset) {
-    unset($this->$offset);
-  }
+    public function offsetUnset($offset) {
+        unset($this->$offset);
+    }
 }

@@ -27,107 +27,121 @@ namespace TimepadApi\models;
 use \ArrayAccess;
 
 class RegistrationOrderResponse implements ArrayAccess {
-  static $swaggerTypes = array(
-      'id' => 'int',
-      'created_at' => 'DateTime',
-      'status' => 'OrderStatusResponse',
-      'payment' => 'PaymentResponse',
-      'tickets' => 'array[TicketResponse]',
-      'answers' => 'AnswersResponse',
-      'promocodes' => 'array[string]'
-  );
+    static $swaggerTypes = array(
+        'id' => 'int',
+        'created_at' => 'DateTime',
+        'status' => 'OrderStatusResponse',
+        'payment' => 'PaymentResponse',
+        'tickets' => 'TicketResponse[]',
+        'answers' => 'AnswersResponse',
+        'promocodes' => 'string[]'
+    );
 
-  static $attributeMap = array(
-      'id' => 'id',
-      'created_at' => 'created_at',
-      'status' => 'status',
-      'payment' => 'payment',
-      'tickets' => 'tickets',
-      'answers' => 'answers',
-      'promocodes' => 'promocodes'
-  );
+    static $attributeMap = array(
+        'id' => 'id',
+        'created_at' => 'created_at',
+        'status' => 'status',
+        'payment' => 'payment',
+        'tickets' => 'tickets',
+        'answers' => 'answers',
+        'promocodes' => 'promocodes'
+    );
 
-  
-  /**
-  * Уникальный номер события
-  */
-  public $id; /* int */
-  /**
-  * Дата создания заказа
-  */
-  public $created_at; /* DateTime */
-  /**
-  * Дата создания заказа
-  */
-  public $status; /* OrderStatusResponse */
-  /**
-  * Объект информации о платеже
-  */
-  public $payment; /* PaymentResponse */
-  /**
-  * Список регистраций
-  */
-  public $tickets; /* array[TicketResponse] */
-  /**
-  * Массив Ответов
-  */
-  public $answers; /* AnswersResponse */
-  /**
-  * Список промокодов
-  */
-  public $promocodes; /* array[string] */
+    
+    /**
+    * Уникальный номер события
+    *
+    * @var int
+    */
+    public $id;
+    /**
+    * Дата создания заказа
+    *
+    * @var DateTime
+    */
+    public $created_at;
+    /**
+    * Дата создания заказа
+    *
+    * @var OrderStatusResponse
+    */
+    public $status;
+    /**
+    * Объект информации о платеже
+    *
+    * @var PaymentResponse
+    */
+    public $payment;
+    /**
+    * Список регистраций
+    *
+    * @var TicketResponse[]
+    */
+    public $tickets;
+    /**
+    * Массив Ответов
+    *
+    * @var AnswersResponse
+    */
+    public $answers;
+    /**
+    * Список промокодов
+    *
+    * @var string[]
+    */
+    public $promocodes;
 
-  public function __construct(array $data = null) {
+    public function __construct(array $data = null) {
     
-    if(isset($data["id"])) {
-      $this->id = $data["id"];
+        if(isset($data["id"])) {
+            $this->id = $data["id"];
+        }
+    
+    
+        if(isset($data["created_at"])) {
+            $this->created_at = $data["created_at"];
+        }
+    
+    
+        if(isset($data["status"])) {
+            $this->status = $data["status"];
+        }
+    
+    
+        if(isset($data["payment"])) {
+            $this->payment = $data["payment"];
+        }
+    
+    
+        if(isset($data["tickets"])) {
+            $this->tickets = $data["tickets"];
+        }
+    
+    
+        if(isset($data["answers"])) {
+            $this->answers = $data["answers"];
+        }
+    
+    
+        if(isset($data["promocodes"])) {
+            $this->promocodes = $data["promocodes"];
+        }
+    
     }
-    
-    
-    if(isset($data["created_at"])) {
-      $this->created_at = $data["created_at"];
-    }
-    
-    
-    if(isset($data["status"])) {
-      $this->status = $data["status"];
-    }
-    
-    
-    if(isset($data["payment"])) {
-      $this->payment = $data["payment"];
-    }
-    
-    
-    if(isset($data["tickets"])) {
-      $this->tickets = $data["tickets"];
-    }
-    
-    
-    if(isset($data["answers"])) {
-      $this->answers = $data["answers"];
-    }
-    
-    
-    if(isset($data["promocodes"])) {
-      $this->promocodes = $data["promocodes"];
-    }
-    
-  }
 
-  public function offsetExists($offset) {
-    return isset($this->$offset);
-  }
+    public function offsetExists($offset) {
+        return isset($this->$offset);
+    }
 
-  public function offsetGet($offset) {
-    return $this->$offset;
-  }
+    public function offsetGet($offset) {
+        return $this->$offset;
+    }
 
-  public function offsetSet($offset, $value) {
-    $this->$offset = $value;
-  }
+    public function offsetSet($offset, $value) {
+        $this->$offset = $value;
+    }
 
-  public function offsetUnset($offset) {
-    unset($this->$offset);
-  }
+    public function offsetUnset($offset) {
+        unset($this->$offset);
+    }
 }

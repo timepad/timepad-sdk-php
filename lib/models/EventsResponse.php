@@ -27,46 +27,46 @@ namespace TimepadApi\models;
 use \ArrayAccess;
 
 class EventsResponse implements ArrayAccess {
-  static $swaggerTypes = array(
-      'total' => 'int',
-      'values' => 'array[EventResponse]'
-  );
+    static $swaggerTypes = array(
+        'total' => 'int',
+        'values' => 'EventResponse[]'
+    );
 
-  static $attributeMap = array(
-      'total' => 'total',
-      'values' => 'values'
-  );
+    static $attributeMap = array(
+        'total' => 'total',
+        'values' => 'values'
+    );
 
-  
-  public $total; /* int */
-  public $values; /* array[EventResponse] */
-
-  public function __construct(array $data = null) {
     
-    if(isset($data["total"])) {
-      $this->total = $data["total"];
+    public $total;
+    public $values;
+
+    public function __construct(array $data = null) {
+    
+        if(isset($data["total"])) {
+            $this->total = $data["total"];
+        }
+    
+    
+        if(isset($data["values"])) {
+            $this->values = $data["values"];
+        }
+    
     }
-    
-    
-    if(isset($data["values"])) {
-      $this->values = $data["values"];
+
+    public function offsetExists($offset) {
+        return isset($this->$offset);
     }
-    
-  }
 
-  public function offsetExists($offset) {
-    return isset($this->$offset);
-  }
+    public function offsetGet($offset) {
+        return $this->$offset;
+    }
 
-  public function offsetGet($offset) {
-    return $this->$offset;
-  }
+    public function offsetSet($offset, $value) {
+        $this->$offset = $value;
+    }
 
-  public function offsetSet($offset, $value) {
-    $this->$offset = $value;
-  }
-
-  public function offsetUnset($offset) {
-    unset($this->$offset);
-  }
+    public function offsetUnset($offset) {
+        unset($this->$offset);
+    }
 }

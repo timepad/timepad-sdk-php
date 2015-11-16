@@ -26,70 +26,78 @@ namespace TimepadApi\models;
 
 use \ArrayAccess;
 
-class OrganizationResponse implements ArrayAccess {
+class TicketTypeIncludeApiRequest implements ArrayAccess {
     static $swaggerTypes = array(
         'id' => 'int',
+        'price' => 'int',
+        'status' => 'string',
         'name' => 'string',
-        'description_html' => 'string',
-        'url' => 'string',
-        'logo_image' => 'ImageResponse',
-        'subdomain' => 'string',
-        'permissions' => 'string[]'
+        'description' => 'string',
+        'sale_starts_at' => 'DateTime',
+        'sale_ends_at' => 'DateTime',
+        'limit' => 'int'
     );
 
     static $attributeMap = array(
         'id' => 'id',
+        'price' => 'price',
+        'status' => 'status',
         'name' => 'name',
-        'description_html' => 'description_html',
-        'url' => 'url',
-        'logo_image' => 'logo_image',
-        'subdomain' => 'subdomain',
-        'permissions' => 'permissions'
+        'description' => 'description',
+        'sale_starts_at' => 'sale_starts_at',
+        'sale_ends_at' => 'sale_ends_at',
+        'limit' => 'limit'
     );
 
     
     /**
-    * Уникальный номер организации
+    * Id существующего билета
     *
     * @var int
     */
     public $id;
     /**
-    * Название организации
+    * Цена существующего билета
+    *
+    * @var int
+    */
+    public $price;
+    /**
+    * Статус билета
+    *
+    * @var string
+    */
+    public $status;
+    /**
+    * Название билета
     *
     * @var string
     */
     public $name;
     /**
-    * Описание организации
+    * Описание типа билета
     *
     * @var string
     */
-    public $description_html;
+    public $description;
     /**
-    * URL организации на сайте
+    * Дата начала продажи типа билета
     *
-    * @var string
+    * @var DateTime
     */
-    public $url;
+    public $sale_starts_at;
     /**
-    * Логотип
+    * Дата окончания продажи типа билета
     *
-    * @var ImageResponse
+    * @var DateTime
     */
-    public $logo_image;
+    public $sale_ends_at;
     /**
-    * Уникальное название организации - часть URL
+    * Ограничение на количество билетов типа билета
     *
-    * @var string
+    * @var int
     */
-    public $subdomain;
-    /**
-    * Настройки доступов для организаций
-    *
-    * @var string[]
-    */
-    public $permissions;
+    public $limit;
 
     public function __construct(array $data = null) {
     
@@ -98,33 +106,38 @@ class OrganizationResponse implements ArrayAccess {
         }
     
     
+        if(isset($data["price"])) {
+            $this->price = $data["price"];
+        }
+    
+    
+        if(isset($data["status"])) {
+            $this->status = $data["status"];
+        }
+    
+    
         if(isset($data["name"])) {
             $this->name = $data["name"];
         }
     
     
-        if(isset($data["description_html"])) {
-            $this->description_html = $data["description_html"];
+        if(isset($data["description"])) {
+            $this->description = $data["description"];
         }
     
     
-        if(isset($data["url"])) {
-            $this->url = $data["url"];
+        if(isset($data["sale_starts_at"])) {
+            $this->sale_starts_at = $data["sale_starts_at"];
         }
     
     
-        if(isset($data["logo_image"])) {
-            $this->logo_image = $data["logo_image"];
+        if(isset($data["sale_ends_at"])) {
+            $this->sale_ends_at = $data["sale_ends_at"];
         }
     
     
-        if(isset($data["subdomain"])) {
-            $this->subdomain = $data["subdomain"];
-        }
-    
-    
-        if(isset($data["permissions"])) {
-            $this->permissions = $data["permissions"];
+        if(isset($data["limit"])) {
+            $this->limit = $data["limit"];
         }
     
     }

@@ -27,63 +27,69 @@ namespace TimepadApi\models;
 use \ArrayAccess;
 
 class EditOrder implements ArrayAccess {
-  static $swaggerTypes = array(
-      'visitors' => 'array[EditOrderVisitorsIncludeApiRequest]',
-      'answers' => 'object',
-      'payment' => 'EditOrderPaymentIncludeApiRequest'
-  );
+    static $swaggerTypes = array(
+        'visitors' => 'EditOrderVisitorsIncludeApiRequest[]',
+        'answers' => 'object',
+        'payment' => 'EditOrderPaymentIncludeApiRequest'
+    );
 
-  static $attributeMap = array(
-      'visitors' => 'visitors',
-      'answers' => 'answers',
-      'payment' => 'payment'
-  );
+    static $attributeMap = array(
+        'visitors' => 'visitors',
+        'answers' => 'answers',
+        'payment' => 'payment'
+    );
 
-  
-  /**
-  * Список видов билетов
-  */
-  public $visitors; /* array[EditOrderVisitorsIncludeApiRequest] */
-  /**
-  * Ответы на анкету регистрации
-  */
-  public $answers; /* object */
-  /**
-  * Платёж
-  */
-  public $payment; /* EditOrderPaymentIncludeApiRequest */
-
-  public function __construct(array $data = null) {
     
-    if(isset($data["visitors"])) {
-      $this->visitors = $data["visitors"];
+    /**
+    * Список видов билетов
+    *
+    * @var EditOrderVisitorsIncludeApiRequest[]
+    */
+    public $visitors;
+    /**
+    * Ответы на анкету регистрации
+    *
+    * @var object
+    */
+    public $answers;
+    /**
+    * Платёж
+    *
+    * @var EditOrderPaymentIncludeApiRequest
+    */
+    public $payment;
+
+    public function __construct(array $data = null) {
+    
+        if(isset($data["visitors"])) {
+            $this->visitors = $data["visitors"];
+        }
+    
+    
+        if(isset($data["answers"])) {
+            $this->answers = $data["answers"];
+        }
+    
+    
+        if(isset($data["payment"])) {
+            $this->payment = $data["payment"];
+        }
+    
     }
-    
-    
-    if(isset($data["answers"])) {
-      $this->answers = $data["answers"];
+
+    public function offsetExists($offset) {
+        return isset($this->$offset);
     }
-    
-    
-    if(isset($data["payment"])) {
-      $this->payment = $data["payment"];
+
+    public function offsetGet($offset) {
+        return $this->$offset;
     }
-    
-  }
 
-  public function offsetExists($offset) {
-    return isset($this->$offset);
-  }
+    public function offsetSet($offset, $value) {
+        $this->$offset = $value;
+    }
 
-  public function offsetGet($offset) {
-    return $this->$offset;
-  }
-
-  public function offsetSet($offset, $value) {
-    $this->$offset = $value;
-  }
-
-  public function offsetUnset($offset) {
-    unset($this->$offset);
-  }
+    public function offsetUnset($offset) {
+        unset($this->$offset);
+    }
 }

@@ -27,85 +27,95 @@ namespace TimepadApi\models;
 use \ArrayAccess;
 
 class Introspect implements ArrayAccess {
-  static $swaggerTypes = array(
-      'active' => 'bool',
-      'client_id' => 'string',
-      'user_id' => 'string',
-      'user_email' => 'string',
-      'organizations' => 'array[OrganizationResponse]'
-  );
+    static $swaggerTypes = array(
+        'active' => 'bool',
+        'client_id' => 'string',
+        'user_id' => 'string',
+        'user_email' => 'string',
+        'organizations' => 'OrganizationResponse[]'
+    );
 
-  static $attributeMap = array(
-      'active' => 'active',
-      'client_id' => 'client_id',
-      'user_id' => 'user_id',
-      'user_email' => 'user_email',
-      'organizations' => 'organizations'
-  );
+    static $attributeMap = array(
+        'active' => 'active',
+        'client_id' => 'client_id',
+        'user_id' => 'user_id',
+        'user_email' => 'user_email',
+        'organizations' => 'organizations'
+    );
 
-  
-  /**
-  * Действует ли этот токен
-  */
-  public $active; /* bool */
-  /**
-  * Идентификатор клиента API, которым получен токен
-  */
-  public $client_id; /* string */
-  /**
-  * Идентификатор пользователя, которым получен токен
-  */
-  public $user_id; /* string */
-  /**
-  * Электронная почта пользователя, которым получен токен
-  */
-  public $user_email; /* string */
-  /**
-  * Организации, к которым есть доступ пользователя
-  */
-  public $organizations; /* array[OrganizationResponse] */
-
-  public function __construct(array $data = null) {
     
-    if(isset($data["active"])) {
-      $this->active = $data["active"];
+    /**
+    * Действует ли этот токен
+    *
+    * @var bool
+    */
+    public $active;
+    /**
+    * Идентификатор клиента API, которым получен токен
+    *
+    * @var string
+    */
+    public $client_id;
+    /**
+    * Идентификатор пользователя, которым получен токен
+    *
+    * @var string
+    */
+    public $user_id;
+    /**
+    * Электронная почта пользователя, которым получен токен
+    *
+    * @var string
+    */
+    public $user_email;
+    /**
+    * Организации, к которым есть доступ пользователя
+    *
+    * @var OrganizationResponse[]
+    */
+    public $organizations;
+
+    public function __construct(array $data = null) {
+    
+        if(isset($data["active"])) {
+            $this->active = $data["active"];
+        }
+    
+    
+        if(isset($data["client_id"])) {
+            $this->client_id = $data["client_id"];
+        }
+    
+    
+        if(isset($data["user_id"])) {
+            $this->user_id = $data["user_id"];
+        }
+    
+    
+        if(isset($data["user_email"])) {
+            $this->user_email = $data["user_email"];
+        }
+    
+    
+        if(isset($data["organizations"])) {
+            $this->organizations = $data["organizations"];
+        }
+    
     }
-    
-    
-    if(isset($data["client_id"])) {
-      $this->client_id = $data["client_id"];
-    }
-    
-    
-    if(isset($data["user_id"])) {
-      $this->user_id = $data["user_id"];
-    }
-    
-    
-    if(isset($data["user_email"])) {
-      $this->user_email = $data["user_email"];
-    }
-    
-    
-    if(isset($data["organizations"])) {
-      $this->organizations = $data["organizations"];
-    }
-    
-  }
 
-  public function offsetExists($offset) {
-    return isset($this->$offset);
-  }
+    public function offsetExists($offset) {
+        return isset($this->$offset);
+    }
 
-  public function offsetGet($offset) {
-    return $this->$offset;
-  }
+    public function offsetGet($offset) {
+        return $this->$offset;
+    }
 
-  public function offsetSet($offset, $value) {
-    $this->$offset = $value;
-  }
+    public function offsetSet($offset, $value) {
+        $this->$offset = $value;
+    }
 
-  public function offsetUnset($offset) {
-    unset($this->$offset);
-  }
+    public function offsetUnset($offset) {
+        unset($this->$offset);
+    }
 }

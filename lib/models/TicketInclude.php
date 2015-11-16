@@ -27,52 +27,56 @@ namespace TimepadApi\models;
 use \ArrayAccess;
 
 class TicketInclude implements ArrayAccess {
-  static $swaggerTypes = array(
-      'answers' => 'object',
-      'ticket_type_id' => 'string'
-  );
+    static $swaggerTypes = array(
+        'answers' => 'object',
+        'ticket_type_id' => 'string'
+    );
 
-  static $attributeMap = array(
-      'answers' => 'answers',
-      'ticket_type_id' => 'ticket_type_id'
-  );
+    static $attributeMap = array(
+        'answers' => 'answers',
+        'ticket_type_id' => 'ticket_type_id'
+    );
 
-  
-  /**
-  * Ответы на анкету регистрации
-  */
-  public $answers; /* object */
-  /**
-  * Идентификатор типа билета
-  */
-  public $ticket_type_id; /* string */
-
-  public function __construct(array $data = null) {
     
-    if(isset($data["answers"])) {
-      $this->answers = $data["answers"];
+    /**
+    * Ответы на анкету регистрации
+    *
+    * @var object
+    */
+    public $answers;
+    /**
+    * Идентификатор типа билета
+    *
+    * @var string
+    */
+    public $ticket_type_id;
+
+    public function __construct(array $data = null) {
+    
+        if(isset($data["answers"])) {
+            $this->answers = $data["answers"];
+        }
+    
+    
+        if(isset($data["ticket_type_id"])) {
+            $this->ticket_type_id = $data["ticket_type_id"];
+        }
+    
     }
-    
-    
-    if(isset($data["ticket_type_id"])) {
-      $this->ticket_type_id = $data["ticket_type_id"];
+
+    public function offsetExists($offset) {
+        return isset($this->$offset);
     }
-    
-  }
 
-  public function offsetExists($offset) {
-    return isset($this->$offset);
-  }
+    public function offsetGet($offset) {
+        return $this->$offset;
+    }
 
-  public function offsetGet($offset) {
-    return $this->$offset;
-  }
+    public function offsetSet($offset, $value) {
+        $this->$offset = $value;
+    }
 
-  public function offsetSet($offset, $value) {
-    $this->$offset = $value;
-  }
-
-  public function offsetUnset($offset) {
-    unset($this->$offset);
-  }
+    public function offsetUnset($offset) {
+        unset($this->$offset);
+    }
 }

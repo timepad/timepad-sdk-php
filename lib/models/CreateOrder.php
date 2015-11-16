@@ -27,63 +27,69 @@ namespace TimepadApi\models;
 use \ArrayAccess;
 
 class CreateOrder implements ArrayAccess {
-  static $swaggerTypes = array(
-      'tickets' => 'array[TicketInclude]',
-      'answers' => 'object',
-      'promocodes' => 'array[string]'
-  );
+    static $swaggerTypes = array(
+        'tickets' => 'TicketInclude[]',
+        'answers' => 'object',
+        'promocodes' => 'string[]'
+    );
 
-  static $attributeMap = array(
-      'tickets' => 'tickets',
-      'answers' => 'answers',
-      'promocodes' => 'promocodes'
-  );
+    static $attributeMap = array(
+        'tickets' => 'tickets',
+        'answers' => 'answers',
+        'promocodes' => 'promocodes'
+    );
 
-  
-  /**
-  * Список видов билетов
-  */
-  public $tickets; /* array[TicketInclude] */
-  /**
-  * Список видов билетов
-  */
-  public $answers; /* object */
-  /**
-  * Промокоды
-  */
-  public $promocodes; /* array[string] */
-
-  public function __construct(array $data = null) {
     
-    if(isset($data["tickets"])) {
-      $this->tickets = $data["tickets"];
+    /**
+    * Список видов билетов
+    *
+    * @var TicketInclude[]
+    */
+    public $tickets;
+    /**
+    * Список видов билетов
+    *
+    * @var object
+    */
+    public $answers;
+    /**
+    * Промокоды
+    *
+    * @var string[]
+    */
+    public $promocodes;
+
+    public function __construct(array $data = null) {
+    
+        if(isset($data["tickets"])) {
+            $this->tickets = $data["tickets"];
+        }
+    
+    
+        if(isset($data["answers"])) {
+            $this->answers = $data["answers"];
+        }
+    
+    
+        if(isset($data["promocodes"])) {
+            $this->promocodes = $data["promocodes"];
+        }
+    
     }
-    
-    
-    if(isset($data["answers"])) {
-      $this->answers = $data["answers"];
+
+    public function offsetExists($offset) {
+        return isset($this->$offset);
     }
-    
-    
-    if(isset($data["promocodes"])) {
-      $this->promocodes = $data["promocodes"];
+
+    public function offsetGet($offset) {
+        return $this->$offset;
     }
-    
-  }
 
-  public function offsetExists($offset) {
-    return isset($this->$offset);
-  }
+    public function offsetSet($offset, $value) {
+        $this->$offset = $value;
+    }
 
-  public function offsetGet($offset) {
-    return $this->$offset;
-  }
-
-  public function offsetSet($offset, $value) {
-    $this->$offset = $value;
-  }
-
-  public function offsetUnset($offset) {
-    unset($this->$offset);
-  }
+    public function offsetUnset($offset) {
+        unset($this->$offset);
+    }
 }

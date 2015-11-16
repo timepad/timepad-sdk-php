@@ -27,92 +27,121 @@ namespace TimepadApi\models;
 use \ArrayAccess;
 
 class TicketResponse implements ArrayAccess {
-  static $swaggerTypes = array(
-      'id' => 'int',
-      'number' => 'string',
-      'answers' => 'object',
-      'ticket_type' => 'array[TicketTypeResponse]',
-      'attendance' => 'array[AttendanceResponse]',
-      'place' => 'array[PlaceResponse]',
-      'codes' => 'array[CodesResponse]'
-  );
+    static $swaggerTypes = array(
+        'id' => 'int',
+        'number' => 'string',
+        'answers' => 'AnswersResponse',
+        'ticket_type' => 'TicketTypeResponse',
+        'attendance' => 'AttendanceResponse',
+        'place' => 'PlaceResponse',
+        'codes' => 'CodesResponse'
+    );
 
-  static $attributeMap = array(
-      'id' => 'id',
-      'number' => 'number',
-      'answers' => 'answers',
-      'ticket_type' => 'ticket_type',
-      'attendance' => 'attendance',
-      'place' => 'place',
-      'codes' => 'codes'
-  );
+    static $attributeMap = array(
+        'id' => 'id',
+        'number' => 'number',
+        'answers' => 'answers',
+        'ticket_type' => 'ticket_type',
+        'attendance' => 'attendance',
+        'place' => 'place',
+        'codes' => 'codes'
+    );
 
-  
-  /**
-  * Уникальный номер типа билета
-  */
-  public $id; /* int */
-  /**
-  * Номер билета
-  */
-  public $number; /* string */
-  public $answers; /* object */
-  public $ticket_type; /* array[TicketTypeResponse] */
-  public $attendance; /* array[AttendanceResponse] */
-  public $place; /* array[PlaceResponse] */
-  public $codes; /* array[CodesResponse] */
+    
+    /**
+    * Уникальный номер типа билета
+    *
+    * @var int
+    */
+    public $id;
+    /**
+    * Номер билета
+    *
+    * @var string
+    */
+    public $number;
+    /**
+    * Объект с ответами на вопросы анкеты
+    *
+    * @var AnswersResponse
+    */
+    public $answers;
+    /**
+    * Объект информации о типе билета
+    *
+    * @var TicketTypeResponse
+    */
+    public $ticket_type;
+    /**
+    * Объект информации о посещении пользователя с этим билетом
+    *
+    * @var AttendanceResponse
+    */
+    public $attendance;
+    /**
+    * Объект информации о месте билета
+    *
+    * @var PlaceResponse
+    */
+    public $place;
+    /**
+    * Объект информации о кодах билета
+    *
+    * @var CodesResponse
+    */
+    public $codes;
 
-  public function __construct(array $data = null) {
+    public function __construct(array $data = null) {
     
-    if(isset($data["id"])) {
-      $this->id = $data["id"];
+        if(isset($data["id"])) {
+            $this->id = $data["id"];
+        }
+    
+    
+        if(isset($data["number"])) {
+            $this->number = $data["number"];
+        }
+    
+    
+        if(isset($data["answers"])) {
+            $this->answers = $data["answers"];
+        }
+    
+    
+        if(isset($data["ticket_type"])) {
+            $this->ticket_type = $data["ticket_type"];
+        }
+    
+    
+        if(isset($data["attendance"])) {
+            $this->attendance = $data["attendance"];
+        }
+    
+    
+        if(isset($data["place"])) {
+            $this->place = $data["place"];
+        }
+    
+    
+        if(isset($data["codes"])) {
+            $this->codes = $data["codes"];
+        }
+    
     }
-    
-    
-    if(isset($data["number"])) {
-      $this->number = $data["number"];
-    }
-    
-    
-    if(isset($data["answers"])) {
-      $this->answers = $data["answers"];
-    }
-    
-    
-    if(isset($data["ticket_type"])) {
-      $this->ticket_type = $data["ticket_type"];
-    }
-    
-    
-    if(isset($data["attendance"])) {
-      $this->attendance = $data["attendance"];
-    }
-    
-    
-    if(isset($data["place"])) {
-      $this->place = $data["place"];
-    }
-    
-    
-    if(isset($data["codes"])) {
-      $this->codes = $data["codes"];
-    }
-    
-  }
 
-  public function offsetExists($offset) {
-    return isset($this->$offset);
-  }
+    public function offsetExists($offset) {
+        return isset($this->$offset);
+    }
 
-  public function offsetGet($offset) {
-    return $this->$offset;
-  }
+    public function offsetGet($offset) {
+        return $this->$offset;
+    }
 
-  public function offsetSet($offset, $value) {
-    $this->$offset = $value;
-  }
+    public function offsetSet($offset, $value) {
+        $this->$offset = $value;
+    }
 
-  public function offsetUnset($offset) {
-    unset($this->$offset);
-  }
+    public function offsetUnset($offset) {
+        unset($this->$offset);
+    }
 }

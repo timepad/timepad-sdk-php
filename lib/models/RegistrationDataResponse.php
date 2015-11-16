@@ -27,96 +27,108 @@ namespace TimepadApi\models;
 use \ArrayAccess;
 
 class RegistrationDataResponse implements ArrayAccess {
-  static $swaggerTypes = array(
-      'price_max' => 'float',
-      'price_min' => 'float',
-      'sale_ends_at' => 'DateTime',
-      'tickets_total' => 'int',
-      'tickets_limit' => 'int',
-      'is_registration_open' => 'bool'
-  );
+    static $swaggerTypes = array(
+        'price_max' => 'float',
+        'price_min' => 'float',
+        'sale_ends_at' => 'DateTime',
+        'tickets_total' => 'int',
+        'tickets_limit' => 'int',
+        'is_registration_open' => 'bool'
+    );
 
-  static $attributeMap = array(
-      'price_max' => 'price_max',
-      'price_min' => 'price_min',
-      'sale_ends_at' => 'sale_ends_at',
-      'tickets_total' => 'tickets_total',
-      'tickets_limit' => 'tickets_limit',
-      'is_registration_open' => 'is_registration_open'
-  );
+    static $attributeMap = array(
+        'price_max' => 'price_max',
+        'price_min' => 'price_min',
+        'sale_ends_at' => 'sale_ends_at',
+        'tickets_total' => 'tickets_total',
+        'tickets_limit' => 'tickets_limit',
+        'is_registration_open' => 'is_registration_open'
+    );
 
-  
-  /**
-  * Цена самого дорогого билета
-  */
-  public $price_max; /* float */
-  /**
-  * Цена самого дешёвого билета
-  */
-  public $price_min; /* float */
-  /**
-  * Дата окончания продажи последней категории билета
-  */
-  public $sale_ends_at; /* DateTime */
-  /**
-  * Количество забронированных, проданных и бесплатных билетов
-  */
-  public $tickets_total; /* int */
-  /**
-  * Максимальное количество доступных билетов, независимо от типа билета
-  */
-  public $tickets_limit; /* int */
-  /**
-  * Открыта ли регистрация
-  */
-  public $is_registration_open; /* bool */
-
-  public function __construct(array $data = null) {
     
-    if(isset($data["price_max"])) {
-      $this->price_max = $data["price_max"];
+    /**
+    * Цена самого дорогого билета
+    *
+    * @var float
+    */
+    public $price_max;
+    /**
+    * Цена самого дешёвого билета
+    *
+    * @var float
+    */
+    public $price_min;
+    /**
+    * Дата окончания продажи последней категории билета
+    *
+    * @var DateTime
+    */
+    public $sale_ends_at;
+    /**
+    * Количество забронированных, проданных и бесплатных билетов
+    *
+    * @var int
+    */
+    public $tickets_total;
+    /**
+    * Максимальное количество доступных билетов, независимо от типа билета
+    *
+    * @var int
+    */
+    public $tickets_limit;
+    /**
+    * Открыта ли регистрация
+    *
+    * @var bool
+    */
+    public $is_registration_open;
+
+    public function __construct(array $data = null) {
+    
+        if(isset($data["price_max"])) {
+            $this->price_max = $data["price_max"];
+        }
+    
+    
+        if(isset($data["price_min"])) {
+            $this->price_min = $data["price_min"];
+        }
+    
+    
+        if(isset($data["sale_ends_at"])) {
+            $this->sale_ends_at = $data["sale_ends_at"];
+        }
+    
+    
+        if(isset($data["tickets_total"])) {
+            $this->tickets_total = $data["tickets_total"];
+        }
+    
+    
+        if(isset($data["tickets_limit"])) {
+            $this->tickets_limit = $data["tickets_limit"];
+        }
+    
+    
+        if(isset($data["is_registration_open"])) {
+            $this->is_registration_open = $data["is_registration_open"];
+        }
+    
     }
-    
-    
-    if(isset($data["price_min"])) {
-      $this->price_min = $data["price_min"];
-    }
-    
-    
-    if(isset($data["sale_ends_at"])) {
-      $this->sale_ends_at = $data["sale_ends_at"];
-    }
-    
-    
-    if(isset($data["tickets_total"])) {
-      $this->tickets_total = $data["tickets_total"];
-    }
-    
-    
-    if(isset($data["tickets_limit"])) {
-      $this->tickets_limit = $data["tickets_limit"];
-    }
-    
-    
-    if(isset($data["is_registration_open"])) {
-      $this->is_registration_open = $data["is_registration_open"];
-    }
-    
-  }
 
-  public function offsetExists($offset) {
-    return isset($this->$offset);
-  }
+    public function offsetExists($offset) {
+        return isset($this->$offset);
+    }
 
-  public function offsetGet($offset) {
-    return $this->$offset;
-  }
+    public function offsetGet($offset) {
+        return $this->$offset;
+    }
 
-  public function offsetSet($offset, $value) {
-    $this->$offset = $value;
-  }
+    public function offsetSet($offset, $value) {
+        $this->$offset = $value;
+    }
 
-  public function offsetUnset($offset) {
-    unset($this->$offset);
-  }
+    public function offsetUnset($offset) {
+        unset($this->$offset);
+    }
 }

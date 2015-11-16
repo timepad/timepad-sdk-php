@@ -27,41 +27,43 @@ namespace TimepadApi\models;
 use \ArrayAccess;
 
 class WidgetResponse implements ArrayAccess {
-  static $swaggerTypes = array(
-      'code_html' => 'string'
-  );
+    static $swaggerTypes = array(
+        'code_html' => 'string'
+    );
 
-  static $attributeMap = array(
-      'code_html' => 'code_html'
-  );
+    static $attributeMap = array(
+        'code_html' => 'code_html'
+    );
 
-  
-  /**
-  * Код вставки виджета в сайт
-  */
-  public $code_html; /* string */
-
-  public function __construct(array $data = null) {
     
-    if(isset($data["code_html"])) {
-      $this->code_html = $data["code_html"];
+    /**
+    * Код вставки виджета в сайт
+    *
+    * @var string
+    */
+    public $code_html;
+
+    public function __construct(array $data = null) {
+    
+        if(isset($data["code_html"])) {
+            $this->code_html = $data["code_html"];
+        }
+    
     }
-    
-  }
 
-  public function offsetExists($offset) {
-    return isset($this->$offset);
-  }
+    public function offsetExists($offset) {
+        return isset($this->$offset);
+    }
 
-  public function offsetGet($offset) {
-    return $this->$offset;
-  }
+    public function offsetGet($offset) {
+        return $this->$offset;
+    }
 
-  public function offsetSet($offset, $value) {
-    $this->$offset = $value;
-  }
+    public function offsetSet($offset, $value) {
+        $this->$offset = $value;
+    }
 
-  public function offsetUnset($offset) {
-    unset($this->$offset);
-  }
+    public function offsetUnset($offset) {
+        unset($this->$offset);
+    }
 }
