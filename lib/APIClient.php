@@ -297,8 +297,8 @@ class APIClient {
 
             $deserialized = $values;
 
-        } elseif (strcasecmp(substr($class, 0, 6),'array[') == 0) {
-            $subClass = substr($class, 6, -1);
+        } elseif (strcasecmp(substr($class, -2),'[]') == 0) {
+        $subClass = substr($class, 0, -2);
             $values = array();
             foreach ($data as $key => $value) {
                 $values[] = self::deserialize($value, $subClass);
