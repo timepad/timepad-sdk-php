@@ -149,7 +149,7 @@ class DefaultApi {
      * 'client_id' (string) Идентификатор клиента (optional)
      * 'redirect_uri' (string) Ссылка на которую произойдёт редирект (optional)
      * 'response_type' (string) Возвращаемый тип ответа. Единственное поддерживаемое значение - token (optional)
-     * 'scope' (string[]) Запрашиваемые приложением разрешения через запятую. Возможные значения: add_events, add_organizations, edit_events, view_private_events, view_visitors, edit_visitors, add_cash_payments (optional)
+     * 'scope' (string[]) Запрашиваемые приложением разрешения через запятую. Возможные значения: add_events, add_organizations, edit_events, view_private_events, view_visitors, edit_visitors, add_cash_payments, edit_organizations_hooks (optional)
      *
      * @return void
      */
@@ -847,6 +847,252 @@ class DefaultApi {
         }
 
         $responseObject = $this->apiClient->deserialize($response, 'OrganizationResponse');
+        return $responseObject;
+    }
+   
+    /**
+     * getHooks
+     *
+     * Получить список webhook'ов
+     *
+     * @param string[] $params Ассоциативный массив параметров. Может содержать следующие поля:
+     *
+     * 'organization_id' (int) Идентификатор организации (required)
+     * 'type' (string) Тип получаемых webhook&#39;ов (optional)
+     *
+     * @return models\WebhooksApiResponse
+     */
+    public function getHooks($params = []) {
+        $resourcePath = "/v1/organizations/{organization_id}/hooks";
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+        $method = "GET";
+        $queryParams = array();
+        $headerParams = array();
+        $formParams = array();
+        $_header_accept = '';
+        if ($_header_accept !== '') {
+            $headerParams['Accept'] = $_header_accept;
+        }
+        $_header_content_type = array();
+        $headerParams['Content-Type'] = count($_header_content_type) > 0 ? $_header_content_type[0] : 'application/json';
+
+        // query params
+        if (isset($params['type'])) {
+            $queryParams['type'] = $this->apiClient->toQueryValue($params['type']);
+        }
+
+        // header params
+
+        // path params
+        if (isset($params['organization_id'])) {
+            $resourcePath = str_replace("{" . "organization_id" . "}", $this->apiClient->toPathValue($params['organization_id']), $resourcePath);
+        }
+
+        // form params
+
+        // body params
+        $preparedBody = $formParams;
+        
+
+        if (strpos($headerParams['Content-Type'], "application/x-www-form-urlencoded") > -1) {
+            $preparedBody = http_build_query($preparedBody);
+        }
+
+        // make the API Call
+        $response = $this->apiClient->callAPI($resourcePath, $method, $queryParams, $preparedBody, $headerParams);
+        
+        if (!$response) {
+            return null;
+        }
+
+        $responseObject = $this->apiClient->deserialize($response, 'WebhooksApiResponse');
+        return $responseObject;
+    }
+   
+    /**
+     * addHook
+     *
+     * Добавить webhook'ов в организацию
+     *
+     * @param string[] $params Ассоциативный массив параметров. Может содержать следующие поля:
+     *
+     * 'organization_id' (int) Идентификатор организации (required)
+     * 'body' (CreateHook) Описание добавляемого webhook&#39;а (optional)
+     *
+     * @return models\WebhooksApiResponse
+     */
+    public function addHook($params = []) {
+        $resourcePath = "/v1/organizations/{organization_id}/hooks";
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+        $method = "POST";
+        $queryParams = array();
+        $headerParams = array();
+        $formParams = array();
+        $_header_accept = '';
+        if ($_header_accept !== '') {
+            $headerParams['Accept'] = $_header_accept;
+        }
+        $_header_content_type = array();
+        $headerParams['Content-Type'] = count($_header_content_type) > 0 ? $_header_content_type[0] : 'application/json';
+
+        // query params
+
+        // header params
+
+        // path params
+        if (isset($params['organization_id'])) {
+            $resourcePath = str_replace("{" . "organization_id" . "}", $this->apiClient->toPathValue($params['organization_id']), $resourcePath);
+        }
+
+        // form params
+
+        // body params
+        $preparedBody = null;
+        if (isset($params['body'])) {
+            $preparedBody = $params['body'];
+        }
+
+        // for HTTP post (form)
+        $preparedBody = $preparedBody ?: $formParams;
+        
+
+        if (strpos($headerParams['Content-Type'], "application/x-www-form-urlencoded") > -1) {
+            $preparedBody = http_build_query($preparedBody);
+        }
+
+        // make the API Call
+        $response = $this->apiClient->callAPI($resourcePath, $method, $queryParams, $preparedBody, $headerParams);
+        
+        if (!$response) {
+            return null;
+        }
+
+        $responseObject = $this->apiClient->deserialize($response, 'WebhooksApiResponse');
+        return $responseObject;
+    }
+   
+    /**
+     * getHook
+     *
+     * Получить webhook
+     *
+     * @param string[] $params Ассоциативный массив параметров. Может содержать следующие поля:
+     *
+     * 'organization_id' (int) Идентификатор организации (required)
+     * 'hook_id' (int) Идентификатор webhook&#39;а (required)
+     *
+     * @return models\WebhookApiResponse
+     */
+    public function getHook($params = []) {
+        $resourcePath = "/v1/organizations/{organization_id}/hooks/{hook_id}";
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+        $method = "GET";
+        $queryParams = array();
+        $headerParams = array();
+        $formParams = array();
+        $_header_accept = '';
+        if ($_header_accept !== '') {
+            $headerParams['Accept'] = $_header_accept;
+        }
+        $_header_content_type = array();
+        $headerParams['Content-Type'] = count($_header_content_type) > 0 ? $_header_content_type[0] : 'application/json';
+
+        // query params
+
+        // header params
+
+        // path params
+        if (isset($params['organization_id'])) {
+            $resourcePath = str_replace("{" . "organization_id" . "}", $this->apiClient->toPathValue($params['organization_id']), $resourcePath);
+        }
+        if (isset($params['hook_id'])) {
+            $resourcePath = str_replace("{" . "hook_id" . "}", $this->apiClient->toPathValue($params['hook_id']), $resourcePath);
+        }
+
+        // form params
+
+        // body params
+        $preparedBody = $formParams;
+        
+
+        if (strpos($headerParams['Content-Type'], "application/x-www-form-urlencoded") > -1) {
+            $preparedBody = http_build_query($preparedBody);
+        }
+
+        // make the API Call
+        $response = $this->apiClient->callAPI($resourcePath, $method, $queryParams, $preparedBody, $headerParams);
+        
+        if (!$response) {
+            return null;
+        }
+
+        $responseObject = $this->apiClient->deserialize($response, 'WebhookApiResponse');
+        return $responseObject;
+    }
+   
+    /**
+     * editHook
+     *
+     * Обновить webhook
+     *
+     * @param string[] $params Ассоциативный массив параметров. Может содержать следующие поля:
+     *
+     * 'organization_id' (int) Идентификатор организации (required)
+     * 'hook_id' (int) Идентификатор webhook&#39;а (required)
+     * 'body' (EditHook) Поля для обновления webhook&#39;а (optional)
+     *
+     * @return models\WebhookApiResponse
+     */
+    public function editHook($params = []) {
+        $resourcePath = "/v1/organizations/{organization_id}/hooks/{hook_id}";
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+        $method = "POST";
+        $queryParams = array();
+        $headerParams = array();
+        $formParams = array();
+        $_header_accept = '';
+        if ($_header_accept !== '') {
+            $headerParams['Accept'] = $_header_accept;
+        }
+        $_header_content_type = array();
+        $headerParams['Content-Type'] = count($_header_content_type) > 0 ? $_header_content_type[0] : 'application/json';
+
+        // query params
+
+        // header params
+
+        // path params
+        if (isset($params['organization_id'])) {
+            $resourcePath = str_replace("{" . "organization_id" . "}", $this->apiClient->toPathValue($params['organization_id']), $resourcePath);
+        }
+        if (isset($params['hook_id'])) {
+            $resourcePath = str_replace("{" . "hook_id" . "}", $this->apiClient->toPathValue($params['hook_id']), $resourcePath);
+        }
+
+        // form params
+
+        // body params
+        $preparedBody = null;
+        if (isset($params['body'])) {
+            $preparedBody = $params['body'];
+        }
+
+        // for HTTP post (form)
+        $preparedBody = $preparedBody ?: $formParams;
+        
+
+        if (strpos($headerParams['Content-Type'], "application/x-www-form-urlencoded") > -1) {
+            $preparedBody = http_build_query($preparedBody);
+        }
+
+        // make the API Call
+        $response = $this->apiClient->callAPI($resourcePath, $method, $queryParams, $preparedBody, $headerParams);
+        
+        if (!$response) {
+            return null;
+        }
+
+        $responseObject = $this->apiClient->deserialize($response, 'WebhookApiResponse');
         return $responseObject;
     }
    
