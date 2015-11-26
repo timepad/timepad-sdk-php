@@ -36,6 +36,11 @@ class WebhooksApiResponse implements ArrayAccess {
     );
 
     
+    /**
+    * Массив со списком вебхуков
+    *
+    * @var WebhookApiResponse[]
+    */
     public $values;
 
     public function __construct(array $data = null) {
