@@ -26,40 +26,53 @@ namespace TimepadApi\models;
 
 use \ArrayAccess;
 
-class EditOrderAttendanceApiRequest implements ArrayAccess {
+class EditOrderPayment implements ArrayAccess {
     static $swaggerTypes = array(
-        'starts_at' => 'DateTime',
-        'ends_at' => 'DateTime'
+        'paid_at' => 'DateTime',
+        'amount' => 'float',
+        'payment_type' => 'string'
     );
 
     static $attributeMap = array(
-        'starts_at' => 'starts_at',
-        'ends_at' => 'ends_at'
+        'paid_at' => 'paid_at',
+        'amount' => 'amount',
+        'payment_type' => 'payment_type'
     );
 
     
     /**
-    * Дата посещения события
+    * Дата оплаты заказа
     *
     * @var DateTime
     */
-    public $starts_at;
+    public $paid_at;
     /**
-    * Дата ухода с события
+    * Сумма заказа
     *
-    * @var DateTime
+    * @var float
     */
-    public $ends_at;
+    public $amount;
+    /**
+    * Тип платежа
+    *
+    * @var string
+    */
+    public $payment_type;
 
     public function __construct(array $data = null) {
     
-        if(isset($data["starts_at"])) {
-            $this->starts_at = $data["starts_at"];
+        if(isset($data["paid_at"])) {
+            $this->paid_at = $data["paid_at"];
         }
     
     
-        if(isset($data["ends_at"])) {
-            $this->ends_at = $data["ends_at"];
+        if(isset($data["amount"])) {
+            $this->amount = $data["amount"];
+        }
+    
+    
+        if(isset($data["payment_type"])) {
+            $this->payment_type = $data["payment_type"];
         }
     
     }

@@ -26,7 +26,7 @@ namespace TimepadApi\models;
 
 use \ArrayAccess;
 
-class TicketTypeIncludeApiRequest implements ArrayAccess {
+class TicketTypeRequest implements ArrayAccess {
     static $swaggerTypes = array(
         'id' => 'int',
         'price' => 'int',
@@ -51,25 +51,25 @@ class TicketTypeIncludeApiRequest implements ArrayAccess {
 
     
     /**
-    * Id существующего билета
+    * Номер существующего типа билета
     *
     * @var int
     */
     public $id;
     /**
-    * Цена существующего билета
+    * Цена существующего типа билета
     *
     * @var int
     */
     public $price;
     /**
-    * Статус билета
+    * Статус типа билета
     *
     * @var string
     */
     public $status;
     /**
-    * Название билета
+    * Название типа билета
     *
     * @var string
     */
@@ -93,7 +93,7 @@ class TicketTypeIncludeApiRequest implements ArrayAccess {
     */
     public $sale_ends_at;
     /**
-    * Ограничение на количество билетов типа билета
+    * Ограничение на количество билетов этого типа
     *
     * @var int
     */

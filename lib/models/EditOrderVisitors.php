@@ -26,40 +26,53 @@ namespace TimepadApi\models;
 
 use \ArrayAccess;
 
-class EditOrderVisitorsAttendanceIncludeApiRequest implements ArrayAccess {
+class EditOrderVisitors implements ArrayAccess {
     static $swaggerTypes = array(
-        'starts_at' => 'DateTime',
-        'ends_at' => 'DateTime'
+        'id' => 'int',
+        'answers' => 'map[string,string]',
+        'attendance' => 'EditOrderAttendance'
     );
 
     static $attributeMap = array(
-        'starts_at' => 'starts_at',
-        'ends_at' => 'ends_at'
+        'id' => 'id',
+        'answers' => 'answers',
+        'attendance' => 'attendance'
     );
 
     
     /**
-    * Дата посещения пользователем события
+    * Номер регистрации
     *
-    * @var DateTime
+    * @var int
     */
-    public $starts_at;
+    public $id;
     /**
-    * Дата ухода пользователя с события
+    * Ответы на анкету регистрации
     *
-    * @var DateTime
+    * @var map[string,string]
     */
-    public $ends_at;
+    public $answers;
+    /**
+    * Посещение события
+    *
+    * @var EditOrderAttendance
+    */
+    public $attendance;
 
     public function __construct(array $data = null) {
     
-        if(isset($data["starts_at"])) {
-            $this->starts_at = $data["starts_at"];
+        if(isset($data["id"])) {
+            $this->id = $data["id"];
         }
     
     
-        if(isset($data["ends_at"])) {
-            $this->ends_at = $data["ends_at"];
+        if(isset($data["answers"])) {
+            $this->answers = $data["answers"];
+        }
+    
+    
+        if(isset($data["attendance"])) {
+            $this->attendance = $data["attendance"];
         }
     
     }

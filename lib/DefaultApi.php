@@ -421,7 +421,7 @@ class DefaultApi {
      * @param string[] $params Ассоциативный массив параметров. Может содержать следующие поля:
      *
      * 'fields' (string[]) Список полей, которые нужно вывести (optional)
-     * 'event_id' (int) Номер событий, которые нужно вывести (required)
+     * 'event_id' (int) Номер события, которые нужно вывести (required)
      *
      * @return models\EventResponse
      */
@@ -479,7 +479,7 @@ class DefaultApi {
      *
      * @param string[] $params Ассоциативный массив параметров. Может содержать следующие поля:
      *
-     * 'event_id' (int) Id редактируемого события (required)
+     * 'event_id' (int) Номер редактируемого события (required)
      * 'body' (EditEvent) Список изменённых параметров события (optional)
      *
      * @return models\EventResponse
@@ -729,7 +729,7 @@ class DefaultApi {
     /**
      * editEventOrder
      *
-     * Отредактировать заказ с указанным id
+     * Отредактировать заказ с указанным номером
      *
      * @param string[] $params Ассоциативный массив параметров. Может содержать следующие поля:
      *
@@ -799,7 +799,7 @@ class DefaultApi {
      *
      * @param string[] $params Ассоциативный массив параметров. Может содержать следующие поля:
      *
-     * 'body' (CreateOrganization) Список полей, которые нужно вывести (optional)
+     * 'body' (CreateOrganization) Описание созданной организации (optional)
      *
      * @return models\OrganizationResponse
      */

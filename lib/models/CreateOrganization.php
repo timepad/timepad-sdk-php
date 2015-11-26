@@ -47,7 +47,7 @@ class CreateOrganization implements ArrayAccess {
     */
     public $name;
     /**
-    * Уникальное название организации - часть URL
+    * URL-идентификатор организации в Таймпаде (***.timepad.ru)
     *
     * @var string
     */

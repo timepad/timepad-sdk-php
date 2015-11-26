@@ -45,7 +45,7 @@ class TicketInclude implements ArrayAccess {
     */
     public $answers;
     /**
-    * Идентификатор типа билета
+    * Номер типа билета
     *
     * @var string
     */

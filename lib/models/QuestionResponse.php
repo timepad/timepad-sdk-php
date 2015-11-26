@@ -51,7 +51,7 @@ class QuestionResponse implements ArrayAccess {
 
     
     /**
-    * Название поля вопроса
+    * Уникальный текстовый идентификатор вопроса
     *
     * @var int
     */

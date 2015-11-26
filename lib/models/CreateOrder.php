@@ -29,7 +29,7 @@ use \ArrayAccess;
 class CreateOrder implements ArrayAccess {
     static $swaggerTypes = array(
         'tickets' => 'TicketInclude[]',
-        'answers' => 'object',
+        'answers' => 'map[string,string]',
         'promocodes' => 'string[]'
     );
 
@@ -49,7 +49,7 @@ class CreateOrder implements ArrayAccess {
     /**
     * Список видов билетов
     *
-    * @var object
+    * @var map[string,string]
     */
     public $answers;
     /**

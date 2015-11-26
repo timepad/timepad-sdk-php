@@ -38,7 +38,17 @@ class RegistrationOrdersResponse implements ArrayAccess {
     );
 
     
+    /**
+    * Количетсво заказов в событии
+    *
+    * @var int
+    */
     public $total;
+    /**
+    * Массив заказов
+    *
+    * @var RegistrationOrderResponse[]
+    */
     public $values;
 
     public function __construct(array $data = null) {

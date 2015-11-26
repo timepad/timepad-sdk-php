@@ -28,9 +28,9 @@ use \ArrayAccess;
 
 class EditOrder implements ArrayAccess {
     static $swaggerTypes = array(
-        'visitors' => 'EditOrderVisitorsIncludeApiRequest[]',
+        'visitors' => 'EditOrderVisitors[]',
         'answers' => 'object',
-        'payment' => 'EditOrderPaymentIncludeApiRequest'
+        'payment' => 'EditOrderPayment'
     );
 
     static $attributeMap = array(
@@ -43,7 +43,7 @@ class EditOrder implements ArrayAccess {
     /**
     * Список видов билетов
     *
-    * @var EditOrderVisitorsIncludeApiRequest[]
+    * @var EditOrderVisitors[]
     */
     public $visitors;
     /**
@@ -55,7 +55,7 @@ class EditOrder implements ArrayAccess {
     /**
     * Платёж
     *
-    * @var EditOrderPaymentIncludeApiRequest
+    * @var EditOrderPayment
     */
     public $payment;
 

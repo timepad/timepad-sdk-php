@@ -26,53 +26,40 @@ namespace TimepadApi\models;
 
 use \ArrayAccess;
 
-class EditOrderVisitorsIncludeApiRequest implements ArrayAccess {
+class EditOrderAttendance implements ArrayAccess {
     static $swaggerTypes = array(
-        'id' => 'int',
-        'answers' => 'object',
-        'attendance' => 'EditOrderAttendanceApiRequest'
+        'starts_at' => 'DateTime',
+        'ends_at' => 'DateTime'
     );
 
     static $attributeMap = array(
-        'id' => 'id',
-        'answers' => 'answers',
-        'attendance' => 'attendance'
+        'starts_at' => 'starts_at',
+        'ends_at' => 'ends_at'
     );
 
     
     /**
-    * Id регистрации
+    * Дата посещения события
     *
-    * @var int
+    * @var DateTime
     */
-    public $id;
+    public $starts_at;
     /**
-    * Ответы на анкету регистрации
+    * Дата ухода с события
     *
-    * @var object
+    * @var DateTime
     */
-    public $answers;
-    /**
-    * Посещение события
-    *
-    * @var EditOrderAttendanceApiRequest
-    */
-    public $attendance;
+    public $ends_at;
 
     public function __construct(array $data = null) {
     
-        if(isset($data["id"])) {
-            $this->id = $data["id"];
+        if(isset($data["starts_at"])) {
+            $this->starts_at = $data["starts_at"];
         }
     
     
-        if(isset($data["answers"])) {
-            $this->answers = $data["answers"];
-        }
-    
-    
-        if(isset($data["attendance"])) {
-            $this->attendance = $data["attendance"];
+        if(isset($data["ends_at"])) {
+            $this->ends_at = $data["ends_at"];
         }
     
     }
