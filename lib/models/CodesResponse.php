@@ -47,7 +47,7 @@ class CodesResponse implements ArrayAccess {
     */
     public $ean13;
     /**
-    * ean13 код билета
+    * ean8 код билета
     *
     * @var string
     */

@@ -39,7 +39,7 @@ class RegistrationOrdersResponse implements ArrayAccess {
 
     
     /**
-    * Количетсво заказов в событии
+    * Количество заказов в событии
     *
     * @var int
     */

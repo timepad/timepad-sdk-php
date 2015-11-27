@@ -81,7 +81,7 @@ class QuestionResponse implements ArrayAccess {
     */
     public $possible_answers;
     /**
-    * На вопрос обязательно отвечать
+    * Является ли ответ на вопрос обязательным
     *
     * @var bool
     */

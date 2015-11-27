@@ -26,80 +26,88 @@ namespace TimepadApi\models;
 
 use \ArrayAccess;
 
-class QuestionInclude implements ArrayAccess {
+class TicketTypeIncludeApiRequest implements ArrayAccess {
     static $swaggerTypes = array(
-        'field_id' => 'string',
-        'is_mandatory' => 'bool',
+        'id' => 'int',
+        'price' => 'int',
         'status' => 'string',
         'name' => 'string',
-        'comment' => 'string',
-        'type' => 'string',
-        'possible_answers' => 'string[]'
+        'description' => 'string',
+        'sale_starts_at' => 'DateTime',
+        'sale_ends_at' => 'DateTime',
+        'limit' => 'int'
     );
 
     static $attributeMap = array(
-        'field_id' => 'field_id',
-        'is_mandatory' => 'is_mandatory',
+        'id' => 'id',
+        'price' => 'price',
         'status' => 'status',
         'name' => 'name',
-        'comment' => 'comment',
-        'type' => 'type',
-        'possible_answers' => 'possible_answers'
+        'description' => 'description',
+        'sale_starts_at' => 'sale_starts_at',
+        'sale_ends_at' => 'sale_ends_at',
+        'limit' => 'limit'
     );
 
     
     /**
-    * Уникальный текстовый идентификатор вопроса
+    * Id существующего билета
     *
-    * @var string
+    * @var int
     */
-    public $field_id;
+    public $id;
     /**
-    * Является ли ответ на вопрос обязательным
+    * Цена существующего билета
     *
-    * @var bool
+    * @var int
     */
-    public $is_mandatory;
+    public $price;
     /**
-    * Статус вопроса
+    * Статус билета
     *
     * @var string
     */
     public $status;
     /**
-    * Текст вопроса
+    * Название билета
     *
     * @var string
     */
     public $name;
     /**
-    * Подсказка под вопросом
+    * Описание типа билета
     *
     * @var string
     */
-    public $comment;
+    public $description;
     /**
-    * Тип вопроса
+    * Дата начала продажи типа билета
     *
-    * @var string
+    * @var DateTime
     */
-    public $type;
+    public $sale_starts_at;
     /**
-    * Список ответов на вопрос
+    * Дата окончания продажи типа билета
     *
-    * @var string[]
+    * @var DateTime
     */
-    public $possible_answers;
+    public $sale_ends_at;
+    /**
+    * Ограничение на количество билетов типа билета
+    *
+    * @var int
+    */
+    public $limit;
 
     public function __construct(array $data = null) {
     
-        if(isset($data["field_id"])) {
-            $this->field_id = $data["field_id"];
+        if(isset($data["id"])) {
+            $this->id = $data["id"];
         }
     
     
-        if(isset($data["is_mandatory"])) {
-            $this->is_mandatory = $data["is_mandatory"];
+        if(isset($data["price"])) {
+            $this->price = $data["price"];
         }
     
     
@@ -113,18 +121,23 @@ class QuestionInclude implements ArrayAccess {
         }
     
     
-        if(isset($data["comment"])) {
-            $this->comment = $data["comment"];
+        if(isset($data["description"])) {
+            $this->description = $data["description"];
         }
     
     
-        if(isset($data["type"])) {
-            $this->type = $data["type"];
+        if(isset($data["sale_starts_at"])) {
+            $this->sale_starts_at = $data["sale_starts_at"];
         }
     
     
-        if(isset($data["possible_answers"])) {
-            $this->possible_answers = $data["possible_answers"];
+        if(isset($data["sale_ends_at"])) {
+            $this->sale_ends_at = $data["sale_ends_at"];
+        }
+    
+    
+        if(isset($data["limit"])) {
+            $this->limit = $data["limit"];
         }
     
     }

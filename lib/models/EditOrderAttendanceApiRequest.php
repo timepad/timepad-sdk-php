@@ -26,27 +26,40 @@ namespace TimepadApi\models;
 
 use \ArrayAccess;
 
-class WebhooksApiResponse implements ArrayAccess {
+class EditOrderAttendanceApiRequest implements ArrayAccess {
     static $swaggerTypes = array(
-        'values' => 'WebhookApiResponse[]'
+        'starts_at' => 'DateTime',
+        'ends_at' => 'DateTime'
     );
 
     static $attributeMap = array(
-        'values' => 'values'
+        'starts_at' => 'starts_at',
+        'ends_at' => 'ends_at'
     );
 
     
     /**
-    * Массив со списком webhook'ов
+    * Дата посещения события
     *
-    * @var WebhookApiResponse[]
+    * @var DateTime
     */
-    public $values;
+    public $starts_at;
+    /**
+    * Дата ухода с события
+    *
+    * @var DateTime
+    */
+    public $ends_at;
 
     public function __construct(array $data = null) {
     
-        if(isset($data["values"])) {
-            $this->values = $data["values"];
+        if(isset($data["starts_at"])) {
+            $this->starts_at = $data["starts_at"];
+        }
+    
+    
+        if(isset($data["ends_at"])) {
+            $this->ends_at = $data["ends_at"];
         }
     
     }

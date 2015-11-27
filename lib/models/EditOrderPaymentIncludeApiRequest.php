@@ -26,27 +26,53 @@ namespace TimepadApi\models;
 
 use \ArrayAccess;
 
-class WebhooksApiResponse implements ArrayAccess {
+class EditOrderPaymentIncludeApiRequest implements ArrayAccess {
     static $swaggerTypes = array(
-        'values' => 'WebhookApiResponse[]'
+        'paid_at' => 'DateTime',
+        'amount' => 'float',
+        'payment_type' => 'string'
     );
 
     static $attributeMap = array(
-        'values' => 'values'
+        'paid_at' => 'paid_at',
+        'amount' => 'amount',
+        'payment_type' => 'payment_type'
     );
 
     
     /**
-    * Массив со списком webhook'ов
+    * Дата оплаты заказа
     *
-    * @var WebhookApiResponse[]
+    * @var DateTime
     */
-    public $values;
+    public $paid_at;
+    /**
+    * Сумма заказа
+    *
+    * @var float
+    */
+    public $amount;
+    /**
+    * Тип платежа
+    *
+    * @var string
+    */
+    public $payment_type;
 
     public function __construct(array $data = null) {
     
-        if(isset($data["values"])) {
-            $this->values = $data["values"];
+        if(isset($data["paid_at"])) {
+            $this->paid_at = $data["paid_at"];
+        }
+    
+    
+        if(isset($data["amount"])) {
+            $this->amount = $data["amount"];
+        }
+    
+    
+        if(isset($data["payment_type"])) {
+            $this->payment_type = $data["payment_type"];
         }
     
     }
