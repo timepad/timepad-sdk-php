@@ -49,7 +49,7 @@ class OrganizationResponse implements ArrayAccess {
 
     
     /**
-    * Уникальный номер организации
+    * Номер организации
     *
     * @var int
     */
@@ -79,7 +79,7 @@ class OrganizationResponse implements ArrayAccess {
     */
     public $logo_image;
     /**
-    * Уникальное название организации - часть URL
+    * URL-идентификатор организации в Таймпаде (***.timepad.ru)
     *
     * @var string
     */

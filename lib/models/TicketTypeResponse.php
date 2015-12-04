@@ -105,7 +105,7 @@ class TicketTypeResponse implements ArrayAccess {
     */
     public $price;
     /**
-    * Закрыт ли этот тип введённым промокодом
+    * Закрыт ли этот тип билета введённым промокодом
     *
     * @var bool
     */

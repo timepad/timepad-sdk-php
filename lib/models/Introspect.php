@@ -69,7 +69,7 @@ class Introspect implements ArrayAccess {
     */
     public $user_email;
     /**
-    * Организации, к которым есть доступ пользователя
+    * Организации, к которым есть доступ у пользователя
     *
     * @var OrganizationResponse[]
     */

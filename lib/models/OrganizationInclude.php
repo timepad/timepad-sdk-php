@@ -39,7 +39,7 @@ class OrganizationInclude implements ArrayAccess {
 
     
     /**
-    * ID организации в Таймпаде
+    * Номер организации в Таймпаде
     *
     * @var int
     */

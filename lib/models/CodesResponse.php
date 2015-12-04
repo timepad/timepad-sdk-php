@@ -29,12 +29,14 @@ use \ArrayAccess;
 class CodesResponse implements ArrayAccess {
     static $swaggerTypes = array(
         'ean13' => 'string',
-        'ean8' => 'string'
+        'ean8' => 'string',
+        'printed_code' => 'string'
     );
 
     static $attributeMap = array(
         'ean13' => 'ean13',
-        'ean8' => 'ean8'
+        'ean8' => 'ean8',
+        'printed_code' => 'printed_code'
     );
 
     
@@ -45,11 +47,17 @@ class CodesResponse implements ArrayAccess {
     */
     public $ean13;
     /**
-    * ean13 код билета
+    * ean8 код билета
     *
     * @var string
     */
     public $ean8;
+    /**
+    * Код, который будет напечатан на билете
+    *
+    * @var string
+    */
+    public $printed_code;
 
     public function __construct(array $data = null) {
     
@@ -60,6 +68,11 @@ class CodesResponse implements ArrayAccess {
     
         if(isset($data["ean8"])) {
             $this->ean8 = $data["ean8"];
+        }
+    
+    
+        if(isset($data["printed_code"])) {
+            $this->printed_code = $data["printed_code"];
         }
     
     }

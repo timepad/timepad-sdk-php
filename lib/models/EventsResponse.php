@@ -38,7 +38,17 @@ class EventsResponse implements ArrayAccess {
     );
 
     
+    /**
+    * Общее количество найденных событий
+    *
+    * @var int
+    */
     public $total;
+    /**
+    * Массив с выборкой событий
+    *
+    * @var EventResponse[]
+    */
     public $values;
 
     public function __construct(array $data = null) {

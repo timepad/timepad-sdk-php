@@ -61,7 +61,7 @@ class RegistrationOrderResponse implements ArrayAccess {
     */
     public $created_at;
     /**
-    * Дата создания заказа
+    * Статус заказа
     *
     * @var OrderStatusResponse
     */

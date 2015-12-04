@@ -26,53 +26,40 @@ namespace TimepadApi\models;
 
 use \ArrayAccess;
 
-class CreateOrder implements ArrayAccess {
+class EditOrderVisitorsAttendance implements ArrayAccess {
     static $swaggerTypes = array(
-        'tickets' => 'TicketInclude[]',
-        'answers' => 'map[string,string]',
-        'promocodes' => 'string[]'
+        'starts_at' => 'DateTime',
+        'ends_at' => 'DateTime'
     );
 
     static $attributeMap = array(
-        'tickets' => 'tickets',
-        'answers' => 'answers',
-        'promocodes' => 'promocodes'
+        'starts_at' => 'starts_at',
+        'ends_at' => 'ends_at'
     );
 
     
     /**
-    * Список видов билетов
+    * Дата посещения пользователем события
     *
-    * @var TicketInclude[]
+    * @var DateTime
     */
-    public $tickets;
+    public $starts_at;
     /**
-    * Список видов билетов
+    * Дата ухода пользователя с события
     *
-    * @var map[string,string]
+    * @var DateTime
     */
-    public $answers;
-    /**
-    * Промокоды
-    *
-    * @var string[]
-    */
-    public $promocodes;
+    public $ends_at;
 
     public function __construct(array $data = null) {
     
-        if(isset($data["tickets"])) {
-            $this->tickets = $data["tickets"];
+        if(isset($data["starts_at"])) {
+            $this->starts_at = $data["starts_at"];
         }
     
     
-        if(isset($data["answers"])) {
-            $this->answers = $data["answers"];
-        }
-    
-    
-        if(isset($data["promocodes"])) {
-            $this->promocodes = $data["promocodes"];
+        if(isset($data["ends_at"])) {
+            $this->ends_at = $data["ends_at"];
         }
     
     }

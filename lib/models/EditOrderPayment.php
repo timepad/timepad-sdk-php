@@ -26,53 +26,53 @@ namespace TimepadApi\models;
 
 use \ArrayAccess;
 
-class CreateOrder implements ArrayAccess {
+class EditOrderPayment implements ArrayAccess {
     static $swaggerTypes = array(
-        'tickets' => 'TicketInclude[]',
-        'answers' => 'map[string,string]',
-        'promocodes' => 'string[]'
+        'paid_at' => 'DateTime',
+        'amount' => 'float',
+        'payment_type' => 'string'
     );
 
     static $attributeMap = array(
-        'tickets' => 'tickets',
-        'answers' => 'answers',
-        'promocodes' => 'promocodes'
+        'paid_at' => 'paid_at',
+        'amount' => 'amount',
+        'payment_type' => 'payment_type'
     );
 
     
     /**
-    * Список видов билетов
+    * Дата оплаты заказа
     *
-    * @var TicketInclude[]
+    * @var DateTime
     */
-    public $tickets;
+    public $paid_at;
     /**
-    * Список видов билетов
+    * Сумма заказа
     *
-    * @var map[string,string]
+    * @var float
     */
-    public $answers;
+    public $amount;
     /**
-    * Промокоды
+    * Тип платежа
     *
-    * @var string[]
+    * @var string
     */
-    public $promocodes;
+    public $payment_type;
 
     public function __construct(array $data = null) {
     
-        if(isset($data["tickets"])) {
-            $this->tickets = $data["tickets"];
+        if(isset($data["paid_at"])) {
+            $this->paid_at = $data["paid_at"];
         }
     
     
-        if(isset($data["answers"])) {
-            $this->answers = $data["answers"];
+        if(isset($data["amount"])) {
+            $this->amount = $data["amount"];
         }
     
     
-        if(isset($data["promocodes"])) {
-            $this->promocodes = $data["promocodes"];
+        if(isset($data["payment_type"])) {
+            $this->payment_type = $data["payment_type"];
         }
     
     }

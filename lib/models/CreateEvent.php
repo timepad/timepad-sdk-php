@@ -41,7 +41,7 @@ class CreateEvent implements ArrayAccess {
         'custom' => 'object',
         'questions' => 'QuestionInclude[]',
         'access_status' => 'string',
-        'ticket_types' => 'TicketTypeInclude[]'
+        'ticket_types' => 'TicketTypeRequest[]'
     );
 
     static $attributeMap = array(
@@ -143,7 +143,7 @@ class CreateEvent implements ArrayAccess {
     /**
     * Список видов билетов
     *
-    * @var TicketTypeInclude[]
+    * @var TicketTypeRequest[]
     */
     public $ticket_types;
 

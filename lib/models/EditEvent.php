@@ -28,7 +28,7 @@ use \ArrayAccess;
 
 class EditEvent implements ArrayAccess {
     static $swaggerTypes = array(
-        'ticket_types' => 'TicketTypeIncludeApiRequest[]',
+        'ticket_types' => 'TicketTypeRequest[]',
         'name' => 'string',
         'description_short' => 'string',
         'description_html' => 'string',
@@ -63,7 +63,7 @@ class EditEvent implements ArrayAccess {
     /**
     * Список видов билетов
     *
-    * @var TicketTypeIncludeApiRequest[]
+    * @var TicketTypeRequest[]
     */
     public $ticket_types;
     /**

@@ -26,53 +26,79 @@ namespace TimepadApi\models;
 
 use \ArrayAccess;
 
-class CreateOrder implements ArrayAccess {
+class WebhookApiResponse implements ArrayAccess {
     static $swaggerTypes = array(
-        'tickets' => 'TicketInclude[]',
-        'answers' => 'map[string,string]',
-        'promocodes' => 'string[]'
+        'id' => 'int',
+        'organization' => 'int',
+        'url' => 'string',
+        'type' => 'string',
+        'secret' => 'string'
     );
 
     static $attributeMap = array(
-        'tickets' => 'tickets',
-        'answers' => 'answers',
-        'promocodes' => 'promocodes'
+        'id' => 'id',
+        'organization' => 'organization',
+        'url' => 'url',
+        'type' => 'type',
+        'secret' => 'secret'
     );
 
     
     /**
-    * Список видов билетов
+    * Идентификатор webhook'а
     *
-    * @var TicketInclude[]
+    * @var int
     */
-    public $tickets;
+    public $id;
     /**
-    * Список видов билетов
+    * Идентификатор организации
     *
-    * @var map[string,string]
+    * @var int
     */
-    public $answers;
+    public $organization;
     /**
-    * Промокоды
+    * URL-адресс для колбека при событии
     *
-    * @var string[]
+    * @var string
     */
-    public $promocodes;
+    public $url;
+    /**
+    * Тип webhook'а
+    *
+    * @var string
+    */
+    public $type;
+    /**
+    * Ключ подписи webhook'а
+    *
+    * @var string
+    */
+    public $secret;
 
     public function __construct(array $data = null) {
     
-        if(isset($data["tickets"])) {
-            $this->tickets = $data["tickets"];
+        if(isset($data["id"])) {
+            $this->id = $data["id"];
         }
     
     
-        if(isset($data["answers"])) {
-            $this->answers = $data["answers"];
+        if(isset($data["organization"])) {
+            $this->organization = $data["organization"];
         }
     
     
-        if(isset($data["promocodes"])) {
-            $this->promocodes = $data["promocodes"];
+        if(isset($data["url"])) {
+            $this->url = $data["url"];
+        }
+    
+    
+        if(isset($data["type"])) {
+            $this->type = $data["type"];
+        }
+    
+    
+        if(isset($data["secret"])) {
+            $this->secret = $data["secret"];
         }
     
     }

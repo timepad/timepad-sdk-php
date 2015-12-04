@@ -39,7 +39,7 @@ class CategoryInclude implements ArrayAccess {
 
     
     /**
-    * ID категории в Таймпаде
+    * Номер категории в Таймпаде
     *
     * @var int
     */

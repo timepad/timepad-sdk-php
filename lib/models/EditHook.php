@@ -26,53 +26,40 @@ namespace TimepadApi\models;
 
 use \ArrayAccess;
 
-class CreateOrder implements ArrayAccess {
+class EditHook implements ArrayAccess {
     static $swaggerTypes = array(
-        'tickets' => 'TicketInclude[]',
-        'answers' => 'map[string,string]',
-        'promocodes' => 'string[]'
+        'url' => 'string',
+        'secret' => 'string'
     );
 
     static $attributeMap = array(
-        'tickets' => 'tickets',
-        'answers' => 'answers',
-        'promocodes' => 'promocodes'
+        'url' => 'url',
+        'secret' => 'secret'
     );
 
     
     /**
-    * Список видов билетов
+    * URL-адресс для колбека при событии
     *
-    * @var TicketInclude[]
+    * @var string
     */
-    public $tickets;
+    public $url;
     /**
-    * Список видов билетов
+    * Секретная фраза для подписки webhook'ов
     *
-    * @var map[string,string]
+    * @var string
     */
-    public $answers;
-    /**
-    * Промокоды
-    *
-    * @var string[]
-    */
-    public $promocodes;
+    public $secret;
 
     public function __construct(array $data = null) {
     
-        if(isset($data["tickets"])) {
-            $this->tickets = $data["tickets"];
+        if(isset($data["url"])) {
+            $this->url = $data["url"];
         }
     
     
-        if(isset($data["answers"])) {
-            $this->answers = $data["answers"];
-        }
-    
-    
-        if(isset($data["promocodes"])) {
-            $this->promocodes = $data["promocodes"];
+        if(isset($data["secret"])) {
+            $this->secret = $data["secret"];
         }
     
     }
