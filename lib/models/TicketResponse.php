@@ -30,7 +30,7 @@ class TicketResponse implements ArrayAccess {
     static $swaggerTypes = array(
         'id' => 'int',
         'number' => 'string',
-        'answers' => 'AnswersResponse',
+        'answers' => 'map[string,string]',
         'ticket_type' => 'TicketTypeResponse',
         'attendance' => 'AttendanceResponse',
         'place' => 'PlaceResponse',
@@ -63,7 +63,7 @@ class TicketResponse implements ArrayAccess {
     /**
     * Объект с ответами на вопросы анкеты
     *
-    * @var AnswersResponse
+    * @var map[string,string]
     */
     public $answers;
     /**
