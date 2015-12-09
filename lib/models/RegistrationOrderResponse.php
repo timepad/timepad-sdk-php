@@ -33,7 +33,7 @@ class RegistrationOrderResponse implements ArrayAccess {
         'status' => 'OrderStatusResponse',
         'payment' => 'PaymentResponse',
         'tickets' => 'TicketResponse[]',
-        'answers' => 'AnswersResponse',
+        'answers' => 'map[string,string]',
         'promocodes' => 'string[]'
     );
 
@@ -81,7 +81,7 @@ class RegistrationOrderResponse implements ArrayAccess {
     /**
     * Массив Ответов
     *
-    * @var AnswersResponse
+    * @var map[string,string]
     */
     public $answers;
     /**

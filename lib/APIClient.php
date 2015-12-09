@@ -291,7 +291,7 @@ class APIClient {
                 $subClass_array = explode(',', $inner, 2);
                 $subClass = $subClass_array[1];
                 foreach ($data as $key => $value) {
-                  $values[] = array($key => self::deserialize($value, $subClass));
+                    $values[$key] = self::deserialize($value, $subClass);
                 }
             }
 
